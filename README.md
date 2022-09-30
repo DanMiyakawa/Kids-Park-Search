@@ -27,6 +27,11 @@
 
 ## 設計書
 
+[ER図(仮)](https://app.diagrams.net/#G15gIi581iMAllGybAb8qbwm_mBV_Sh6I8)
+
+[アプリケーション詳細設計書(仮)](https://docs.google.com/spreadsheets/d/1H_9ljrj8AheMexKkDozxxWHkoTXMl2If-lthdds6YLU/edit#gid=549108681)
+
+[テーブル定義書(仮)](https://docs.google.com/spreadsheets/d/1VN8J3OWy0Z6RvbROLpgLzgZ-u4-4LmkSQBxYVKkFHAw/edit#gid=1373217982)
 
 ## 開発環境
 - OS：Linux(CentOS)
