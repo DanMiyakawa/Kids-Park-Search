@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root :to =>"homes#top"
-  get "/about"=>"homes#about"
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -18,6 +16,8 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
+    root to: 'homes#top'
+    get '/about' => 'homes#about'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
