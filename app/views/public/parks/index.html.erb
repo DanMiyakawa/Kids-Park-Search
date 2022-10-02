@@ -5,7 +5,7 @@
       <div class="row mx-auto pb-5">
         <% @parks.each do |park| %>
           <%= link_to park_path(park.id), class: "col-3 text-center text-dark text-nowrap mt-5" do %>
-            <%= image_tag park.images, :size => '200x150' %><br>
+            地図 <%= park.address %><br>
             <%= park.name %><br>
           <% end %>
         <% end %>
