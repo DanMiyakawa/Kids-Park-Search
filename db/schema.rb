@@ -99,13 +99,15 @@ ActiveRecord::Schema.define(version: 2022_10_01_234316) do
 
   create_table "parks", force: :cascade do |t|
     t.integer "genre_id"
+    t.integer "customer_id"
     t.string "name"
     t.text "introduction"
-    t.string "post_code"
     t.string "address"
     t.string "phone"
-    t.string "business_hours"
-    t.string "target_age"
+    t.time "start_time"
+    t.time "end_time"
+    t.integer "child_age"
+    t.integer "child_moon_age"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
