@@ -7,7 +7,7 @@
       <table class="table table-borderless pl-5">
       <tr>
         <th>遊び場の画像</th>
-        <th><%= f.file_field :images, class: "form-control-file images", accept: 'image/*' %></th>
+        <th><%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %></th>
       </tr>
       <tr>
         <th>遊び場の名前</th>
