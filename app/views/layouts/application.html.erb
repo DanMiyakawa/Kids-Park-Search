@@ -24,6 +24,9 @@
 	              <li class="nav-item">
                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
 	              </li>
+	              <li>
+	                <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-light' %>
+	              </li>
 	          
               <% elsif customer_signed_in? %>
 	              <li class="nav-item">
