@@ -4,11 +4,9 @@
 
     <div class="col-md-4 offset-md-1 mt-5 mx-auto">
       <% if @park.images.attached? %>
-      <div style="width: 700px;">
         <% @park.images.each do |image| %>
         <%= image_tag image, :size => '250' %>
         <% end %>
-      </div>
       <% end %>
     </div>
     <div class="col-6 px-0 mt-5 mx-auto">
@@ -38,6 +36,11 @@
           <th>対象年齢</th>
           <td><%= @park.child_age %>歳 <%= @park.child_moon_age %>ヶ月</td>
         </tr>
+        <tr>
+          <th>お気に入り</th>
+          <td id="park_<%= @park.id %>"><%= render 'public/favorites/favorite', park: @park %></td>
+        </tr>
+
       </table>
     </div>
   </div>

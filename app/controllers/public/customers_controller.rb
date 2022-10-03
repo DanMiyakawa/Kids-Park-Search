@@ -28,6 +28,12 @@ class Public::CustomersController < ApplicationController
     flash[:notice] = "ありがとうございました。またのご利用をお待ちしております"
     redirect_to root_path
   end
+  
+  def favorites
+    @customer = Customer.find(params[:id])
+    favorites= Favorite.where(customer_id: @customer.id).pluck(:park_id)
+    @favorite_parks = Park.find(favorites)
+  end
 
   private
 

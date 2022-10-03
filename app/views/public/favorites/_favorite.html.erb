@@ -1,0 +1,9 @@
+<% if park.favorited_by?(current_customer) %>
+  <%= link_to park_favorites_path(park), method: :delete, remote: true do %>
+    ★
+  <% end %>
+<% else %>
+  <%= link_to park_favorites_path(park), method: :post, remote: true do %>
+    ☆
+  <% end %>
+<% end %>
