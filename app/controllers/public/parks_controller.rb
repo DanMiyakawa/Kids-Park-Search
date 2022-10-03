@@ -5,6 +5,7 @@ class Public::ParksController < ApplicationController
 
   def show
     @park = Park.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit

@@ -21,9 +21,10 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     resources :parks do
+      resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :customers, only: [:show,:edit,:update] do
+    resources :customers, only: [:show, :edit, :update] do
       collection do
         get 'unsubscribe'
         patch 'withdrawal'
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
       get :favorites
       end
     end
-    resources :contacts, only: [:index,:new,:create]do
+    resources :contacts, only: [:index, :new, :create]do
       collection do
       get '/thanks' => 'contacts#thanks'
       end
