@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2022_10_01_234316) do
     t.text "comment"
     t.integer "customer_id"
     t.integer "park_id"
+    t.integer "child_age"
+    t.integer "child_moon_age"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -4,6 +4,8 @@ class CreateComments < ActiveRecord::Migration[6.1]
       t.text :comment
       t.integer :customer_id
       t.integer :park_id
+      t.integer :child_age
+      t.integer :child_moon_age
 
       t.timestamps
     end
