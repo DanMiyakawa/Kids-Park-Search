@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+ 
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -25,6 +25,11 @@ Rails.application.routes.draw do
       collection do
         get 'unsubscribe'
         patch 'withdrawal'
+      end
+    end
+    resources :contacts, only: [:index,:new,:create]do
+      collection do
+      get '/thanks' => 'contacts#thanks'
       end
     end
   end
