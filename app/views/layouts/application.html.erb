@@ -35,6 +35,9 @@
                 <li>
                   <%= link_to "遊び場投稿", new_park_path, class: 'nav-link text-light' %>
                 </li>
+                <li>
+                  <%= link_to "マイページ", customer_path(current_customer), class: 'nav-link text-light' %>
+                </li>
 	              <li class="nav-item">
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
 	              </li>
@@ -42,6 +45,9 @@
                 <li class="nav-item">
                   <%= link_to "About", about_path, class: 'nav-link text-light' %>
 	              </li>
+	              <li>
+                  <%= link_to "遊び場一覧", parks_path, class: 'nav-link text-light' %>
+                </li>
 	              <li class="nav-item">
 	                <%= link_to "新規登録",  new_customer_registration_path, class: 'nav-link text-light' %>
         	      </li>
