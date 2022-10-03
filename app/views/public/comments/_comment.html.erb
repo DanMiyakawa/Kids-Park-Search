@@ -2,21 +2,28 @@
   <div class="col-5 mx-auto">
     <%= form_with model: [park, comment], local: false do |f| %>
     <%= f.file_field :comment_image, class: "form-control-file comment_image", accept: 'image/*' %>
-    <%= f.text_area :comment, placeholder: "コメントをここに" %>
+    <%= f.text_area :comment, placeholder: "コメントをここに" %><br>
+    <%= f.number_field :child_age, in: 0..15, step: 1, size: "50x5", placeholder:"年齢" %>歳
+    <%= f.number_field :child_moon_age, in: 0..11, step: 1, placeholder:"月齢" %>ヶ月
     <%= f.submit "送信する" %>
     <% end %>
   </div>
 </div>
 <div class="row">
-  <div class="col-5 mx-auto">
     <% park.comments.each do |comment| %>
-      <p><%= image_tag comment.comment_image, :size => '80' %>
+    <div class="col-4">
+      <div class="float-right">
+      <%= image_tag 'boy_03.png', size: "80" %><br>
+      <%= comment.child_age %>歳 <%= comment.child_moon_age %>ヶ月
+      </div>
+    </div>
+    <div class="col-7">
+      <%= image_tag comment.comment_image, :size => '80' %>
       <%= comment.comment %><br>
-      <%= comment.created_at.strftime('%Y/%m/%d') %>
+      <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
       <% if comment.customer == current_customer %>
         <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
       <% end %>
-      </p>
+    </div>
     <% end %>
-  </div>
 </div>
