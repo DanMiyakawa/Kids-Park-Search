@@ -18,9 +18,10 @@
         <%= link_to edit_customer_path(@customer), class: "btn btn-outline-secondary btn-block" do %>
           <button type="button" class="btn btn-danger">編集する</button>
         <% end %>
-         <%= link_to unsubscribe_customers_path, class: "ml-5" do %>
-         <button type="button" class="btn btn-danger">退会する</button>
+        <%= link_to unsubscribe_customers_path, class: "ml-5" do %>
+          <button type="button" class="btn btn-danger">退会する</button>
         <% end %>
+        <%= link_to "お問い合わせ一覧", contacts_path, class: "ml-5" %>
       <% end %>
     </div>
 
