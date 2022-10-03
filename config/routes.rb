@@ -20,11 +20,16 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    resources :parks
+    resources :parks do
+      resource :favorites, only: [:create, :destroy]
+    end
     resources :customers, only: [:show,:edit,:update] do
       collection do
         get 'unsubscribe'
         patch 'withdrawal'
+      end
+      member do
+      get :favorites
       end
     end
     resources :contacts, only: [:index,:new,:create]do
