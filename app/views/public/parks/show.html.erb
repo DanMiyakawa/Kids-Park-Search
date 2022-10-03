@@ -42,13 +42,18 @@
         </tr>
 
       </table>
+      <% if @park.customer == current_customer %>
+      <div class="text-right mr-5 mt-3">
+        <%= link_to '編集する', edit_park_path(@park.id), class: "btn btn-success mr-5" %>
+        <%= link_to '削除する', park_path(@park), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+      </div>
+      <% else %>
+      <% end %>
     </div>
   </div>
-  <% if @park.customer == current_customer %>
-  <div class="text-right mr-5 mt-3">
-    <%= link_to '編集する', edit_park_path(@park.id), class: "btn btn-success mr-5" %>
-    <%= link_to '削除する', park_path(@park), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+  <br>
+  <p class="text-center"><strong>〜コメント〜</strong></p>
+  <div id="comments_area">
+    <%= render 'public/comments/comment', park: @park, comment: @comment %>
   </div>
-  <% else %>
-  <% end %>
 </div>

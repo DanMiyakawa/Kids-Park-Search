@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-5 mx-auto">
+    <%= form_with model: [park, comment], local: false do |f| %>
+    <%= f.file_field :comment_image, class: "form-control-file comment_image", accept: 'image/*' %>
+    <%= f.text_area :comment, placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-5 mx-auto">
+    <% park.comments.each do |comment| %>
+      <p><%= image_tag comment.comment_image, :size => '80' %>
+      <%= comment.comment %><br>
+      <%= comment.created_at.strftime('%Y/%m/%d') %>
+      <% if comment.customer == current_customer %>
+        <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+      <% end %>
+      </p>
+    <% end %>
+  </div>
+</div>
