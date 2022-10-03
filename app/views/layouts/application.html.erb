@@ -2,11 +2,11 @@
 <html>
   <head>
     <title>PF</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -27,7 +27,7 @@
 	              <li>
 	                <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-light' %>
 	              </li>
-	          
+
               <% elsif customer_signed_in? %>
                 <li>
                   <%= link_to "遊び場一覧", parks_path, class: 'nav-link text-light' %>
