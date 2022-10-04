@@ -14,8 +14,10 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+    get '' => 'homes#top'
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :update]
+    resources :contacts, only: [:show, :update]
   end
 
   scope module: :public do
