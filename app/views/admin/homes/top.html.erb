@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-8 mx-auto">
+    <h4><strong>お問い合わせ一覧</strong></h4>
+
+    <table class="table mt-4">
+        <thead class="table-active">
+          <tr>
+            <th>お問い合わせ日時</th>
+            <th>タイトル</th>
+            <th>問い合わせした人</th>
+            <th>対応状況</th>
+            <th></th>
+          </tr>
+        </thead>
+      <% @contacts.each do |contact| %>
+        <tbody>
+          <tr>
+            <td><%= contact.created_at.strftime('%Y年%m月%d日%H時%M分') %></td>
+            <td><%= contact.title %></td>
+            <td><%= contact.customer.nickname %></td>
+            <td><%= contact.status %></td>
+            <td><%= link_to "詳細", admin_contact_path(contact), class: "btn btn-sm btn-primary" %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
