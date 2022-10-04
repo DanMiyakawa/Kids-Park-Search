@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :update]
     resources :contacts, only: [:show, :update]
+    resources :parks, only: [:index, :show, :edit, :update, :destroy] do
+      resources :comments, only: [:destroy]
+    end
   end
 
   scope module: :public do
