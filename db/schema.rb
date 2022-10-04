@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 2022_10_01_234316) do
     t.time "end_time"
     t.integer "child_age"
     t.integer "child_moon_age"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
