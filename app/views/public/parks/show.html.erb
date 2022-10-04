@@ -1,32 +1,21 @@
-      <div id='map'></div>
-
-          <style>
-          #map {
-            height: 300px;
-            width: 500px;
-            }
-          </style>
-
-          <script>
-            let map
-
-            function initMap(){
-            geocoder = new google.maps.Geocoder()
-
-            map = new google.maps.Map(document.getElementById('map'), {
-              center: {lat: <%= @park.latitude %>, lng: <%= @park.longitude %>},
-              zoom: 12,
-              disableDefaultUI: true,
-              });
-
-              marker = new google.maps.Marker({
-              position:  {lat: <%= @park.latitude %>, lng: <%= @park.longitude %>},
-              map: map
-              });
-            }
-          </script>
-          <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
-          </script>
+<div id="map" date-lat="<%= @park.latitude %>" date-lng="<%= @park.longitude %>" style='width: 500px; height: 250px;'></div>
+  <script>
+    function initMap(){
+      //Idの数だけマップを出力
+      var latlng = new google.maps.LatLng(<%=@park.latitude%>,<%=@park.longitude%>);
+      map = new google.maps.Map(document.getElementById('map'),{
+      center: {lat: <%=@park.latitude%>, lng: <%=@park.longitude%>},
+      zoom: 12,
+      disableDefaultUI: true,
+    });
+    marker = new google.maps.Marker({
+      position: latlng,
+      map: map
+    });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+        </script>
 <div class="container">
   <h4 class="ml-5 mb-4"><strong>遊び場の詳しい情報</strong></h4>
   <div class="row shadow-lg">
