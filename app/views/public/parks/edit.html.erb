@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-5 col-5 px-0 mx-auto">
+    <div class="col-10 px-0 mx-auto">
       <h4><strong>遊び場情報の変更</strong></h4>
-      <div class="mt-4 shadow-lg px-5 py-5">
       <%= form_with model: @park, url: park_path, method: :patch do |f| %>
           <table class="table table-borderless pl-5">
             <tr>
@@ -58,7 +57,6 @@
           <%= f.submit '変更を保存', class: "btn btn-success" %>
         </div>
       <% end %>
-      </div>
     </div>
   </div>
 </div>

@@ -1,19 +1,16 @@
 <div class="container">
   <h4 class="ml-5 mb-4"><strong>マイページ</strong></h4>
-  <div class="row shadow-lg">
-
-    <div class="col-md-5 offset-md-1 mt-5 mx-auto">
-      <%= image_tag @customer.get_profile_image, size:'100x100', style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
-    </div>
+  <div class="row">
+    <div class="col-5 mt-5">
+      <%= image_tag @customer.get_profile_image, size:'200x200', class: "mx-auto", style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover; display: block; margin: auto;" %>
       <table class="table table-borderless">
         <tr>
-          <th>遊び場の名前</th><th><%= @customer.nickname %></th>
+          <th>ニックネーム</th><td><%= @customer.nickname %></td>
         </tr>
         <tr>
-          <th>紹介文</th><th><%= @customer.introduction %></th>
+          <th>紹介文</th><td><%= @customer.introduction %></td>
         </tr>
       </table>
-    <div class='row'>
       <% if @customer == current_customer %>
         <%= link_to edit_customer_path(@customer), class: "btn btn-outline-secondary btn-block" do %>
           編集する
@@ -26,21 +23,25 @@
         <% end %>
       <% end %>
     </div>
-
-    <table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>遊び場名</th>
-      <th>住所</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @parks.each do |park| %>
-      <tr>
-        <td><%= link_to park.name, park_path(park.id) %></td>
-        <td><%= park.address %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="col-6 offset-1">
+      <h4 class="ml-5 mb-4">〜過去に投稿した遊び場〜</h4>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>遊び場名</th>
+            <th>住所</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @parks.each do |park| %>
+          <tr>
+            <td><%= link_to park.name, park_path(park.id) %></td>
+            <td><%= park.address %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
