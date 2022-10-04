@@ -58,3 +58,4 @@ gem 'devise'
 gem 'net-smtp'
 gem 'geocoder', '~> 1.4'
 gem 'dotenv-rails'
+gem "enum_help"
