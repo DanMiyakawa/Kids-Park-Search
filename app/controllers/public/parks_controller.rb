@@ -56,6 +56,6 @@ class Public::ParksController < ApplicationController
   private
 
   def park_params
-    params.require(:park).permit(:genre_id, :name, :introduction, :address, :phone, :start_time, :end_time, :child_age, :child_moon_age, images: [] )
+    params.require(:park).permit(:genre_id, :name, :introduction, :address, :latitude, :longitude, :phone, :start_time, :end_time, :child_age, :child_moon_age, images: [] )
   end
 end

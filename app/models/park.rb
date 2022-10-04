@@ -6,6 +6,9 @@ class Park < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   has_many_attached :images
+  
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)

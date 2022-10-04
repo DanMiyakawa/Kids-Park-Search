@@ -11,6 +11,8 @@ class CreateParks < ActiveRecord::Migration[6.1]
       t.time :end_time
       t.integer :child_age
       t.integer :child_moon_age
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end
