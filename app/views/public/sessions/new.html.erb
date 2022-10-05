@@ -9,7 +9,7 @@
        </div>
 
         <%= form_with model: @customer, url: customer_session_path do |f| %>
-         <div class="field form-group">
+         <div class="field">
           <%= f.label "メールアドレス" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: "sample@example.com" %>
          </div>
