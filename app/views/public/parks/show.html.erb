@@ -3,7 +3,7 @@
   <div class="row">
 
     <div class="col-md-4 offset-md-1 mt-5 mx-auto">
-      <div id="map" date-lat="<%= @park.latitude %>" date-lng="<%= @park.longitude %>" style='width: 400px; height: 300px;'></div>
+      <div id="map" date-lat="<%= @park.latitude %>" date-lng="<%= @park.longitude %>" style='width: 350px; height: 300px;'></div>
       <script>
       function initMap(){
         //Idの数だけマップを出力
@@ -21,11 +21,15 @@
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
       </script>
-      <div>
+      <div class="mx-auto">
         <% if @park.images.attached? %>
           <% @park.images.each do |image| %>
-          <%= image_tag image, class: "col-3 mt-2", :size => '100' %>
+            <%= link_to image, "data-lightbox": image do %>
+              <%= image_tag image, class: "col-3 mt-2", :size => '150×150' %>
+            <% end %>
           <% end %>
+        <% else %>
+          <p class="mt-2 text-center">写真はありません</p>
         <% end %>
       </div>
     </div>
@@ -57,7 +61,7 @@
           <td><%= @park.child_age %>歳 <%= @park.child_moon_age %>ヶ月</td>
         </tr>
       </table>
-      <div class="text-right mr-5 mt-3", style="font-size: 50px; ">
+      <div class="text-right mr-5 mt-3", style="font-size: 50px;">
         <div id="park_<%= @park.id %>"><%= render 'public/favorites/favorite', park: @park %></div>
       </div>
       <% if @park.customer == current_customer %>
@@ -70,7 +74,7 @@
     </div>
   </div>
   <br>
-  <p class="text-center"><strong>〜コメント〜</strong></p>
+  <h2 class="text-center"><strong>〜コメント〜</strong></h2>
   <div id="comments_area">
     <%= render 'public/comments/comment', park: @park, comment: @comment %>
   </div>
