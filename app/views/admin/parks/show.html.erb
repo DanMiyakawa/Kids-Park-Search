@@ -3,11 +3,17 @@
   <div class="row">
 
     <div class="col-md-4 offset-md-1 mt-5 mx-auto">
-      <% if @park.images.attached? %>
-        <% @park.images.each do |image| %>
-        <%= image_tag image, :size => '250' %>
+      <div class="mx-auto">
+        <% if @park.images.attached? %>
+          <% @park.images.each do |image| %>
+            <%= link_to image, "data-lightbox": image do %>
+              <%= image_tag image, class: "col-3 mt-2", :size => '150×150' %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p class="mt-2 text-center">写真はありません</p>
         <% end %>
-      <% end %>
+      </div>
     </div>
     <div class="col-6 px-0 mt-5 mx-auto">
       <table class="table table-borderless">
@@ -54,7 +60,9 @@
       </div>
     </div>
     <div class="col-7">
-      <%= image_tag comment.comment_image, :size => '80' %>
+      <%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>
+        <%= image_tag comment.comment_image, :size => '80' %>
+      <% end %>
       <%= comment.comment %><br>
       <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
         <%= link_to "削除", admin_park_comment_path(comment.park, comment), method: :delete, class: "btn btn-sm btn-danger" %>
