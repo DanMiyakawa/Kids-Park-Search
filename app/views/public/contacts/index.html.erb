@@ -1,20 +1,27 @@
-<%= link_to "新規問い合わせ", new_contact_path %>
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>内容</th>
-      <th>対応状況</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="row">
+  <div class="col-8 mx-auto">
+    <h4><strong>お問い合わせ一覧</strong></h4>
+    <div class="text-right">
+      <%= link_to "新規問い合わせ", new_contact_path %>
+    </div>
+    <table class="table mt-4">
+      <thead class="table-active">
+        <tr>
+          <th>タイトル</th>
+          <th>内容</th>
+          <th>対応状況</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
     <% @contacts.each do |contact| %>
-      <tr>
-        <td><%= contact.title %></td>
-        <td><%= contact.body %></td>
-        <td><%= contact.status %></td>
-      </tr>
+      <tbody>
+        <tr>
+          <td><%= contact.title %></td>
+          <td><%= contact.body %></td>
+          <td><%= contact.status %></td>
+        </tr>
+      </tbody>
     <% end %>
-  </tbody>
-</table>
+    </table>
+  </div>
+</div>
