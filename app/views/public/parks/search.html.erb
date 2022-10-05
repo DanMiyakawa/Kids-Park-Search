@@ -16,13 +16,13 @@
 <div class='container'>
       <h4 class="mt-5"><strong>遊び場一覧</strong></h4>
       <div class="row mx-auto">
-        <% @parks.each_with_index do |park,i| %>
+        <% @results.each_with_index do |park,i| %>
         <%= link_to park_path(park.id), class: "col-3 text-center text-dark text-nowrap mt-5" do %>
           <div id="map<%=i%>" date-lat="<%= park.latitude %>" date-lng="<%= park.longitude %>" style='border-top-left-radius: 10%; border-top-right-radius: 10%; width: 250px; height: 250px;'></div>
 
           <script>
             function initMap(){
-              <% @parks.each_with_index do |park,i| %>
+              <% @results.each_with_index do |park,i| %>
                 //Idの数だけマップを出力
               var latlng = new google.maps.LatLng(<%=park.latitude%>,<%=park.longitude%>);
 

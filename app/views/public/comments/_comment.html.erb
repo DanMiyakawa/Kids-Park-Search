@@ -1,5 +1,5 @@
 <div class="row">
-      <div class="col-7">
+      <div class="col-6">
   <% park.comments.each do |comment| %>
 
       <table class="float-right">
@@ -23,7 +23,7 @@
 
   <% end %>
   </div>
-  <div class="col-4 offset-1">
+  <div class="col-6">
     <%= form_with model: [park, comment], local: false do |f| %>
       <%= f.file_field :comment_image, class: "form-control-file comment_image", accept: 'image/*' %>
       <%= f.text_area :comment, placeholder: "コメントをここに" %><br>
