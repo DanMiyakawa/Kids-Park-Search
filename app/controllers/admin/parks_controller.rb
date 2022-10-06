@@ -36,7 +36,15 @@ class Admin::ParksController < ApplicationController
     redirect_to admin_parks_path
   end
 
+  def search
+    @results = @q.result
+  end
+
   private
+
+  def set_q
+    @q = Park.ransack(params[:q])
+  end
 
   def park_params
     params.require(:park).permit(:genre_id, :name, :introduction, :address, :latitude, :longitude, :phone, :start_time, :end_time, :child_age, :child_moon_age, images: [] )
