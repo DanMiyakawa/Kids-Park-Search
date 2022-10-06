@@ -1,15 +1,20 @@
-<div class="row">
-  <div class="col-12">
-    <h1 class="text-center">住所またはキーワードで検索</h1>
-    <div class="row">
-      <div class="col-9 mx-auto"></div>
-        <%= search_form_for @q, url: search_parks_path, class: "mx-auto" do |f| %>
-          <%= f.collection_select :address_cont, JpPrefecture::Prefecture.all, :name, :name, { prompt: '都道府県を選択' } %> ×
-          <%= f.search_field :name_or_address_cont, placeholder: "住所またはキーワードを入力", size: "50×5" %> ×
-          <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, { prompt: 'ジャンルを検索' } %>
-          <%= f.submit '検索' %>
-        <% end %>
-      </div>
+  <div class="row justify-content-center">
+    <%= image_tag "top.png", style: "width: 100%; height: 700px; position: relative;" %>
+    <div style="width: 350px; position:absolute; top:150px; left:50px; color:#FFF; background-color:rgba(0,0,0,0.3); border-radius:30px;">
+    <p class="text-center mb-5">
+      <%= image_tag "logo.png", style: "width: 250px; height: 250px;" %><br>
+      Kid's Park Searchは<br>
+      公園や児童館など子どもと遊べる場所を<br>
+      探すためのマップ検索サイトです。<br>
+    </p>
+    </div>
+    <div style="position:absolute; top:650px; left:50%; color:#FFF;background-color:rgba(0,0,0,0.3);">
+      <p class="text-center", style="font-size: 30px;"><strong>住所またはキーワードで検索</strong></p>
+      <%= search_form_for @q, url: search_parks_path, class: "mx-auto" do |f| %>
+        <%= f.collection_select :address_cont, JpPrefecture::Prefecture.all, :name, :name, { prompt: '都道府県を選択' } %> ×
+        <%= f.search_field :name_or_address_cont, placeholder: "住所またはキーワードを入力", size: "50×5" %> ×
+        <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, { prompt: 'ジャンルを検索' } %>
+        <%= f.submit '検索' %>
+      <% end %>
     </div>
   </div>
-</div>

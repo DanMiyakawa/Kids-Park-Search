@@ -1,9 +1,7 @@
 <div class="container">
+ <h2 class="text-center mt-4"><strong>ログイン</strong></h2>
   <div class="row">
     <div class="col-5 px-0 mx-auto">
-      <div class="mb-4">
-      <h4><strong>ログイン</strong></h4>
-     </div>
        <div class="row">
         <p style="background-color:#EEEEEE">会員の方はこちらからログイン</p>
        </div>
@@ -18,9 +16,10 @@
           <%= f.label "パスワード" %>
           <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
          </div>
+         <br>
 
          <div class="actions">
-          <%= f.submit "ログイン", class: "btn btn-primary" %>
+          <%= f.submit "ログイン", class: "btn btn-primary", style: 'display: block; margin:0 0 0 auto;' %>
          </div>
        <% end %>
 

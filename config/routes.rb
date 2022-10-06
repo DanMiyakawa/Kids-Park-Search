@@ -20,12 +20,14 @@ Rails.application.routes.draw do
     resources :contacts, only: [:show, :update]
     resources :parks, only: [:index, :show, :edit, :update, :destroy] do
       resources :comments, only: [:destroy]
+      collection do
+        get 'search'
+      end
     end
   end
 
   scope module: :public do
     root to: 'homes#top'
-    get '/about' => 'homes#about'
     resources :parks do
       collection do
         get 'search'

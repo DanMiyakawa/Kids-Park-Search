@@ -13,10 +13,14 @@
   </head>
 
   <body style="background-color: #EEEEEE;">
-    <header class="border-bottom mb-5">
+    <header class="border-bottom">
    	  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #a8c8f0;">
 	   	  <div class="container">
-          <a class="navbar-brand" href="/"><%= image_tag 'logo.png', :size => '80x80' %></a>
+	   	    <% if admin_signed_in? %>
+            <a class="navbar-brand" href="/admin"><%= image_tag 'logo.png', :size => '80x80' %></a>
+          <% else %>
+            <a class="navbar-brand" href="/"><%= image_tag 'logo.png', :size => '80x80' %></a>
+          <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -76,11 +80,6 @@
                   <% end %>
 	              </li>
               <% else %>
-                <li class="text-center">
-                  <%= link_to about_path, class: 'nav-link text-light' do %>
-                  <i class="fas fa-link", style="font-size: 30px;"></i><br>About
-                  <% end %>
-	              </li>
 	              <li class="text-center">
                   <%= link_to parks_path, class: 'nav-link text-light' do %>
                   <i class="fas fa-tree", style="font-size: 30px;"></i><br>遊び場一覧

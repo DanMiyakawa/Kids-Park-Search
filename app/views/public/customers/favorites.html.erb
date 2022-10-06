@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="col-md-12">
-      <h4 class="mt-5"><strong>お気に入り遊び場一覧</strong></h4>
+      <h2 class="text-center mt-4"><%= image_tag "tree.png" %><strong>お気に入り遊び場一覧</strong><%= image_tag "tree.png" %></h2>
       <div class="row mx-auto pb-5">
         <% @favorite_parks.each_with_index do |park,i| %>
         <%= link_to park_path(park.id), class: "col-3 text-center text-dark text-nowrap mt-5" do %>
