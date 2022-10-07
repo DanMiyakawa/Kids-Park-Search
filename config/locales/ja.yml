@@ -9,6 +9,8 @@ ja:
       contact:
         title: タイトル
         body: 本文
+      genre:
+        name: ジャンル名
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>

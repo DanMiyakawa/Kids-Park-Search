@@ -1,5 +1,6 @@
 class Admin::ParksController < ApplicationController
   before_action :authenticate_admin!
+
   def index
     @parks = Park.all.order(created_at: :desc).page(params[:page]).per(8)
   end
@@ -23,10 +24,8 @@ class Admin::ParksController < ApplicationController
     end
 
     if @park.update(park_params)
-      flash[:notice] = "遊び場情報を変更しました"
       redirect_to admin_park_path(@park)
     else
-      flash[:notice] = "遊び場情報の変更に失敗しました"
       render "edit"
     end
   end

@@ -1,40 +1,44 @@
 <div class="container">
   <h2 class="text-center mt-4"><strong>〜遊び場情報の変更〜</strong></h2>
+  <div class="text-center">
+    <%= render 'layouts/errors', obj: @park %>
+  </div>
   <div class="row">
-    <div class="col-lg-10 col-5 px-0 mx-auto">
-      <div class="px-5 py-5">
-      <%= form_with model: @park, url: admin_park_path(@park), method: :patch do |f| %>
-          <table class="table table-borderless pl-5">
+    <div class="col-10 mx-auto">
+      <%= form_with model: @park, url: admin_park_path, method: :patch do |f| %>
+          <table class="table table-borderless">
             <tr>
-              <th>遊び場の画像</th>
-              <td>
+              <th style="width: 30%;">遊び場の画像</th>
                 <% if @park.images.attached? %>
+                <td>
                 <p>投稿済みの画像（削除する画像にチェックをつけてください）</p>
                 <div style="display: flex; flex-wrap: wrap; width: 750px;">
                   <% @park.images.each do |image| %>
-                  <div style="display: flex; margin:5px 5px 5px 0;">
-                    <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
-                    <label for="park_image_ids_<%= image.id %>" >
-                    <%= image_tag image, size: '100' %>
-                    </label>
-                  </div>
-                <% end %>
+                    <div style="display: flex; margin:5px 5px 5px 0;">
+                      <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
+                      <label for="park_image_ids_<%= image.id %>" >
+                        <%= image_tag image, size: '100' %>
+                      </label>
+                    </div>
+                  <% end %>
                 </div>
-                <% end %><br>
-              <%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %>
-              </td>
+                  <%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %>
+                </td>
+                <% else %>
+                  <td><%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %></td>
+                <% end %>
             </tr>
             <tr>
-              <th>遊び場の名前</th>
+              <th>遊び場の名前<br><span style="color: red;">※必須</span></th>
               <td><%= f.text_field :name, class: "form-control name" %></td>
             </tr>
             <tr>
-              <th>遊び場の紹介</th>
+              <th>遊び場の紹介<br><span style="color: red;">※必須</span></th>
               <td><%= f.text_area :introduction, class: "form-control introduction" %></td>
             </tr>
             <tr>
-              <th>住所</th>
-              <td><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", :size => "50", class: "form-control address" %></td>
+              <th>住所<br><span style="color: red;">※必須</span></th>
+              <td><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", class: "form-control address" %></td>
             </tr>
             <tr>
               <th>電話番号(ハイフンなし)</th>
@@ -46,19 +50,18 @@
             </tr>
             <tr>
               <th>対象年齢</th>
-              <td><%= f.number_field :child_age, in: 0..15, step: 1, size: "50x5", placeholder:"年齢" %>歳
-              <%= f.number_field :child_moon_age, in: 0..11, step: 1, placeholder:"月齢" %>ヶ月</td>
+              <td style="width: 50px;">年齢<%= f.number_field :child_age, in: 0..15, step: 1 %>歳
+              月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月</td>
             </tr>
             <tr>
-              <th>ジャンル</th>
+              <th>ジャンル<br><span style="color: red;">※必須</span></th>
               <td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></td>
             </tr>
           </table>
-        <div class="form-group col-4 mx-auto mt-3">
+        <div class="form-group text-right mt-3">
           <%= f.submit '変更を保存', class: "btn btn-success" %>
         </div>
       <% end %>
-      </div>
     </div>
   </div>
 </div>

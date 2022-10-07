@@ -2,7 +2,7 @@ class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
   def index
     @genre = Genre.new
-    @genres = Genre.all.page(params[:page]).per(10)
+    @genres = Genre.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def create
@@ -10,6 +10,7 @@ class Admin::GenresController < ApplicationController
     if @genre .save
       redirect_to admin_genres_path
     else
+      @genres = Genre.all.page(params[:page]).per(10)
       render :index
     end
   end

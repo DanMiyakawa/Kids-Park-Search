@@ -7,7 +7,8 @@ class Admin::ContactsController < ApplicationController
   def update
     @contact = Contact.find(params[:id])
     @contact.update(contact_params)
-    redirect_to admin_path
+    flash[:notice] = "更新に成功しました。"
+    redirect_to request.referer
   end
 
   private

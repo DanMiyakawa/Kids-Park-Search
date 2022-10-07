@@ -26,10 +26,8 @@ class Public::ParksController < ApplicationController
     end
 
     if @park.update(park_params)
-      flash[:notice] = "遊び場情報を変更しました"
       redirect_to park_path(@park)
     else
-      flash[:notice] = "遊び場情報の変更に失敗しました"
       render "edit"
     end
   end
@@ -42,10 +40,8 @@ class Public::ParksController < ApplicationController
     @park = Park.new(park_params)
     @park.customer_id = current_customer.id
     if @park.save
-      flash[:notice] = "遊び場を登録しました"
       redirect_to park_path(@park.id)
     else
-      flash[:notice] = "遊び場の登録に失敗しました"
       render :new
     end
   end
