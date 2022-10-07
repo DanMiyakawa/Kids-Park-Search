@@ -1,8 +1,8 @@
 class Public::ContactsController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def index
-    @contacts = Contact.where(customer_id: current_customer.id)
+    @contacts = Contact.where(customer_id: current_customer.id).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new

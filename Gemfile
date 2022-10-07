@@ -62,3 +62,5 @@ gem "enum_help"
 gem 'ransack'
 gem 'jp_prefecture'
 gem "rails-i18n"
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'
