@@ -8,7 +8,7 @@
       <%= form_with model: @park, url: park_path, method: :patch do |f| %>
           <table class="table table-borderless pl-5">
             <tr>
-              <th>遊び場の画像</th>
+              <th style="width: 30%;">遊び場の画像</th>
               <td>
                 <% if @park.images.attached? %>
                 <p>投稿済みの画像（削除する画像にチェックをつけてください）</p>

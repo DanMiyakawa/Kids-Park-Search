@@ -1,7 +1,7 @@
 <% if obj.errors.any? %>
   <div id="error_explanation">
-    <h3><%= obj.errors.count %>件のエラーがあります。</h3>
-    <ul style=" list-style: none;">
+    <h3 style="color: red;"><%= obj.errors.count %>件のエラーがあります。</h3>
+    <ul class="text-center", style=" list-style: none;">
       <% obj.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
