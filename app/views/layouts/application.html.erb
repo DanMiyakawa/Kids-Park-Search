@@ -11,11 +11,11 @@
     <%= stylesheet_link_tag "application", :media => "all" %>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
+    
   </head>
 
   <body style="background-color: #EEEEEE;">
     <%= render "layouts/header" %>
-    <p id="notice", class="text-center", style="width: 100%; background-color: green; color: white;"><%= notice %></p>
     <%= yield %>
   </body>
 </html>

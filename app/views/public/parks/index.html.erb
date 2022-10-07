@@ -5,6 +5,7 @@
   </div>
   <div class="row mx-auto">
     <%= render "public/parks/map", parks: @parks %>
+    <%= render "public/parks/api" %>
   </div>
   <div class="row">
     <div class="col-12 mt-3"><%= paginate @parks, theme: 'bootstrap-5' %></div>
