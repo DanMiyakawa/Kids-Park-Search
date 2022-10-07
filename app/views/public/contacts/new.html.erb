@@ -1,5 +1,8 @@
+<h2 class="text-center mt-4"><%= image_tag "kumo.png" %><strong>新規お問い合わせ</strong><%= image_tag "kumo.png" %></h2>
 <div class="container">
-  <h2 class="text-center mt-4"><%= image_tag "kumo.png" %><strong>新規お問い合わせ</strong><%= image_tag "kumo.png" %></h2>
+  <div class="text-center">
+    <%= render 'layouts/errors', obj: @contact %>
+  </div>
   <div class="row">
     <div class="col-5 px-0 mx-auto">
       <%= link_to contacts_path do %>
