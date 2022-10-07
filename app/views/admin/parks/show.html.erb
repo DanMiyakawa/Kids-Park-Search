@@ -3,15 +3,16 @@
   <div class="row">
 
     <div class="col-md-4 offset-md-1 mt-5 mx-auto">
-      <div class="mx-auto">
+      <div class="row mx-auto">
         <% if @park.images.attached? %>
           <% @park.images.each do |image| %>
-            <%= link_to image, "data-lightbox": image do %>
-              <%= image_tag image, class: "col-3 mt-2", :size => '150×150' %>
+            <%= link_to image, "data-lightbox": image, class: "col-4 mt-3" do %>
+              <%= image_tag image, style: "display: block; margin: auto;  width: 120px; height: 120px;" %>
             <% end %>
           <% end %>
         <% else %>
-          <p class="mt-2 text-center">写真はありません</p>
+        <br>
+          <h3 class="col-12 text-center", style="vertical-align: middle;" >写真はありません</h3>
         <% end %>
       </div>
     </div>
@@ -32,15 +33,37 @@
         </tr>
         <tr>
           <th>電話番号</th>
-          <td><%= @park.phone %></td>
+          <% if @park.phone == "" %>
+            <td>情報がありません</td>
+          <% else %>
+            <td><%= @park.phone %></td>
+          <% end %>
         </tr>
         <tr>
           <th>営業時間</th>
-          <td><%= @park.start_time.strftime('%H:%M') %> ~ <%= @park.end_time.strftime('%H:%M') %></td>
+          <% if @park.start_time == nil && @park.end_time == nil %>
+            <td>情報がありません</td>
+          <% elsif @park.start_time == nil %>
+            <td>開園時間の情報がありません<br>
+                閉園時間:<%= @park.end_time.strftime('%H:%M') %></td>
+          <% elsif @park.end_time == nil %>
+            <td>開園時間:<%= @park.start_time.strftime('%H:%M') %><br>
+                閉園時間の情報がありません</td>
+          <% else %>
+            <td><%= @park.start_time.strftime('%H:%M') %> ~ <%= @park.end_time.strftime('%H:%M') %></td>
+          <% end %>
         </tr>
         <tr>
           <th>対象年齢</th>
-          <td><%= @park.child_age %>歳 <%= @park.child_moon_age %>ヶ月</td>
+          <% if @park.child_age == nil && @park.child_moon_age == nil %>
+            <td>情報がありません</td>
+          <% elsif @park.child_age == nil %>
+            <td>?歳<%= @park.child_moon_age %>ヶ月</td>
+          <% elsif @park.child_moon_age == nil %>
+            <td><%= @park.child_age %>歳</td>
+          <% else %>
+            <td><%= @park.child_age %>歳 <%= @park.child_moon_age %>ヶ月</td>
+          <% end %>
         </tr>
 
       </table>

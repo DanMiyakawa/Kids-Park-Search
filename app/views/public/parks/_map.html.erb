@@ -1,0 +1,25 @@
+<% parks.each_with_index do |park,i| %>
+  <%= link_to park_path(park.id), class: "col-3 text-center text-dark text-nowrap mt-5" do %>
+    <div id="map<%=i%>" date-lat="<%= park.latitude %>" date-lng="<%= park.longitude %>" style='border-top-left-radius: 10%; border-top-right-radius: 10%; width: 250px; height: 250px;'></div>
+    <script>
+      function initMap(){
+        <% parks.each_with_index do |park,i| %>
+          //Idの数だけマップを出力
+        var latlng = new google.maps.LatLng(<%=park.latitude%>,<%=park.longitude%>)
+          map = new google.maps.Map(document.getElementById('map<%=i%>'),{
+          center: {lat: <%=park.latitude%>, lng: <%=park.longitude%>},
+          zoom: 10,
+          disableDefaultUI: true,
+        });
+        marker = new google.maps.Marker({
+          position: latlng,
+          map: map
+        });
+      <% end %>
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+    </script>
+    <div class="bg-white", style="height: 50px; border-bottom-left-radius: 50%; border-bottom-right-radius: 50%;"><%= park.name %></div>
+  <% end %>
+<% end %>

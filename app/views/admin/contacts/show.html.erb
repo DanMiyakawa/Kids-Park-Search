@@ -20,14 +20,14 @@
       </tr>
       <tr>
         <th class="table-active", style="border: 1px solid black;">対応状況</th>
-        <%= form_with model: @contact, url: admin_contact_path, method: :patch, local: true do |f| %>
-        <td><%= f.select :status, Contact.statuses.keys %>
-            <%= f.submit "更新", class: "btn btn-success" %>
+        <td><%= form_with model: @contact, url: admin_contact_path, method: :patch, local: true do |f| %>
+          <%= f.select :status, Contact.statuses.keys %>
+          <%= f.submit "更新", class: "btn btn-success" %>
+          <% end %>
         </td>
-        <% end %>
       </tr>
     </table>
-    <% if @contact.memo == "" %>
+    <% if @contact.memo == nil %>
       <div class="col-5 mx-auto">
       <%= form_with model: @contact, url: admin_contact_path, method: :patch, local: true do |f| %>
         <%= f.text_area :memo, placeholder: "対応メモ" %>

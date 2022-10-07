@@ -15,7 +15,6 @@ class Public::ContactsController < ApplicationController
     if @contact.save
       redirect_to thanks_contacts_path
     else
-      flash[:notice] = "お問い合わせに失敗しました"
       render :new
     end
   end
