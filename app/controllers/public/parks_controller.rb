@@ -1,5 +1,6 @@
 class Public::ParksController < ApplicationController
   before_action :set_q, only: [:index, :search]
+  before_action :authenticate_customer!, except: [:index, :show, :search]
   
   def index
     @parks = Park.all
