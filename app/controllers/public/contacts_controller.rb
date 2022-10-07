@@ -1,4 +1,6 @@
 class Public::ContactsController < ApplicationController
+  before_action :authenticate_customer!
+  
   def index
     @contacts = Contact.where(customer_id: current_customer.id)
   end

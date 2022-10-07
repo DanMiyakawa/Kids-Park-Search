@@ -1,4 +1,5 @@
 class Admin::ParksController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @parks = Park.all
   end

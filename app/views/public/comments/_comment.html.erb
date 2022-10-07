@@ -21,13 +21,19 @@
     </table>
     <% end %>
   </div>
-  <div class="col-6 mt-5">
-    <%= form_with model: [park, comment], local: false do |f| %>
-      <%= f.file_field :comment_image, class: "form-control-file comment_image", accept: 'image/*' %>
-      <%= f.text_area :comment, placeholder: "コメントをここに" %><br>
-      <%= f.number_field :child_age, in: 0..15, step: 1, size: "50x5", placeholder:"年齢" %>歳
-      <%= f.number_field :child_moon_age, in: 0..11, step: 1, placeholder:"月齢" %>ヶ月
-      <%= f.submit "送信する" %>
-    <% end %>
-  </div>
+  <% if customer_signed_in? %>
+    <div class="col-6 mt-5">
+      <%= form_with model: [park, comment], local: false do |f| %>
+        <%= f.file_field :comment_image, class: "form-control-file comment_image", accept: 'image/*' %>
+        <%= f.text_area :comment, placeholder: "コメントをここに" %><br>
+        <%= f.number_field :child_age, in: 0..15, step: 1, size: "50x5", placeholder:"年齢" %>歳
+        <%= f.number_field :child_moon_age, in: 0..11, step: 1, placeholder:"月齢" %>ヶ月
+        <%= f.submit "送信する" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="col-6 mt-5">
+      <p>コメントは新規登録後、可能になります。</p>
+    </div>
+  <% end %>
 </div>
