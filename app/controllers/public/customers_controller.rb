@@ -1,9 +1,9 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def show
     @customer = Customer.find(params[:id])
-    @parks = @customer.parks
+    @parks = @customer.parks.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit
@@ -19,7 +19,7 @@ class Public::CustomersController < ApplicationController
        render :edit
     end
   end
-  
+
   def unsubscribe
   end
 
@@ -30,11 +30,12 @@ class Public::CustomersController < ApplicationController
     flash[:notice] = "ありがとうございました。またのご利用をお待ちしております"
     redirect_to root_path
   end
-  
+
   def favorites
     @customer = Customer.find(params[:id])
     favorites= Favorite.where(customer_id: @customer.id).pluck(:park_id)
     @favorite_parks = Park.find(favorites)
+    @favorite_parks = Kaminari.paginate_array(@favorite_parks).page(params[:page]).per(8)
   end
 
   private

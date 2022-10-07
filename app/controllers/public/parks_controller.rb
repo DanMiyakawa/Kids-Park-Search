@@ -1,9 +1,9 @@
 class Public::ParksController < ApplicationController
   before_action :set_q, only: [:index, :search]
   before_action :authenticate_customer!, except: [:index, :show, :search]
-  
+
   def index
-    @parks = Park.all
+    @parks = Park.all.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show
@@ -55,13 +55,13 @@ class Public::ParksController < ApplicationController
     @park.destroy
     redirect_to parks_path
   end
-  
+
   def search
-    @results = @q.result
+    @results = @q.result.order(created_at: :desc).page(params[:page]).per(8)
   end
-  
+
   private
-  
+
   def set_q
     @q = Park.ransack(params[:q])
   end

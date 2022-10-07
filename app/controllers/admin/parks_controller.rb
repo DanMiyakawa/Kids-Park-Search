@@ -1,7 +1,7 @@
 class Admin::ParksController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @parks = Park.all
+    @parks = Park.all.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show
@@ -38,7 +38,7 @@ class Admin::ParksController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   private
