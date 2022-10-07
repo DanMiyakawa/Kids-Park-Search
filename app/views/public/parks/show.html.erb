@@ -21,11 +21,11 @@
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
       </script>
-      <div class="mx-auto">
+      <div class="row mx-auto">
         <% if @park.images.attached? %>
           <% @park.images.each do |image| %>
-            <%= link_to image, "data-lightbox": image do %>
-              <%= image_tag image, class: "col-3 mt-2", :size => '150×150' %>
+            <%= link_to image, "data-lightbox": image, class: "col-4 mt-3" do %>
+              <%= image_tag image, style: "display: block; margin: auto;  width: 100px; height: 80px;" %>
             <% end %>
           <% end %>
         <% else %>
