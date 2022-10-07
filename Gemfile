@@ -61,3 +61,4 @@ gem 'dotenv-rails'
 gem "enum_help"
 gem 'ransack'
 gem 'jp_prefecture'
+gem "rails-i18n"

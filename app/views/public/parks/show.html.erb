@@ -48,15 +48,37 @@
         </tr>
         <tr>
           <th>電話番号</th>
-          <td><%= @park.phone %></td>
+          <% if @park.phone == "" %>
+            <td>情報がありません</td>
+          <% else %>
+            <td><%= @park.phone %></td>
+          <% end %>
         </tr>
         <tr>
           <th>営業時間</th>
-          <td><%= @park.start_time.strftime('%H:%M') %> ~ <%= @park.end_time.strftime('%H:%M') %></td>
+          <% if @park.start_time == nil && @park.end_time == nil %>
+            <td>情報がありません</td>
+          <% elsif @park.start_time == nil %>
+            <td>開園時間の情報がありません<br>
+                閉園時間:<%= @park.end_time.strftime('%H:%M') %></td>
+          <% elsif @park.end_time == nil %>
+            <td>開園時間:<%= @park.start_time.strftime('%H:%M') %><br>
+                閉園時間の情報がありません</td>
+          <% else %>
+            <td><%= @park.start_time.strftime('%H:%M') %> ~ <%= @park.end_time.strftime('%H:%M') %></td>
+          <% end %>
         </tr>
         <tr>
           <th>対象年齢</th>
-          <td><%= @park.child_age %>歳 <%= @park.child_moon_age %>ヶ月</td>
+          <% if @park.child_age == nil && @park.child_moon_age == nil %>
+            <td>情報がありません</td>
+          <% elsif @park.child_age == nil %>
+            <td>?歳<%= @park.child_moon_age %>ヶ月</td>
+          <% elsif @park.child_moon_age == nil %>
+            <td><%= @park.child_age %>歳</td>
+          <% else %>
+            <td><%= @park.child_age %>歳 <%= @park.child_moon_age %>ヶ月</td>
+          <% end %>
         </tr>
       </table>
       <% if customer_signed_in? %>

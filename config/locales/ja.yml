@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      park:
+        name: 名前
+        introduction: 紹介文
+        genre: ジャンル
+        address: 住所
+      contact:
+        title: タイトル
+        body: 本文

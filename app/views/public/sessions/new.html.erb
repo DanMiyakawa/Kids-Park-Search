@@ -2,11 +2,11 @@
  <h2 class="text-center mt-4"><strong>ログイン</strong></h2>
   <div class="row">
     <div class="col-5 px-0 mx-auto">
-       <div class="row">
-        <p style="background-color:#EEEEEE">会員の方はこちらからログイン</p>
-       </div>
 
         <%= form_with model: @customer, url: customer_session_path do |f| %>
+        <div class="text-center">
+         <%= render "public/shared/error_messages", resource: resource %>
+        </div>
          <div class="field">
           <%= f.label "メールアドレス" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: "sample@example.com" %>

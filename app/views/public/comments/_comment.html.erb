@@ -7,16 +7,26 @@
           <%= image_tag 'boy_03.png', size: "80" %><br>
           <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
         </th>
-        <td>
-          <%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>
-            <%= image_tag comment.comment_image, :size => '80' %>
-          <% end %>
-          <%= comment.comment %><br>
-          <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
-          <% if comment.customer == current_customer %>
-            <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
-          <% end %>
-        </td>
+        <% if comment.comment_image.attached? %>
+          <td>
+            <%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>
+              <%= image_tag comment.comment_image, :size => '80' %>
+            <% end %>
+            <%= comment.comment %><br>
+            <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
+            <% if comment.customer == current_customer %>
+              <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </td>
+        <% else %>
+          <td>
+            <%= comment.comment %><br>
+            <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
+            <% if comment.customer == current_customer %>
+              <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     </table>
     <% end %>
@@ -24,7 +34,7 @@
   <% if customer_signed_in? %>
     <div class="col-6 mt-5">
       <%= form_with model: [park, comment], local: false do |f| %>
-        <%= f.file_field :comment_image, class: "form-control-file comment_image", accept: 'image/*' %>
+        <%= f.file_field :comment_image, class: "form-control-file comment_image", accept: 'image/*' %><br>
         <%= f.text_area :comment, placeholder: "コメントをここに" %><br>
         <%= f.number_field :child_age, in: 0..15, step: 1, size: "50x5", placeholder:"年齢" %>歳
         <%= f.number_field :child_moon_age, in: 0..11, step: 1, placeholder:"月齢" %>ヶ月
