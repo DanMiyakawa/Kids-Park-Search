@@ -1,9 +1,9 @@
 <% if park.favorited_by?(current_customer) %>
   <%= link_to park_favorites_path(park), method: :delete, remote: true do %>
-    <button type="button" class="btn btn-warning">★</button>
+    <%= image_tag "star.png", size: "50" %>
   <% end %>
 <% else %>
   <%= link_to park_favorites_path(park), method: :post, remote: true do %>
-    <button type="button" class="btn btn-outline-warning">☆</button>
+    <%= image_tag "star-line.png", size: "50" %>
   <% end %>
 <% end %>

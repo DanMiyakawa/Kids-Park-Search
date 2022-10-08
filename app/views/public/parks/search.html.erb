@@ -4,10 +4,16 @@
     <%= render "public/parks/search_form" %>
   </div>
   <div class="row mx-auto">
-    <%= render "public/parks/map", parks: @results %>
-    <%= render "public/parks/api" %>
+    <% if @results.exists? %>
+      <%= render "public/parks/map", parks: @results %>
+      <%= render "public/parks/api" %>
+    <% else %>
+      <div class="col-12">
+        <h2 class="mt-5 mb-5 text-center">該当の遊び場はありません</h2>
+      </div>
+    <% end %>
   </div>
   <div class="row">
-    <div class="col-12 mt-3"><%= paginate @results, theme: 'bootstrap-5' %></div>
+    <div class="col-12 mt-3v"><%= paginate @results, theme: 'bootstrap-5' %></div>
   </div>
 </div>

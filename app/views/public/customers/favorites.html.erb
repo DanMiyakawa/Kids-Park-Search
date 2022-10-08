@@ -2,11 +2,20 @@
   <div class='row'>
     <div class="col-md-12">
       <h2 class="text-center mt-4"><%= image_tag "tree.png" %><strong>お気に入りの遊び場一覧</strong><%= image_tag "tree.png" %></h2>
-      <div class="row mx-auto">
-        <%= render "public/parks/map", parks: @favorite_parks %>
-        <%= render "public/parks/api" %>
-     </div>
     </div>
+  </div>
+  <div class="row mx-auto">
+    <% unless @favorite_parks == nil %>
+      <%= render "public/parks/map", parks: @favorite_parks %>
+      <%= render "public/parks/api" %>
+    <% else %>
+      <div class="col-12">
+        <h2 class="mt-5 mb-5 text-center">お気に入りの遊び場はありません</h2>
+        <%= link_to parks_path do %>
+          <h4 class="mt-5 mb-5 text-center">遊び場一覧に移動する</h4>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <div class="row">
     <div class="col-12 mt-3"><%= paginate @favorite_parks, theme: 'bootstrap-5' %></div>
