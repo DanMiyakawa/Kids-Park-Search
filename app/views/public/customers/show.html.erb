@@ -36,7 +36,7 @@
         <tbody>
         <% @parks.each do |park| %>
           <tr>
-            <td><%= link_to park.name, park_path(park.id) %></td>
+            <td><%= link_to park.name, park_path(park.id), 'data-turbolinks': false %></td>
             <td><%= park.address %></td>
           </tr>
         <% end %>

@@ -1,6 +1,6 @@
 <% parks.each_with_index do |park,i| %>
-  <%= link_to park_path(park.id), class: "col-3 text-center text-dark text-nowrap mt-5" do %>
-    <div id="map<%=i%>" date-lat="<%= park.latitude %>" date-lng="<%= park.longitude %>" style='border-top-left-radius: 10%; border-top-right-radius: 10%; width: 250px; height: 250px;'></div>
+  <%= link_to park_path(park.id), 'data-turbolinks': false, class: "col-3 text-center text-dark text-nowrap mt-5" do %>
+    <div id="map<%= i %>" date-lat="<%= park.latitude %>" date-lng="<%= park.longitude %>" style='border-top-left-radius: 10%; border-top-right-radius: 10%; width: 250px; height: 250px;'></div>
     <script>
       function initMap(){
         <% parks.each_with_index do |park,i| %>
