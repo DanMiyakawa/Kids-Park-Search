@@ -1,7 +1,11 @@
 <div class="container mb-5">
-  <h2 class="text-center mt-4"><%= image_tag "tree.png" %><strong><%= @park.name %></strong><%= image_tag "tree.png" %></h2>
   <div class="row">
-    <div class="col-md-6 mt-5">
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong><%= @park.name %></strong></h2>
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-6 mt-5">
       <div id="map" date-lat="<%= @park.latitude %>" date-lng="<%= @park.longitude %>" style='width: 400px; height: 350px; display: block; margin: auto;'></div>
       <script>
       function initMap(){
@@ -32,7 +36,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-6 px-0 mt-5 mx-auto">
+    <div class="col-sm-12 col-md-12 col-lg-6 mt-5 mx-auto">
       <table class="table table-borderless">
         <tr>
           <th>遊び場の紹介</th><td><%= safe_join(@park.introduction.split("\n"),tag(:br)) %></td>

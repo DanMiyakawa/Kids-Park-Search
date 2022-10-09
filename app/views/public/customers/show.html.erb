@@ -1,7 +1,11 @@
 <div class="container">
-  <h2 class="text-center mt-4"><%= image_tag "flag.png" %><strong>マイページ</strong><%= image_tag "flag.png" %></h2>
+  <div class="row">
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "flag.png" %></span>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>マイページ</strong></h2>
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "flag.png" %></span>
+  </div>
   <div class="row mb-3">
-    <div class="col-5 mt-5">
+    <div class="col-md-12 col-lg-5 mt-5">
       <%= image_tag @customer.get_profile_image, size:'200x200', class: "mx-auto", style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover; display: block; margin: auto;" %>
       <table class="table table-borderless">
         <tr>
@@ -23,8 +27,8 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-6 offset-1">
-      <h3 class="text-center">過去に投稿した遊び場</h3>
+    <div class="col-md-12 col-lg-5 offset-lg-1">
+      <h3 class="text-center mt-3">過去に投稿した遊び場</h3>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>

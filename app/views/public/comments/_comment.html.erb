@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col-6">
+  <div class="col-sm-12 col-md-6 col-lg-6">
     <% park.comments.each do |comment| %>
-    <table class="float-right">
+    <table class="mx-auto">
       <tr>
         <th>
           <%= image_tag 'boy_03.png', size: "80" %><br>
@@ -38,21 +38,23 @@
     <% end %>
   </div>
   <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
-    <div class="col-6 mt-5 text-center">
+    <div class="col-sm-12 col-md-6 mt-5 text-center">
       <p>ゲストユーザーはコメントできません。</p>
     </div>
   <% elsif customer_signed_in? %>
-    <div class="col-6 mt-5">
-      <%= form_with model: [park, comment], local: false do |f| %>
-        <%= f.file_field :comment_image, class: "form-control-file comment_image", accept: 'image/*' %><br>
-        <%= f.text_area :comment, placeholder: "コメントをここに" %><br>
+    <div class="col-sm-12 col-md-6 mt-5">
+      <%= form_with model: [park, comment], local: false, class: "text-center" do |f| %>
+        <%= f.text_area :comment, class: "mb-3", placeholder: "コメントをここに" %><br>
+        <%= f.file_field :comment_image, class: "mb-3", accept: 'image/*' %><br>
         年齢<%= f.number_field :child_age, in: 0..15, step: 1, size: "50x5" %>歳
         月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月
-        <%= f.submit "送信する" %>
+        <%= f.button :type => "submit", class: "btn btn-primary" do %>
+          <i class="fas fa-paper-plane"></i>投稿
+        <% end %>
       <% end %>
     </div>
   <% else %>
-    <div class="col-6 mt-5 text-center">
+    <div class="col-sm-12 col-md-6 mt-5 text-center">
       <p>コメントは新規登録後、可能になります。</p>
     </div>
   <% end %>

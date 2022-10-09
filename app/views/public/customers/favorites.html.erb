@@ -1,8 +1,8 @@
 <div class='container'>
-  <div class='row'>
-    <div class="col-md-12">
-      <h2 class="text-center mt-4"><%= image_tag "tree.png" %><strong>お気に入りの遊び場一覧</strong><%= image_tag "tree.png" %></h2>
-    </div>
+  <div class="row">
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>お気に入りの<br>遊び場一覧</strong></h2>
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
   <div class="row mx-auto">
     <% unless @favorite_parks == nil %>

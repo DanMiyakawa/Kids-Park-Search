@@ -4,29 +4,27 @@
     <%= render 'layouts/errors', obj: @park %>
   </div>
   <div class="row">
-    <div class="col-10 mx-auto">
+    <div class="col-md-10 col-lg-11 px-0 mx-auto">
       <%= form_with model: @park, url: admin_park_path, method: :patch do |f| %>
-          <table class="table table-borderless">
+        <table class="table table-borderless pl-5">
             <tr>
               <th style="width: 30%;">遊び場の画像</th>
+              <td>
                 <% if @park.images.attached? %>
-                <td>
                 <p>投稿済みの画像（削除する画像にチェックをつけてください）</p>
-                <div style="display: flex; flex-wrap: wrap; width: 750px;">
+                <div style="display: flex; flex-wrap: wrap;">
                   <% @park.images.each do |image| %>
-                    <div style="display: flex; margin:5px 5px 5px 0;">
-                      <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
-                      <label for="park_image_ids_<%= image.id %>" >
-                        <%= image_tag image, size: '100' %>
-                      </label>
-                    </div>
-                  <% end %>
-                </div>
-                  <%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %>
-                </td>
-                <% else %>
-                  <td><%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %></td>
+                  <div style="display: flex; margin:5px 5px 5px 0;">
+                    <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
+                    <label for="park_image_ids_<%= image.id %>" >
+                    <%= image_tag image, size: '100' %>
+                    </label>
+                  </div>
                 <% end %>
+                </div>
+                <% end %><br>
+              <%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %>
+              </td>
             </tr>
             <tr>
               <th>遊び場の名前<br><span style="color: red;">※必須</span></th>
@@ -38,7 +36,7 @@
             </tr>
             <tr>
               <th>住所<br><span style="color: red;">※必須</span></th>
-              <td><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", class: "form-control address" %></td>
+              <td><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", :size => "50", class: "form-control address" %></td>
             </tr>
             <tr>
               <th>電話番号(ハイフンなし)</th>

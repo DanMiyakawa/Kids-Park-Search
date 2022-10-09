@@ -1,5 +1,9 @@
 <div class='container'>
-  <h2 class="text-center mt-4"><%= image_tag "flag.png" %><strong>ユーザー情報編集</strong><%= image_tag "flag.png" %></h2>
+  <div class="row">
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "flag.png" %></span>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>ユーザー情報編集</strong></h2>
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "flag.png" %></span>
+  </div>
   <div class="text-center">
     <%= render 'layouts/errors', obj: @customer %>
   </div>
@@ -19,7 +23,7 @@
         <%= f.text_area :introduction, class: "form-control introduction" %>
       </div>
       <div class="form-group text-right mt-3">
-        <%= f.submit "更新", class: 'btn btn-secondary' %>
+        <%= f.submit "更新", class: 'btn btn-success' %>
       </div>
     <% end %>
     </div>

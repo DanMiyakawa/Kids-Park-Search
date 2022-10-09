@@ -1,61 +1,65 @@
 <div class="container">
-  <h2 class="text-center mt-4"><%= image_tag "tree.png" %><strong>遊び場情報の変更</strong><%= image_tag "tree.png" %></h2>
+  <div class="row">
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>遊び場情報の変更</strong></h2>
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
+  </div>
   <div class="text-center">
     <%= render 'layouts/errors', obj: @park %>
   </div>
   <div class="row">
-    <div class="col-10 px-0 mx-auto">
+    <div class="col-md-12 col-lg-11 px-0 mx-auto">
       <%= form_with model: @park, url: park_path, method: :patch do |f| %>
-          <table class="table table-borderless pl-5">
-            <tr>
-              <th style="width: 30%;">遊び場の画像</th>
-              <td>
-                <% if @park.images.attached? %>
-                <p>投稿済みの画像（削除する画像にチェックをつけてください）</p>
-                <div style="display: flex; flex-wrap: wrap; width: 750px;">
-                  <% @park.images.each do |image| %>
-                  <div style="display: flex; margin:5px 5px 5px 0;">
-                    <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
-                    <label for="park_image_ids_<%= image.id %>" >
-                    <%= image_tag image, size: '100' %>
-                    </label>
-                  </div>
-                <% end %>
+        <table class="table table-borderless pl-5">
+          <tr>
+            <th style="width: 30%;">遊び場の画像</th>
+            <td>
+              <% if @park.images.attached? %>
+              <p>投稿済みの画像（削除する画像にチェックをつけてください）</p>
+              <div style="display: flex; flex-wrap: wrap;">
+                <% @park.images.each do |image| %>
+                <div style="display: flex; margin:5px 5px 5px 0;">
+                  <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
+                  <label for="park_image_ids_<%= image.id %>">
+                  <%= image_tag image, size: '100' %>
+                  </label>
                 </div>
-                <% end %><br>
-              <%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %>
-              </td>
-            </tr>
-            <tr>
-              <th>遊び場の名前<br><span style="color: red;">※必須</span></th>
-              <td><%= f.text_field :name, class: "form-control name" %></td>
-            </tr>
-            <tr>
-              <th>遊び場の紹介<br><span style="color: red;">※必須</span></th>
-              <td><%= f.text_area :introduction, class: "form-control introduction" %></td>
-            </tr>
-            <tr>
-              <th>住所<br><span style="color: red;">※必須</span></th>
-              <td><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", :size => "50", class: "form-control address" %></td>
-            </tr>
-            <tr>
-              <th>電話番号(ハイフンなし)</th>
-              <td><%= f.telephone_field :phone, class: "form-control phone" %></td>
-            </tr>
-            <tr>
-              <th>営業時間</th>
-              <td><%= f.time_field :start_time %> ~ <%= f.time_field :end_time %></td>
-            </tr>
-            <tr>
-              <th>対象年齢</th>
-              <td style="width: 50px;">年齢<%= f.number_field :child_age, in: 0..15, step: 1 %>歳
-              月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月</td>
-            </tr>
-            <tr>
-              <th>ジャンル<br><span style="color: red;">※必須</span></th>
-              <td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></td>
-            </tr>
-          </table>
+              <% end %>
+              </div>
+              <% end %><br>
+            <%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %>
+            </td>
+          </tr>
+          <tr>
+            <th>遊び場の名前<br><span style="color: red;">※必須</span></th>
+            <td><%= f.text_field :name, class: "form-control name" %></td>
+          </tr>
+          <tr>
+            <th>遊び場の紹介<br><span style="color: red;">※必須</span></th>
+            <td><%= f.text_area :introduction, class: "form-control introduction" %></td>
+          </tr>
+          <tr>
+            <th>住所<br><span style="color: red;">※必須</span></th>
+            <td><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", :size => "50", class: "form-control address" %></td>
+          </tr>
+          <tr>
+            <th>電話番号(ハイフンなし)</th>
+            <td><%= f.telephone_field :phone, class: "form-control phone" %></td>
+          </tr>
+          <tr>
+            <th>営業時間</th>
+            <td><%= f.time_field :start_time %> ~ <%= f.time_field :end_time %></td>
+          </tr>
+          <tr>
+            <th>対象年齢</th>
+            <td style="width: 50px;">年齢<%= f.number_field :child_age, in: 0..15, step: 1 %>歳
+            月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月</td>
+          </tr>
+          <tr>
+            <th>ジャンル<br><span style="color: red;">※必須</span></th>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></td>
+          </tr>
+        </table>
         <div class="form-group text-right mt-3">
           <%= f.submit '変更を保存', class: "btn btn-success" %>
         </div>
