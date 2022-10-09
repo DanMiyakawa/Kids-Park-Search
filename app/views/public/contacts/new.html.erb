@@ -1,4 +1,8 @@
-<h2 class="text-center mt-4"><%= image_tag "kumo.png" %><strong>新規お問い合わせ</strong><%= image_tag "kumo.png" %></h2>
+<div class="row">
+  <span class="col-sm-12 col-md-4 text-center"><%= image_tag "kumo.png" %></span>
+  <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>新規お問い合わせ</strong></h2>
+  <span class="col-sm-12 col-md-4 text-center"><%= image_tag "kumo.png" %></span>
+</div>
 <div class="container">
   <div class="text-center">
     <%= render 'layouts/errors', obj: @contact %>
@@ -6,7 +10,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-0 mx-auto">
       <%= link_to contacts_path do %>
-        <button type="button" class="btn btn-danger", style='display: block; margin:0 0 0 auto;'>戻る</button>
+        <button type="button" class="btn btn-outline-dark", style='display: block; margin:0 0 0 auto;'>戻る</button>
       <% end %>
 
       <%= form_with model:@contact, local:true do |f| %>
@@ -19,8 +23,8 @@
         <%= f.label "内容" %>
         <%= f.text_area :body, class: 'form-control body', placeholder: "お問い合わせ内容を入力" %>
       </div><br>
-      <div class="actions">
-        <%= f.submit "送信", class: 'btn btn-success', style: 'display: block; margin:0 0 0 auto;' %>
+      <div class="actions mb-5">
+        <%= f.submit "送信", class: "btn btn-primary", style: 'display: block; margin:0 0 0 auto;' %>
       </div>
       <% end %>
     </div>

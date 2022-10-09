@@ -10,7 +10,7 @@
     </div>
     <div class="row mx-auto">
       <% @results.each_with_index do |park,i| %>
-        <%= link_to admin_park_path(park.id),'data-turbolinks': false, class: "col-3 text-center text-dark text-nowrap mt-5" do %>
+        <%= link_to admin_park_path(park.id),'data-turbolinks': false, class: "col-sm-12 col-md-6 col-lg-4 col-xl-3 text-center text-dark text-nowrap mt-5" do %>
           <div id="map<%=i%>" date-lat="<%= park.latitude %>" date-lng="<%= park.longitude %>" style='border-top-left-radius: 10%; border-top-right-radius: 10%; width: 250px; height: 250px;'></div>
 
           <script>

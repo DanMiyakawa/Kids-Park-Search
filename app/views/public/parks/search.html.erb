@@ -1,5 +1,9 @@
-<div class='container'><br>
-  <h2 class="text-center"><%= image_tag "tree.png" %><strong>検索結果一覧</strong><%= image_tag "tree.png" %></h2>
+<div class='container'>
+  <div class="row">
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>検索結果一覧</strong></h2>
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
+  </div>
   <div class="row mt-4">
     <%= render "public/parks/search_form" %>
   </div>

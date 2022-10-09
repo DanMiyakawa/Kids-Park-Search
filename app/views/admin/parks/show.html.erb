@@ -2,11 +2,11 @@
   <h2 class="text-center mt-4"><strong>〜遊び場の詳しい情報〜</strong></h2>
   <div class="row">
 
-    <div class="col-md-4 offset-md-1 mt-5 mx-auto">
+    <div class="col-sm-12 col-md-12 col-lg-6 mt-5 mx-auto">
       <div class="row mx-auto">
         <% if @park.images.attached? %>
           <% @park.images.each do |image| %>
-            <%= link_to image, "data-lightbox": image, class: "col-4 mt-3" do %>
+            <%= link_to image, "data-lightbox": image, class: "col-sm-4 col-md-4 col-lg-4 mt-3" do %>
               <%= image_tag image, style: "display: block; margin: auto;  width: 120px; height: 120px;" %>
             <% end %>
           <% end %>
@@ -16,7 +16,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-6 px-0 mt-5 mx-auto">
+    <div class="col-sm-12 col-md-8 col-lg-6 px-0 mt-5 mx-auto">
       <table class="table table-borderless">
         <tr>
           <th>遊び場の名前</th><td><%= @park.name %></td>
@@ -74,7 +74,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row mt-5">
   <div class="col-12">
     <% @park.comments.each do |comment| %>
     <table class="mx-auto">
