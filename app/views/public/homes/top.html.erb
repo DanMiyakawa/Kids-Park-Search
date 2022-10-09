@@ -1,3 +1,6 @@
+  <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
+    <h3 class="text-center">ゲストユーザーは、遊び場の投稿ができるようになります。</h3>
+  <% end %>
   <div class="row">
     <%= image_tag "top.png", style: "width: 100%; height: 800px;" %>
     <div style="width: 350px; position:absolute; top:150px; left:50px; color:#FFF; background-color:rgba(0,0,0,0.3); border-radius:30px;">
