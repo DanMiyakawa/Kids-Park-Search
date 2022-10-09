@@ -56,6 +56,15 @@ class Public::ParksController < ApplicationController
     @results = @q.result.order(created_at: :desc).page(params[:page]).per(8)
   end
 
+  def prefecture
+  end
+
+  def prefecture_search
+    @name = (params[:name])
+    @prefectures = Park.where(['address LIKE ?', "%#{@name}%"]).page(params[:page]).per(8)
+  end
+
+
   private
 
   def set_q

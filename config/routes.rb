@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     resources :parks do
       collection do
         get 'search'
+        get '/prefecture' => "parks#prefecture"
+        get '/prefecture/:name' => "parks#prefecture_search", as: 'prefecture_search'
       end
       resources :comments, only: [:create, :destroy] do
         resource :goods, only: [:create, :destroy]
@@ -56,5 +58,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
