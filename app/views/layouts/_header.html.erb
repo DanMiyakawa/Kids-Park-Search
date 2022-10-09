@@ -54,6 +54,11 @@
               <% end %>
             </li>
             <li class="text-center">
+              <%= link_to prefecture_parks_path, class: 'nav-link text-light' do %>
+                <i class="fas fa-map", style="font-size: 30px;"></i><br>エリアで検索
+              <% end %>
+            </li>
+            <li class="text-center">
               <%= link_to customer_path(current_customer), class: 'nav-link text-light' do %>
                 <i class="fas fa-user", style="font-size: 30px;"></i><br>マイページ
               <% end %>

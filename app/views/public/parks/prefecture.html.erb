@@ -1,0 +1,71 @@
+<div class='container mb-5'>
+  <div class="row mb-5">
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>エリアから探す</strong></h2>
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
+  </div>
+  <div class="row">
+  	<div class="col-12 text-center">
+  	  <div class="mb-4">
+		<h3>北海道/東北</h3>
+		<% JpPrefecture::Prefecture.all.each do |ar| %>
+		  <% if ar.area == "北海道" or ar.area == "東北" %>
+	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		<% end %>
+		  <% end %>
+		<% end %>
+	  </div>
+	  <div class="mb-4">
+	  	<h3>関東</h3>
+	  	<% JpPrefecture::Prefecture.all.each do |ar| %>
+		  <% if ar.area == "関東" %>
+	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		<% end %>
+		  <% end %>
+		<% end %>
+	  </div>
+	  <div class="mb-4">
+	  	<h3>中部</h3>
+	  	<% JpPrefecture::Prefecture.all.each do |ar| %>
+		  <% if ar.area == "中部" %>
+	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		<% end %>
+		  <% end %>
+		<% end %>
+	  </div>
+	  <div class="mb-4">
+	  	<h3>関西</h3>
+	  	<% JpPrefecture::Prefecture.all.each do |ar| %>
+		  <% if ar.area == "関西" %>
+	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		<% end %>
+		  <% end %>
+		<% end %>
+	  </div>
+	  <div class="mb-4">
+	  	<h3>中国/四国</h3>
+	  	<% JpPrefecture::Prefecture.all.each do |ar| %>
+		  <% if ar.area == "中国" or ar.area == "四国" %>
+	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		<% end %>
+		  <% end %>
+		<% end %>
+	  </div>
+	  <div class="mb-4">
+	  	<h3>九州/沖縄</h3>
+	  	<% JpPrefecture::Prefecture.all.each do |ar| %>
+		  <% if ar.area == "九州" or ar.area == "沖縄" %>
+	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		<% end %>
+		  <% end %>
+		<% end %>
+	  </div>
+	</div>
+  </div>
+</div>

@@ -1,15 +1,15 @@
 <div class='container mb-5'>
   <div class="row">
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
-    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>検索結果一覧</strong></h2>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong><%= @name %>の遊び場</strong></h2>
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
   <div class="row mt-4">
     <%= render "public/parks/search_form" %>
   </div>
   <div class="row mx-auto mb-5">
-    <% if @results.exists? %>
-      <%= render "public/parks/map", parks: @results %>
+    <% if @prefectures.exists? %>
+      <%= render "public/parks/map", parks: @prefectures %>
       <%= render "public/parks/api" %>
     <% else %>
       <div class="col-12">
@@ -18,6 +18,6 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-12 mt-3v"><%= paginate @results, theme: 'bootstrap-5' %></div>
+    <div class="col-12 mt-3v"><%= paginate @prefectures, theme: 'bootstrap-5' %></div>
   </div>
 </div>

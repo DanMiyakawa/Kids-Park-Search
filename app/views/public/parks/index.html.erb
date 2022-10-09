@@ -1,4 +1,4 @@
-<div class='container'><br>
+<div class='container mb-5'>
   <div class="row">
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
     <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>全国の遊び場一覧</strong></h2>
@@ -7,7 +7,7 @@
   <div class="row mt-4">
     <%= render "public/parks/search_form" %>
   </div>
-  <div class="row mx-auto">
+  <div class="row mx-auto mb-5">
     <%= render "public/parks/map", parks: @parks %>
     <%= render "public/parks/api" %>
   </div>
