@@ -102,7 +102,6 @@ ActiveRecord::Schema.define(version: 2022_10_09_001817) do
 
   create_table "goods", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "park_id"
     t.integer "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
