@@ -37,7 +37,11 @@
     </table>
     <% end %>
   </div>
-  <% if customer_signed_in? %>
+  <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
+    <div class="col-6 mt-5 text-center">
+      <p>ゲストユーザーはコメントできません。</p>
+    </div>
+  <% elsif customer_signed_in? %>
     <div class="col-6 mt-5">
       <%= form_with model: [park, comment], local: false do |f| %>
         <%= f.file_field :comment_image, class: "form-control-file comment_image", accept: 'image/*' %><br>

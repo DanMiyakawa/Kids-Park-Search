@@ -56,6 +56,7 @@
     <div class="row">
       <div class="col-12">
         <h6 class="text-center">既に登録済みの方<%= link_to "こちら", customer_session_path %> からログインしてください。</h6>
+        <h6 class="text-center">ゲストユーザーとして使用する方は<%= link_to "こちら", public_guest_sign_in_path, method: :post %>をクリックしてください。</h6>
       </div>
     </div>
   </div>
