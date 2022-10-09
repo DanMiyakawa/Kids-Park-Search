@@ -1,9 +1,9 @@
 <% if comment.good_by?(current_customer) %>
-  <%= link_to park_comment_goods_path(park, comment), method: :delete, remote: true do %>
-    <%= image_tag "star.png", size: "50" %>
+  <%= link_to park_comment_goods_path(park, comment), method: :delete do %>
+    <%= image_tag "good.png", size: "30" %><%= comment.goods.count %>
   <% end %>
 <% else %>
-  <%= link_to park_comment_goods_path(park, comment), method: :post, remote: true do %>
-    <%= image_tag "star-line.png", size: "50" %>
+  <%= link_to park_comment_goods_path(park, comment), method: :post do %>
+    <%= image_tag "good-line.png", size: "30" %><%= comment.goods.count %>
   <% end %>
 <% end %>
