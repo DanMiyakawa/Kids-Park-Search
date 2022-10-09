@@ -17,11 +17,11 @@
             <% if customer_signed_in? %>
               <% if comment.good_by?(current_customer) %>
                 <%= link_to park_comment_goods_path(park, comment), method: :delete do %>
-                  <%= image_tag "good.png", size: "30" %>
+                  <%= image_tag "good.png", size: "30" %><%= comment.goods.count %>
                 <% end %>
               <% else %>
                 <%= link_to park_comment_goods_path(park, comment), method: :post do %>
-                  <%= image_tag "good-line.png", size: "30" %>
+                  <%= image_tag "good-line.png", size: "30" %><%= comment.goods.count %>
                 <% end %>
               <% end %>
             <% end %>
@@ -36,11 +36,11 @@
             <% if customer_signed_in? %>
               <% if comment.good_by?(current_customer) %>
                 <%= link_to park_comment_goods_path(park, comment), method: :delete do %>
-                  <%= image_tag "good.png", size: "30" %>
+                  <%= image_tag "good.png", size: "30" %><%= comment.goods.count %>
                 <% end %>
               <% else %>
                 <%= link_to park_comment_goods_path(park, comment), method: :post do %>
-                  <%= image_tag "good-line.png", size: "30" %>
+                  <%= image_tag "good-line.png", size: "30" %><%= comment.goods.count %>
                 <% end %>
               <% end %>
             <% end %>
