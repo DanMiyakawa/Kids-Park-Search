@@ -14,6 +14,17 @@
             <% end %>
             <%= comment.comment %><br>
             <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
+            <% if customer_signed_in? %>
+              <% if comment.good_by?(current_customer) %>
+                <%= link_to park_comment_goods_path(park, comment), method: :delete do %>
+                  <%= image_tag "good.png", size: "30" %>
+                <% end %>
+              <% else %>
+                <%= link_to park_comment_goods_path(park, comment), method: :post do %>
+                  <%= image_tag "good-line.png", size: "30" %>
+                <% end %>
+              <% end %>
+            <% end %>
             <% if comment.customer == current_customer %>
               <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
             <% end %>
@@ -22,6 +33,17 @@
           <td>
             <%= comment.comment %><br>
             <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
+            <% if customer_signed_in? %>
+              <% if comment.good_by?(current_customer) %>
+                <%= link_to park_comment_goods_path(park, comment), method: :delete do %>
+                  <%= image_tag "good.png", size: "30" %>
+                <% end %>
+              <% else %>
+                <%= link_to park_comment_goods_path(park, comment), method: :post do %>
+                  <%= image_tag "good-line.png", size: "30" %>
+                <% end %>
+              <% end %>
+            <% end %>
             <% if comment.customer == current_customer %>
               <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
             <% end %>

@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :parks, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :goods, dependent: :destroy
 
   validates :nickname, presence: true, length: { minimum: 2, maximum: 20 }
   validates :introduction, length: { maximum: 50 }
