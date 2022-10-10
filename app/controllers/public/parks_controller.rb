@@ -1,6 +1,6 @@
 class Public::ParksController < ApplicationController
   before_action :set_q, only: [:index, :search]
-  before_action :authenticate_customer!, except: [:index, :show, :search]
+  before_action :authenticate_customer!, except: [:index, :show, :search, :prefecture, :prefecture_search]
 
   def index
     @parks = Park.all.order(created_at: :desc).page(params[:page]).per(8)
@@ -57,11 +57,13 @@ class Public::ParksController < ApplicationController
   end
 
   def prefecture
+    @q = Park.ransack(params[:name])
   end
 
   def prefecture_search
+    @q = Park.ransack(params[:name])
     @name = (params[:name])
-    @prefectures = Park.where(['address LIKE ?', "%#{@name}%"]).page(params[:page]).per(8)
+    @prefectures = Park.where(['address LIKE ?', "%#{@name}%"]).order(created_at: :desc).page(params[:page]).per(8)
   end
 
 

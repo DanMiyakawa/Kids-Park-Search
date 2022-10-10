@@ -29,7 +29,7 @@
       </tr>
     </table>
     <% if @contact.memo == nil %>
-      <div class="col-5 mx-auto">
+      <div class="col-3 mx-auto">
       <%= form_with model: @contact, url: admin_contact_path, method: :patch, local: true do |f| %>
         <%= f.text_area :memo, placeholder: "対応メモ" %>
         <%= f.submit "更新", class: "btn btn-success", style: 'display: block; margin:0 0 0 auto;' %>
