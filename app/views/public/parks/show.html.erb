@@ -90,8 +90,11 @@
             <td><%= link_to '編集する', edit_park_path(@park.id), class: "btn btn-success mr-5" %>
             <%= link_to '削除する', park_path(@park), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
         </tr>
-      <% else %>
-        <% if customer_signed_in? %>
+        <% else %>
+        <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
+          <th></th>
+          <td></td>
+        <% elsif customer_signed_in? %>
           <th id="park_<%= @park.id %>"><%= render 'public/favorites/favorite', park: @park %></th>
         <% end %>
       <% end %>
