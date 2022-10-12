@@ -1,0 +1,106 @@
+<div class="container">
+  <h2 class="text-center mt-4"><strong>〜遊び場の詳しい情報〜</strong></h2>
+  <div class="row">
+
+    <div class="col-sm-12 col-md-12 col-lg-6 mt-5 mx-auto">
+      <div class="row mx-auto">
+        <% if @park.images.attached? %>
+          <% @park.images.each do |image| %>
+            <%= link_to image, "data-lightbox": image, class: "col-sm-4 col-md-4 col-lg-4 mt-3" do %>
+              <%= image_tag image, style: "display: block; margin: auto;  width: 120px; height: 120px;" %>
+            <% end %>
+          <% end %>
+        <% else %>
+        <br>
+          <h3 class="col-12 text-center", style="vertical-align: middle;" >写真はありません</h3>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-6 px-0 mt-5 mx-auto">
+      <table class="table table-borderless">
+        <tr>
+          <th>遊び場の名前</th><td><%= @park.name %></td>
+        </tr>
+        <tr>
+          <th>遊び場の紹介</th><td><%= safe_join(@park.introduction.split("\n"),tag(:br)) %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th><td><%= @park.genre.name %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @park.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <% if @park.phone == "" %>
+            <td>情報がありません</td>
+          <% else %>
+            <td><%= @park.phone %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <th>営業時間</th>
+          <% if @park.start_time == nil && @park.end_time == nil %>
+            <td>情報がありません</td>
+          <% elsif @park.start_time == nil %>
+            <td>開園時間の情報がありません<br>
+                閉園時間:<%= @park.end_time.strftime('%H:%M') %></td>
+          <% elsif @park.end_time == nil %>
+            <td>開園時間:<%= @park.start_time.strftime('%H:%M') %><br>
+                閉園時間の情報がありません</td>
+          <% else %>
+            <td><%= @park.start_time.strftime('%H:%M') %> ~ <%= @park.end_time.strftime('%H:%M') %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <th>対象年齢</th>
+          <% if @park.child_age == nil && @park.child_moon_age == nil %>
+            <td>情報がありません</td>
+          <% elsif @park.child_age == nil %>
+            <td>?歳<%= @park.child_moon_age %>ヶ月</td>
+          <% elsif @park.child_moon_age == nil %>
+            <td><%= @park.child_age %>歳</td>
+          <% else %>
+            <td><%= @park.child_age %>歳 <%= @park.child_moon_age %>ヶ月</td>
+          <% end %>
+        </tr>
+
+      </table>
+      <div class="text-right mr-5 mt-3">
+        <%= link_to '編集する', edit_admin_park_path(@park.id), class: "btn btn-success mr-5" %>
+        <%= link_to '削除する', admin_park_path(@park), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-12">
+    <% @park.comments.each do |comment| %>
+    <table class="mx-auto">
+      <tr>
+        <th>
+          <%= image_tag 'boy_03.png', size: "80" %><br>
+          <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
+        </th>
+        <% if comment.comment_image.attached? %>
+          <td>
+            <%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>
+              <%= image_tag comment.comment_image, :size => '80' %>
+            <% end %>
+            <%= comment.comment %><br>
+            <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
+            <%= link_to "削除", admin_park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
+          </td>
+        <% else %>
+          <td>
+            <%= comment.comment %><br>
+            <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
+            <%= link_to "削除", admin_park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
+          </td>
+        <% end %>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+</div>

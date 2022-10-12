@@ -1,0 +1,8 @@
+require "test_helper"
+
+class Admin::ContactsControllerTest < ActionDispatch::IntegrationTest
+  test "should get show" do
+    get admin_contacts_show_url
+    assert_response :success
+  end
+end

@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <% park.comments.each do |comment| %>
+    <table class="mx-auto">
+      <tr>
+        <th>
+          <%= image_tag 'boy_03.png', size: "80" %><br>
+          <% if comment.child_age == nil && comment.child_moon_age == nil %>
+            ?歳?ヶ月
+          <% elsif comment.child_age == nil %>
+            ?歳<%= comment.child_moon_age %>ヶ月
+          <% elsif comment.child_moon_age == nil %>
+            <%= comment.child_age %>歳
+          <% else %>
+            <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
+          <% end %>
+        </th>
+        <% if comment.comment_image.attached? %>
+          <td>
+            <%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>
+              <%= image_tag comment.comment_image, :size => '80' %>
+            <% end %>
+            <%= comment.comment %><br>
+            <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
+            <% if customer_signed_in? %>
+              <span id="comment_<%= comment.id %>"><%= render "public/goods/good", park: park, comment: comment %></span>
+            <% end %>
+            <% if comment.customer == current_customer %>
+              <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </td>
+        <% else %>
+          <td>
+            <%= comment.comment %><br>
+            <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
+            <% if customer_signed_in? %>
+              <span id="comment_<%= comment.id %>"><%= render "public/goods/good", park: park, comment: comment %></span>
+            <% end %>
+            <% if comment.customer == current_customer %>
+              <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+  <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
+    <div class="col-sm-12 col-md-6 mt-5 text-center">
+      <p>ゲストユーザーはコメントできません。</p>
+    </div>
+  <% elsif customer_signed_in? %>
+    <div class="col-sm-12 col-md-6 mt-5">
+      <%= form_with model: [park, comment], local: false, class: "text-center" do |f| %>
+        <%= f.text_area :comment, class: "mb-3", placeholder: "コメントをここに" %><br>
+        <%= f.file_field :comment_image, class: "mb-3", accept: 'image/*' %><br>
+        年齢<%= f.number_field :child_age, in: 0..15, step: 1, size: "50x5" %>歳
+        月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月
+        <%= f.button :type => "submit", class: "btn btn-primary" do %>
+          <i class="fas fa-paper-plane"></i>投稿
+        <% end %>
+      <% end %>
+      <p class="text-center"><span style="color: red;">※</span>コメントが未入力の場合、コメントできません。</p>
+    </div>
+  <% else %>
+    <div class="col-sm-12 col-md-6 mt-5 text-center">
+      <p>コメントは新規登録後、可能になります。</p>
+    </div>
+  <% end %>
+</div>

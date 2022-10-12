@@ -1,0 +1,44 @@
+<div class="container">
+  <h2 class="text-center mt-4"><strong>〜ジャンル一覧・追加〜</strong></h2>
+  <div class="text-center">
+    <%= render 'layouts/errors', obj: @genre %>
+  </div>
+  <%= form_with model:@genre,url: admin_genres_path, local:true do |f| %>
+    <div class="text-center">
+      <table class="mx-auto">
+        <tr>
+          <td>ジャンル名</td>
+          <td><%= f.text_field :name, class: "mx-2" %></td>
+          <td><%= f.submit '新規登録', class: "btn btn-success mx-2" %></td>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+      <table class="table text-center", style="border: 1px solid black;">
+        <thead>
+          <tr>
+            <th class="table-active" style="border: 1px solid black;">ジャンル名</th>
+            <th class="table-active" style="width: 35%; border: 1px solid black;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td>
+                <%= genre.name %>
+              </td>
+              <td>
+                <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-outline-secondary text-center" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-3"><%= paginate @genres, theme: 'bootstrap-5' %></div>
+  </div>
+</div>

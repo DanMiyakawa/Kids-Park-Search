@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>遊び場新規登録</strong></h2>
+    <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
+  </div>
+  <div class="text-center">
+    <%= render 'layouts/errors', obj: @park %>
+  </div>
+  <div class="row">
+    <div class="col-md-11 col-lg-10 mx-auto">
+      <%= form_with model:@park do |f| %>
+      <table class="table table-borderless pl-5">
+      <tr>
+        <th>遊び場の画像</th>
+        <th><%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %></th>
+      </tr>
+      <tr>
+        <th>遊び場の名前<br><span style="color: red;">※必須</span></th>
+        <th><%= f.text_field :name, class: "form-control name" %></th>
+      </tr>
+      <tr>
+        <th>遊び場の紹介<br><span style="color: red;">※必須</span></th>
+        <th><%= f.text_area :introduction, class: "form-control introduction" %></th>
+      </tr>
+      <tr>
+        <th>住所<br><span style="color: red;">※必須</span></th>
+        <th><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", :size => "50", class: "form-control address" %></th>
+      </tr>
+      <tr>
+        <th>電話番号(ハイフンなし)</th>
+        <th><%= f.telephone_field :phone, class: "form-control phone" %></th>
+      </tr>
+      <tr>
+        <th>営業時間</th>
+        <th><%= f.time_field :start_time %> ~ <%= f.time_field :end_time %></th>
+      </tr>
+      <tr>
+        <th>対象年齢</th>
+        <td>年齢<%= f.number_field :child_age, in: 0..15, step: 1 %>歳
+              月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月</td>
+      </tr>
+      <tr>
+        <th>ジャンル<br><span style="color: red;">※必須</span></th>
+        <th><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></th>
+      </tr>
+      </table>
+      <div class="text-right mt-3 mb-5">
+        <%= f.button :type => "submit", class: "btn btn-primary" do %>
+          <i class="fas fa-map-pin"></i> 新規投稿
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
