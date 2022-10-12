@@ -32,7 +32,7 @@ class Public::CustomersController < ApplicationController
 
   def favorites
     @customer = Customer.find(params[:id])
-    favorites= Favorite.where(customer_id: @customer.id).pluck(:park_id)
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:park_id)
     @favorite_parks = Park.find(favorites)
     @favorite_parks = Kaminari.paginate_array(@favorite_parks).page(params[:page]).per(8)
   end

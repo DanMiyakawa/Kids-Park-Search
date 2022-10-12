@@ -5,7 +5,7 @@
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
   <div class="row mx-auto">
-    <% unless @favorite_parks == nil %>
+    <% if @favorite_parks.count != 0 %>
       <%= render "public/parks/map", parks: @favorite_parks %>
       <%= render "public/parks/api" %>
     <% else %>

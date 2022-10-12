@@ -5,7 +5,15 @@
       <tr>
         <th>
           <%= image_tag 'boy_03.png', size: "80" %><br>
-          <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
+          <% if comment.child_age == nil && comment.child_moon_age == nil %>
+            ?歳?ヶ月
+          <% elsif comment.child_age == nil %>
+            ?歳<%= comment.child_moon_age %>ヶ月
+          <% elsif comment.child_moon_age == nil %>
+            <%= comment.child_age %>歳
+          <% else %>
+            <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
+          <% end %>
         </th>
         <% if comment.comment_image.attached? %>
           <td>
@@ -29,7 +37,7 @@
               <span id="comment_<%= comment.id %>"><%= render "public/goods/good", park: park, comment: comment %></span>
             <% end %>
             <% if comment.customer == current_customer %>
-              <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+              <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
             <% end %>
           </td>
         <% end %>
@@ -52,6 +60,7 @@
           <i class="fas fa-paper-plane"></i>投稿
         <% end %>
       <% end %>
+      <p class="text-center"><span style="color: red;">※</span>コメントが未入力の場合、コメントできません。</p>
     </div>
   <% else %>
     <div class="col-sm-12 col-md-6 mt-5 text-center">

@@ -1,6 +1,6 @@
 <% parks.each_with_index do |park,i| %>
   <%= link_to park_path(park.id), 'data-turbolinks': false, class: "col-sm-12 col-md-6 col-lg-4 col-xl-3 text-center text-dark text-nowrap mt-5" do %>
-    <div id="map<%= i %>" date-lat="<%= park.latitude %>" date-lng="<%= park.longitude %>" style='border-top-left-radius: 10%; border-top-right-radius: 10%; width: 250px; height: 250px; display: block; margin: auto;'></div>
+    <div id="map<%= i %>" date-lat="<%= park.latitude %>" date-lng="<%= park.longitude %>" style='border-top-left-radius: 10%; border-top-right-radius: 10%; width: 250px; height: 250px; display: block; margin: auto; box-shadow: 5px 0 3px #bbb;'></div>
     <script>
       function initMap(){
         <% parks.each_with_index do |park,i| %>
@@ -18,6 +18,6 @@
       <% end %>
       }
     </script>
-    <div class="bg-white", style="width: 250px; height: 50px; border-bottom-left-radius: 50%; border-bottom-right-radius: 50%; display: block; margin: auto;"><%= park.name %></div>
+    <div class="bg-white", style="width: 250px; height: 50px; border-bottom-left-radius: 50%; border-bottom-right-radius: 50%; display: block; margin: auto; box-shadow: 2px 0 2px 3px #bbb;"><%= park.name %></div>
   <% end %>
 <% end %>
