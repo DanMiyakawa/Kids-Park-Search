@@ -57,11 +57,9 @@ class Public::ParksController < ApplicationController
   end
 
   def prefecture
-    @q = Park.ransack(params[:name])
   end
 
   def prefecture_search
-    @q = Park.ransack(params[:name])
     @name = (params[:name])
     @prefectures = Park.where(['address LIKE ?', "%#{@name}%"]).order(created_at: :desc).page(params[:page]).per(8)
   end
