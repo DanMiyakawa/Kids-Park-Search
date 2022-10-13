@@ -5,8 +5,9 @@ RSpec.describe "Customerモデルのテスト", type: :model do
   describe "バリデーションのテスト" do
     subject { customer.valid? }
 
-    let!(:other_customer) { create(:customer) }
-    let(:customer) { build(:customer) }
+    let(:contact) {create(:contact) }
+    let(:other_customer) { create(:customer) }
+    let!(:customer) { build(:customer) }
 
     context "nicknameカラム" do
       it "空欄でないこと" do
@@ -37,6 +38,11 @@ RSpec.describe "Customerモデルのテスト", type: :model do
     context "Parkモデルとの関係" do
       it "1:Nとなっている" do
         expect(Customer.reflect_on_association(:parks).macro).to eq :has_many
+      end
+    end
+    context "Contactモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(Customer.reflect_on_association(:contacts).macro).to eq :has_many
       end
     end
   end
