@@ -45,4 +45,9 @@ RSpec.describe "Customerモデルのテスト", type: :model do
         expect(Customer.reflect_on_association(:contacts).macro).to eq :has_many
       end
     end
+    context "Commentモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(Customer.reflect_on_association(:comments).macro).to eq :has_many
+      end
+    end
   end
