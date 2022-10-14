@@ -18,3 +18,100 @@
 .pagination {
   justify-content: center;
 }
+
+.form{
+   width: 500px;
+}
+
+.top_image{
+  width: 100%;
+  height: auto;
+}
+
+.logo_image{
+  width: 250px;
+  height: 250px;
+}
+
+.main1{
+  width: 350px;
+  position:absolute; top:50px; left:50px;
+  color:#FFF;
+  background-color:rgba(0,0,0,0.3);
+  border-radius:30px;
+}
+
+.main2{
+  width: 900px;
+  height: 120px;
+  position:absolute; bottom:50px; right:5%;
+  color:#FFF;
+  background-color:rgba(0,0,0,0.3);
+  border-radius:30px;
+}
+
+.main2-text{
+  font-size: 30px;
+}
+
+@media screen and (max-width: 991px) {
+.logo_image{
+  width: 150px;
+  height: 150px;
+}
+
+.main1{
+  width: 350px;
+  position:absolute; top:50px; left:50px;
+  color:#FFF;
+  background-color:rgba(0,0,0,0.3);
+  border-radius:30px;
+}
+
+.main2{
+  width: 700px;
+  height: 120px;
+  position:absolute; bottom:30px; right:5%;
+  color:#FFF;
+  background-color:rgba(0,0,0,0.3);
+  border-radius:30px;
+}
+
+.main2-text{
+  font-size: 30px;
+}
+
+.main2 .form{
+   width: 300px;
+}
+
+}
+
+
+@media screen and (max-width: 760px) {
+.logo_image{
+  display:none
+}
+
+.main1{
+  display:none
+}
+
+.main2{
+  width: 90%;
+  height: auto;
+  position:absolute;
+  color:#FFF;
+  background-color:rgba(0,0,0,0.3);
+  border-radius:30px;
+}
+
+.main2-text{
+  font-size: 20px;
+}
+
+.main2 .form{
+   width: 200px;
+}
+
+}

@@ -1,18 +1,24 @@
+<div class="conteiner-fluid">
   <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
     <h3 class="text-center">ゲストユーザーは、遊び場の投稿ができるようになります。</h3>
   <% end %>
   <div class="row">
-    <%= image_tag "top.png", style: "width: 100%; height: 800px;" %>
-    <div style="width: 350px; position:absolute; top:150px; left:50px; color:#FFF; background-color:rgba(0,0,0,0.3); border-radius:30px;">
-    <p class="text-center mb-5">
-      <%= image_tag "logo.png", style: "width: 250px; height: 250px;" %><br>
-      Kid's Park Searchは<br>
-      公園や児童館など子どもと遊べる場所を<br>
-      探すためのマップ検索サイトです。<br>
-    </p>
-    </div>
-    <div style="width: 800px; height: 120px; position:absolute; bottom:100px; right:5%; color:#FFF;background-color:rgba(0,0,0,0.3); border-radius:30px;">
-      <p class="text-center", style="font-size: 30px;"><strong>住所またはキーワードで検索</strong></p>
-      <%= render "public/parks/search_form" %>
+    <div class="col-12">
+    <%= image_tag "top.png", class: "top_image" %>
+      <p class="main1 text-center mb-5">
+        <%= image_tag "logo.png", class: "logo_image" %><br>
+        Kid's Park Searchは<br>
+        公園や児童館など子どもと遊べる場所を<br>
+        探すためのマップ検索サイトです。<br>
+      </p>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="main2">
+        <p class="main2-text text-center"><strong>住所またはキーワードで検索</strong></p>
+        <%= render "public/parks/search_form" %>
+      </div>
+    </div>
+  </div>
+</div>
