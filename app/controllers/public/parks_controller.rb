@@ -3,7 +3,7 @@ class Public::ParksController < ApplicationController
   before_action :authenticate_customer!, except: [:index, :show, :search, :prefecture, :prefecture_search]
 
   def index
-    @parks = Park.all.order(created_at: :desc).page(params[:page]).per(8)
+    @parks = Park.where.not(latitude: nil).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show

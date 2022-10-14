@@ -40,7 +40,8 @@
           </tr>
           <tr>
             <th>住所<br><span style="color: red;">※必須</span></th>
-            <td><%= f.text_field :address, placeholder:"東京都渋谷区代々木神園町0-0", :size => "50", class: "form-control address" %></td>
+            <td><%= f.text_field :address, placeholder: "都道府県から入力", :size => "50", class: "form-control address" %><br>
+            (住所が判別できない場合、一覧には表示されません)</td>
           </tr>
           <tr>
             <th>電話番号(ハイフンなし)</th>

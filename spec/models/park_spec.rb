@@ -38,5 +38,15 @@ RSpec.describe "Parkモデルのテスト", type: :model do
         expect(Park.reflect_on_association(:customer).macro).to eq :belongs_to
       end
     end
+    context "Genreモデルとの関係" do
+      it "N:1となっている" do
+        expect(Park.reflect_on_association(:genre).macro).to eq :belongs_to
+      end
+    end
+    context "Commentモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(Park.reflect_on_association(:comments).macro).to eq :has_many
+      end
+    end
   end
 end
