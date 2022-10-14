@@ -2,8 +2,8 @@
   <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
     <h3 class="text-center">ゲストユーザーは、遊び場の投稿ができるようになります。</h3>
   <% end %>
-  <div class="row">
-    <div class="col-12">
+  <div class="row-fluid">
+    <div class="top col-12">
     <%= image_tag "top.png", class: "top_image" %>
       <p class="main1 text-center mb-5">
         <%= image_tag "logo.png", class: "logo_image" %><br>
@@ -13,7 +13,7 @@
       </p>
     </div>
   </div>
-  <div class="row">
+  <div class="row-fluid">
     <div class="col-12">
       <div class="main2">
         <p class="main2-text text-center"><strong>住所またはキーワードで検索</strong></p>

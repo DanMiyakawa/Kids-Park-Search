@@ -20,7 +20,11 @@
 }
 
 .form{
-   width: 500px;
+   width: 450px;
+}
+
+.top{
+  padding: 0;
 }
 
 .top_image{
@@ -55,6 +59,11 @@
 }
 
 @media screen and (max-width: 991px) {
+
+.form{
+   width: 300px;
+}
+
 .logo_image{
   width: 150px;
   height: 150px;
@@ -87,8 +96,11 @@
 
 }
 
-
 @media screen and (max-width: 760px) {
+.form{
+   width: 200px;
+}
+
 .logo_image{
   display:none
 }
