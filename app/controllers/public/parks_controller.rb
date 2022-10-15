@@ -3,6 +3,7 @@ class Public::ParksController < ApplicationController
   before_action :authenticate_customer!, except: [:index, :show, :search, :prefecture, :prefecture_search]
 
   def index
+    #経度・緯度が取得できていないものは表示しない
     @parks = Park.where.not(latitude: nil).order(created_at: :desc).page(params[:page]).per(8)
   end
 
