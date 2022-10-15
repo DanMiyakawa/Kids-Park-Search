@@ -15,6 +15,7 @@
           <th>紹介文</th><td><%= @customer.introduction %></td>
         </tr>
       </table>
+      <!--ゲストユーザーでは表示させない-->
       <% if @customer == current_customer && @customer.nickname!= "ゲストユーザー" %>
         <%= link_to edit_customer_path(@customer), class: "btn btn-outline-secondary btn-block" do %>
           編集する
