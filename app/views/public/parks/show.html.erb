@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-6 mt-5">
-      <div id="map" date-lat="<%= @park.latitude %>" date-lng="<%= @park.longitude %>" style='width: 400px; height: 350px; display: block; margin: auto;'></div>
+      <div id="map" date-lat="<%= @park.latitude %>" date-lng="<%= @park.longitude %>" class="show_map"></div>
       <script>
       function initMap(){
         //Idの数だけマップを出力
@@ -22,9 +22,9 @@
       });
       }
       </script>
-      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
-      </script>
+      <%= render "public/parks/api" %>
       <div class="row mx-auto">
+        <!--投稿時の写真の有無によって表示変更-->
         <% if @park.images.attached? %>
           <% @park.images.each do |image| %>
             <%= link_to image, "data-lightbox" => image, "data-lightbox" => "group", class: "col-4 mt-3" do %>
@@ -47,12 +47,14 @@
         <tr>
           <th>住所</th>
           <td><%= @park.address %><br>
+          <!--住所の入力内容によって表示を変更-->
           <% if @park.latitude == nil %>
           <p style="color: red;">(住所が判別できない場合、一覧には表示されません)</p>
           <% end %></td>
         </tr>
         <tr>
           <th>電話番号</th>
+          <!--電話番号の有無によって表示を変更-->
           <% if @park.phone == "" %>
             <td>情報がありません</td>
           <% else %>
@@ -61,6 +63,7 @@
         </tr>
         <tr>
           <th>営業時間</th>
+          <!--営業時間の入力内容によって表示を変更-->
           <% if @park.start_time == nil && @park.end_time == nil %>
             <td>情報がありません</td>
           <% elsif @park.start_time == nil %>
@@ -75,6 +78,7 @@
         </tr>
         <tr>
           <th>対象年齢</th>
+          <!--対象年齢の入力内容によって表示を変更-->
           <% if @park.child_age == nil && @park.child_moon_age == nil %>
             <td>情報がありません</td>
           <% elsif @park.child_age == nil %>
@@ -88,6 +92,7 @@
         <% if @park.customer == current_customer %>
         <tr>
           <% if customer_signed_in? %>
+          <!--ブックマークの非同期通信-->
           <th id="park_<%= @park.id %>"><%= render 'public/favorites/favorite', park: @park %></th>
           <% end %>
             <td><%= link_to '編集する', edit_park_path(@park.id), class: "btn btn-success mr-5" %>

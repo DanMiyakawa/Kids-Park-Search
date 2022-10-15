@@ -3,6 +3,7 @@ class Public::ParksController < ApplicationController
   before_action :authenticate_customer!, except: [:index, :show, :search, :prefecture, :prefecture_search]
 
   def index
+    #経度・緯度が取得できていないものは表示しない
     @parks = Park.where.not(latitude: nil).order(created_at: :desc).page(params[:page]).per(8)
   end
 
@@ -53,7 +54,8 @@ class Public::ParksController < ApplicationController
   end
 
   def search
-    @results = @q.result.order(created_at: :desc).page(params[:page]).per(8)
+    #緯度が空のデータは表示しない仕様
+    @results = @q.result.where.not(latitude: nil).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def prefecture
@@ -61,6 +63,7 @@ class Public::ParksController < ApplicationController
 
   def prefecture_search
     @name = (params[:name])
+    #prefectureページからのデータで部分検索
     @prefectures = Park.where(['address LIKE ?', "%#{@name}%"]).order(created_at: :desc).page(params[:page]).per(8)
   end
 

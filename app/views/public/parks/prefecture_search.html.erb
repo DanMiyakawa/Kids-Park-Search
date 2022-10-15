@@ -6,13 +6,15 @@
   </div>
   <div class="row mt-4">
     <%= search_form_for @q, url: search_parks_path, class: "col-12 text-center" do |f| %>
+    <!--エリア検索でクリックした都道府県を引き継ぎさせている-->
       <%= f.collection_select :address_cont, JpPrefecture::Prefecture.all, :name, :name, { selected: @name, prompt: '都道府県を選択' } %> ×
-      <%= f.search_field :name_or_address_cont, placeholder: "住所またはキーワードを入力", size: "50×5" %> ×
+      <%= f.search_field :name_or_address_cont, placeholder: "住所またはキーワードを入力", class: "form" %> ×
       <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, { prompt: 'ジャンルを選択' } %>
       <%= f.submit '検索' %>
     <% end %>
   </div>
   <div class="row mx-auto mb-5">
+    <!--検索結果の有無によって表示を変更-->
     <% if @prefectures.exists? %>
       <%= render "public/parks/map", parks: @prefectures %>
       <%= render "public/parks/api" %>
