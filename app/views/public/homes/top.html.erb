@@ -1,4 +1,5 @@
 <div class="conteiner-fluid">
+  <!--ゲストユーザーにのみ表示-->
   <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
     <h3 class="text-center">ゲストユーザーは、遊び場の投稿ができるようになります。</h3>
   <% end %>

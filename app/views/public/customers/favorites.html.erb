@@ -5,6 +5,7 @@
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
   <div class="row mx-auto">
+    <!--お気に入りの有無によって表示を変更-->
     <% if @favorite_parks.count != 0 %>
       <%= render "public/parks/map", parks: @favorite_parks %>
       <%= render "public/parks/api" %>
