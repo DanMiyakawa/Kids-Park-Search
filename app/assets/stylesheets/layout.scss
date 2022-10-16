@@ -108,20 +108,28 @@
 }
 
 .logo_image{
-  display:none
+  width: 100px;
+  height: 100px;
 }
 
 .main1{
-  display:none
-}
-
-.main2{
-  width: 90%;
-  height: auto;
-  position:absolute;
+  width: 200px;
+  position:absolute; top:5%; left:5%;
   color:#FFF;
   background-color:rgba(0,0,0,0.3);
   border-radius:30px;
+  font-size: 5px;
+}
+
+.main2{
+  width: 100%;
+  height: auto;
+  color:#FFF;
+  position: static;
+  background-color: transparent;
+  border-radius:30px;
+  color: black;
+
 }
 
 .main2-text{
@@ -129,7 +137,7 @@
 }
 
 .main2 .form{
-   width: 200px;
+   width: 300px;
 }
 }
 
