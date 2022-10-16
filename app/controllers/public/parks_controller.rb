@@ -65,6 +65,7 @@ class Public::ParksController < ApplicationController
     @name = (params[:name])
     #prefectureページからのデータで部分検索
     @prefectures = Park.where(['address LIKE ?', "%#{@name}%"]).order(created_at: :desc).page(params[:page]).per(8)
+    @prefecture = Park.where(['address LIKE ?', "%#{@name}%"]).order(created_at: :desc).limit(1)
   end
 
 

@@ -1,5 +1,8 @@
 <div class="row">
   <div class="col-sm-12 col-md-6 col-lg-6">
+    <% if park.comments.count == 0 %>
+    <p class="text-center mt-5" style="font-size: 30px;">コメントはありません</p>
+    <% else %>
     <% park.comments.each do |comment| %>
     <table class="mx-auto">
       <tr>
@@ -49,6 +52,7 @@
         <% end %>
       </tr>
     </table>
+    <% end %>
     <% end %>
   </div>
   <!--ゲストユーザーはコメント機能を除去-->
