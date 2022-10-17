@@ -59,13 +59,9 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/parks'
       end
-      it '自分の投稿と他人の投稿のタイトルのリンク先がそれぞれ正しい' do
-        expect(page).to have_link park.name, href: park_path(park)
-        expect(page).to have_link other_park.name, href: park_path(other_park)
-      end
     end
   end
-  
+
   describe '投稿画面のテスト' do
     context '投稿成功のテスト' do
       before do
@@ -234,8 +230,8 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it '画像編集フォームが表示される' do
         expect(page).to have_field 'customer[profile_image]'
       end
-      it '自己紹介編集フォームに自分の自己紹介文が表示される' do
-        expect(page).to have_field 'customer[introduction]', with: customer.introduction
+      it 'email編集フォームに自分の自己紹介文が表示される' do
+        expect(page).to have_field 'customer[email]', with: customer.email
       end
       it '更新ボタンが表示される' do
         expect(page).to have_button '更新'
@@ -245,17 +241,13 @@ describe '[STEP2] ユーザログイン後のテスト' do
     context '更新成功のテスト' do
       before do
         @customer_old_nickname = customer.nickname
-        @customer_old_introduction = customer.introduction
+        @customer_old_email = customer.email
         fill_in 'customer[nickname]', with: Faker::Lorem.characters(number: 9)
-        fill_in 'customer[introduction]', with: Faker::Lorem.characters(number: 19)
         click_button '更新'
       end
 
       it 'nicknameが正しく更新される' do
         expect(customer.reload.nickname).not_to eq @customer_old_nickname
-      end
-      it 'introductionが正しく更新される' do
-        expect(customer.reload.introduction).not_to eq @customer_old_introduction
       end
       it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
         expect(current_path).to eq '/customers/' + customer.id.to_s
