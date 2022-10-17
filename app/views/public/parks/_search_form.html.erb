@@ -1,11 +1,11 @@
 <!--ransackを用いて検索-->
 <%= search_form_for @q, url: search_parks_path, class: "col-12 text-center" do |f| %>
   <!--セレクトボックスで住所の部分検索-->
-  <%= f.collection_select :address_cont, JpPrefecture::Prefecture.all, :name, :name, { prompt: '都道府県を選択' } %> ×
+  <%= f.collection_select :address_cont, JpPrefecture::Prefecture.all, :name, :name, { prompt: '都道府県を選択', include_blank: "選択を解除" } %> ×
   <!--テキスト入力で遊び場名と住所の部分検索-->
   <%= f.search_field :name_or_address_cont, placeholder: "住所またはキーワードを入力", class: "form" %> ×
   <!--セレクトボックスでジャンル検索-->
-  <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, { prompt: 'ジャンルを選択' } %>
+  <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, { prompt: 'ジャンルを選択', include_blank: "選択を解除" } %>
   <%= f.button :type => "submit", class: "btn btn-light" do %>
     <i class="fa fa-search" aria-hidden="true"></i>検索
   <% end %>
