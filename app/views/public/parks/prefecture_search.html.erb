@@ -7,17 +7,18 @@
   <div class="row mt-4">
     <%= search_form_for @q, url: search_parks_path, class: "col-12 text-center" do |f| %>
     <!--エリア検索でクリックした都道府県を引き継ぎさせている-->
-      <%= f.collection_select :address_cont, JpPrefecture::Prefecture.all, :name, :name, { selected: @name, prompt: '都道府県を選択' } %> ×
+      <%= f.collection_select :address_cont, JpPrefecture::Prefecture.all, :name, :name, { selected: @name, prompt: '都道府県を選択', include_blank: "選択を解除" } %> ×
       <%= f.search_field :name_or_address_cont, placeholder: "住所またはキーワードを入力", class: "form" %> ×
-      <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, { prompt: 'ジャンルを選択' } %>
+      <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, { prompt: 'ジャンルを選択', include_blank: "選択を解除" } %>
       <%= f.submit '検索' %>
     <% end %>
   </div>
+   <!--検索結果の有無によって表示を変更-->
+  <% if @prefectures.exists? %>
+  <%= render "public/parks/map2", obj: @prefecture_park, parks: @prefectures %>
   <div class="row mx-auto mb-5">
-    <!--検索結果の有無によって表示を変更-->
-    <% if @prefectures.exists? %>
       <%= render "public/parks/map", parks: @prefectures %>
-      <%= render "public/parks/api" %>
+      <%#= render "public/parks/api" %>
     <% else %>
       <div class="col-12">
         <h2 class="mt-5 mb-5 text-center">該当の遊び場はありません</h2>
@@ -28,3 +29,13 @@
     <div class="col-12 mt-3v"><%= paginate @prefectures, theme: 'bootstrap-5' %></div>
   </div>
 </div>
+
+<!-- 検索マップを追加したため、collbackの記述を変更 -->
+<script>
+  function mapShow() {
+    initMap();
+    initMap2();
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=mapShow"></script>

@@ -22,12 +22,12 @@ RSpec.describe "Parkモデルのテスト", type: :model do
         park.introduction = ""
         is_expected.to eq false
       end
-      it "100文字以内であること:100文字は○" do
-        park.introduction = Faker::Lorem.characters(number: 100)
+      it "200文字以内であること:200文字は○" do
+        park.introduction = Faker::Lorem.characters(number: 200)
         is_expected.to eq true
       end
       it "200文字以内であること:201文字は×" do
-        park.introduction = Faker::Lorem.characters(number: 101)
+        park.introduction = Faker::Lorem.characters(number: 201)
         is_expected.to eq false
       end
     end

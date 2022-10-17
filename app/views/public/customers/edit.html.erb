@@ -19,8 +19,8 @@
         <%= f.file_field :profile_image, class: "form-control-file profile_image", accept: 'image/*' %>
       </div>
       <div class="form-group">
-        <%= f.label "自己紹介" %>
-        <%= f.text_area :introduction, class: "form-control introduction" %>
+        <%= f.label "メールアドレス" %>
+        <%= f.text_field :email, class: "form-control email" %>
       </div>
       <div class="form-group text-right mt-3">
         <%= f.submit "更新", class: 'btn btn-success' %>

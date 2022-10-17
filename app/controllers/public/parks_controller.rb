@@ -56,6 +56,8 @@ class Public::ParksController < ApplicationController
   def search
     #緯度が空のデータは表示しない仕様
     @results = @q.result.where.not(latitude: nil).order(created_at: :desc).page(params[:page]).per(8)
+    #@resultsから最新の投稿を取得
+    @result = @results.first
   end
 
   def prefecture
@@ -65,6 +67,8 @@ class Public::ParksController < ApplicationController
     @name = (params[:name])
     #prefectureページからのデータで部分検索
     @prefectures = Park.where(['address LIKE ?', "%#{@name}%"]).order(created_at: :desc).page(params[:page]).per(8)
+    #@prefecturesから最新の投稿を取得
+    @prefecture_park = @prefectures.first
   end
 
 

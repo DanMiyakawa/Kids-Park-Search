@@ -10,12 +10,12 @@
     </div>
     <div class="row-fluid">
       <div class="col-sm-12 col-md-8 col-lg-5 px-0 mx-auto">
-        <%= link_to contacts_path do %>
-          <button type="button" class="btn btn-outline-dark", style='display: block; margin:0 0 0 auto;'>戻る</button>
-        <% end %>
-  
+        <div class="text-right">
+        <%= link_to "戻る", contacts_path %>
+      </div>
+
         <%= form_with model:@contact, local:true do |f| %>
-  
+
         <div class="field">
           <%= f.label "タイトル" %>
           <%= f.text_field :title, class: 'form-control title', placeholder: "タイトルを入力" %>

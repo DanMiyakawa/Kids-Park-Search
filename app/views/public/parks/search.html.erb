@@ -1,17 +1,37 @@
 <div class='container mb-5'>
   <div class="row">
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
-    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>検索結果一覧</strong></h2>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4">
+      <!--検索内容をトップに表示させる表記-->
+      <% if @q.address_cont == nil && @q.name_or_address_cont == nil && @q.genre_id_eq == nil %>
+        <strong>遊び場一覧</strong>
+      <% elsif @q.address_cont == nil && @q.name_or_address_cont == nil %>
+        <strong><%= Genre.find(@q.genre_id_eq).name %><br>の検索結果一覧</strong>
+      <% elsif @q.address_cont == nil && @q.genre_id_eq == nil %>
+        <strong><%= @q.name_or_address_cont %><br>の検索結果一覧</strong>
+      <% elsif @q.name_or_address_cont == nil && @q.genre_id_eq == nil %>
+        <strong><%= @q.address_cont %><br>の検索結果一覧</strong></h2>
+      <% elsif @q.address_cont == nil %>
+        <strong><%= @q.name_or_address_cont %>×<%= Genre.find(@q.genre_id_eq).name %><br>の検索結果一覧</strong>
+      <% elsif @q.name_or_address_cont == nil %>
+        <strong><%= @q.address_cont %>×<%= Genre.find(@q.genre_id_eq).name %><br>の検索結果一覧</strong>
+      <% elsif  @q.genre_id_eq == nil %>
+       <strong><%= @q.address_cont %>×<%= @q.name_or_address_cont %><br>の検索結果一覧</strong>
+      <% else %>
+        <strong><%= @q.address_cont %>×<%= @q.name_or_address_cont %>×<%= Genre.find(@q.genre_id_eq).name %><br>の検索結果一覧</strong>
+      <% end %></h2>
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
   <div class="row mt-4">
     <%= render "public/parks/search_form" %>
   </div>
+   <!--検索結果の有無によって表示を変更-->
+  <% if @results.exists? %>
+<%= render "public/parks/map2", obj: @result, parks: @results %>
+
   <div class="row mx-auto mb-5">
-    <!--検索結果の有無によって表示を変更-->
-    <% if @results.exists? %>
       <%= render "public/parks/map", parks: @results %>
-      <%= render "public/parks/api" %>
+      <%#= render "public/parks/api" %>
     <% else %>
       <div class="col-12">
         <h2 class="mt-5 mb-5 text-center">該当の遊び場はありません</h2>
@@ -22,3 +42,14 @@
     <div class="col-12 mt-3v"><%= paginate @results, theme: 'bootstrap-5' %></div>
   </div>
 </div>
+
+
+<!-- 検索マップを追加したため、collbackの記述を変更 -->
+<script>
+  function mapShow() {
+    initMap();
+    initMap2();
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=mapShow"></script>

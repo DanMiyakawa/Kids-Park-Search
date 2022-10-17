@@ -39,7 +39,7 @@
     <div class="col-sm-12 col-md-12 col-lg-6 mt-5 mx-auto">
       <table class="table table-borderless">
         <tr>
-          <th>遊び場の紹介</th><td><%= safe_join(@park.introduction.split("\n"),tag(:br)) %></td>
+          <th width="25%">遊び場の紹介</th><td><%= safe_join(@park.introduction.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <th>ジャンル</th><td><%= @park.genre.name %></td>
@@ -95,7 +95,7 @@
           <!--ブックマークの非同期通信-->
           <th id="park_<%= @park.id %>"><%= render 'public/favorites/favorite', park: @park %></th>
           <% end %>
-            <td><%= link_to '編集する', edit_park_path(@park.id), class: "btn btn-success mr-5" %>
+            <td><%= link_to '編集する', edit_park_path(@park.id), class: "btn btn-sm btn-success mr-5" %>
             <%= link_to '削除する', park_path(@park), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
         </tr>
         <% else %>
@@ -110,7 +110,7 @@
     </div>
   </div>
   <br>
-  <h2 class="text-center"><strong>〜コメント〜</strong></h2>
+  <h2 class="text-center"><strong>コメント<i class="fas fa-comments"></i></strong></h2>
   <div id="comments_area">
     <%= render 'public/comments/comment', park: @park, comment: @comment %>
   </div>

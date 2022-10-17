@@ -1,0 +1,38 @@
+ <div id='map' class="w-100 mt-5" style="height: 400px; width: 800px;"></div>
+  <script>
+    // mapの表示関数
+    function initMap2() {
+      // mapの初期位置を最新投稿の遊び場に設定
+      var map = new google.maps.Map(document.getElementById('map'), {
+          center: {
+            lat: <%= obj.latitude %>,
+            lng: <%= obj.longitude %>
+          },
+        zoom: 10,
+      });
+      // 都道府県の遊び場をmap上に表示
+      <% parks.each do |park| %>
+        (function(){
+          var contentString = "遊び場の名前：<%= park.name %>";
+            // マーカーを立てる
+            var marker = new google.maps.Marker({
+              position:{lat: <%= park.latitude %>, lng: <%= park.longitude %>},
+              map: map,
+              title: contentString
+            });
+          // 情報ウィンドウ(吹き出し)の定義
+          // 投稿の詳細ページへのリンクも
+            var infowindow = new google.maps.InfoWindow({
+              position: {lat: <%= park.latitude %>, lng: <%= park.longitude %>},
+              content: "<a href='<%= park_path(park.id) %>' target='_blank'><%= park.name %></a>"
+            });
+
+            // クリックしたときに情報ウィンドウを表示
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+
+            })();
+        <% end %>
+      }
+  </script>
