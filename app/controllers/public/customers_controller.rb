@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_guest_user, only: [:edit]
+  before_action :ensure_guest_user, only: [:show, :edit, :update, :destroy, :unsubscribe, :withdrawal, :favorites]
+  before_action :ensure_correct_customer, only: [:show, :edit,:updatey, :unsubscribe, :withdrawal, :favorites]
 
   def show
     @customer = Customer.find(params[:id])
@@ -46,6 +47,13 @@ class Public::CustomersController < ApplicationController
   def ensure_guest_user
     @customer = Customer.find(params[:id])
     if @customer.nickname == "ゲストユーザー"
+      redirect_to root_path
+    end
+  end
+
+  def ensure_correct_customer
+    @customer = Customer.find(params[:id])
+    unless @customer == current_customer
       redirect_to root_path
     end
   end

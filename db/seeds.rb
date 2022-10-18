@@ -9,3 +9,26 @@ Admin.create!(
     email: 'test@test.com',
     password: 'aaaaaa',
 )
+
+Genre.create!(
+    [
+      {
+        name: '公園',
+      },
+      {
+        name: '無料室内スペース',
+      },
+      {
+        name: '有料室内スペース',
+      },
+      {
+        name: '児童館',
+      },
+      {
+        name: 'ゲームセンター',
+      },
+      {
+        name: '遊園地',
+      }
+    ]
+  )
