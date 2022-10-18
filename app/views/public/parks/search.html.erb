@@ -27,7 +27,7 @@
   </div>
    <!--検索結果の有無によって表示を変更-->
   <% if @results.exists? %>
-<%= render "public/parks/map2", obj: @result, parks: @results %>
+<%= render "public/parks/map2", obj: @result, parks: @result_parks %>
 
   <div class="row mx-auto mb-5">
       <%= render "public/parks/map", parks: @results %>

@@ -17,7 +17,7 @@
   <% if @prefectures.exists? %>
   <%= render "public/parks/map2", obj: @prefecture_park, parks: @prefectures %>
   <div class="row mx-auto mb-5">
-      <%= render "public/parks/map", parks: @prefectures %>
+      <%= render "public/parks/map", parks: @prefecture_parks %>
       <%#= render "public/parks/api" %>
     <% else %>
       <div class="col-12">
@@ -26,7 +26,7 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-12 mt-3v"><%= paginate @prefectures, theme: 'bootstrap-5' %></div>
+    <div class="col-12 mt-3v"><%= paginate @prefecture_parks, theme: 'bootstrap-5' %></div>
   </div>
 </div>
 
