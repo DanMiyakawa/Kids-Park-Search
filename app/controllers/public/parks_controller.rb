@@ -1,6 +1,7 @@
 class Public::ParksController < ApplicationController
   before_action :set_q, only: [:index, :search]
   before_action :authenticate_customer!, except: [:index, :show, :search, :prefecture, :prefecture_search]
+  before_action :correct_customer, only: [:edit, :update, :destroy]
 
   def index
     #経度・緯度が取得できていないものは表示しない
@@ -80,5 +81,11 @@ class Public::ParksController < ApplicationController
 
   def park_params
     params.require(:park).permit(:genre_id, :name, :introduction, :address, :latitude, :longitude, :phone, :start_time, :end_time, :child_age, :child_moon_age, images: [] )
+  end
+
+  def correct_customer
+    @park = Park.find(params[:id])
+    @customer = @park.customer
+    redirect_to(parks_path) unless @customer == current_customer
   end
 end
