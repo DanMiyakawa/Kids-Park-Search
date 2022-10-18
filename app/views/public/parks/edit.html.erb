@@ -45,7 +45,7 @@
             (住所が判別できない場合、一覧には表示されません)</td>
           </tr>
           <tr>
-            <th>電話番号(ハイフンなし)</th>
+            <th>電話番号</th>
             <td><%= f.telephone_field :phone, class: "form-control phone" %></td>
           </tr>
           <tr>
@@ -53,7 +53,7 @@
             <td><%= f.time_field :start_time %> ~ <%= f.time_field :end_time %></td>
           </tr>
           <tr>
-            <th>対象年齢</th>
+            <th>お子様の年齢</th>
             <td style="width: 50px;">年齢<%= f.number_field :child_age, in: 0..15, step: 1 %>歳
             月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月</td>
           </tr>
