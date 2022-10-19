@@ -26,7 +26,7 @@
     <%= render "public/parks/search_form" %>
   </div>
    <!--検索結果の有無によって表示を変更-->
-  <% if @results.exists? %>
+  <% if @result_parks.exists? %>
 <%= render "public/parks/map2", obj: @result, parks: @result_parks %>
 
   <div class="row mx-auto mb-5">
@@ -39,7 +39,7 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-12 mt-3v"><%= paginate @results, theme: 'bootstrap-5' %></div>
+    <div class="col-12 mt-3"><%= paginate @results, theme: 'bootstrap-5' %></div>
   </div>
 </div>
 
