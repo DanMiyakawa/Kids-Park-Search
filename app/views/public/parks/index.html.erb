@@ -1,11 +1,7 @@
 <div class='container mb-5'>
   <div class="row">
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
-    <% if @all_parks.exists? %>
-      <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>全国の<br>遊び場一覧(全<%= @all_parks.count %>件)</strong></h2>
-    <% else %>
-      <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>全国の<br>遊び場一覧(全0件)</strong></h2>
-    <% end %>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>全国の<br>遊び場一覧(全<%= @all_parks.count %>件)</strong></h2>
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
   <div class="row mt-4">
