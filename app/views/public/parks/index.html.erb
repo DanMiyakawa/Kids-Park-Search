@@ -1,17 +1,20 @@
 <div class='container mb-5'>
   <div class="row">
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
-    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>全国の遊び場一覧</strong></h2>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>全国の<br>遊び場一覧(全<%= @all_parks.count %>件)</strong></h2>
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
   <div class="row mt-4">
     <%= render "public/parks/search_form" %>
   </div>
-  <div class="row mx-auto mb-5">
+  <div class="row mx-auto mb-2">
+    <div class="col-12 mb-2">
+      <%= page_entries_info(@parks) %>
+    </div>
     <%= render "public/parks/map", parks: @parks %>
     <%= render "public/parks/api" %>
   </div>
   <div class="row">
-    <div class="col-md-12 mt-3"><%= paginate @parks, theme: 'bootstrap-5' %></div>
+    <div class="col-12"><%= paginate @parks, theme: 'bootstrap-5' %></div>
   </div>
 </div>

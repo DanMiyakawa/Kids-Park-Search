@@ -19,6 +19,10 @@
   justify-content: center;
 }
 
+*{
+  font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN',sans-serif;
+}
+
 .form{
    width: 450px;
 }
@@ -39,7 +43,8 @@
 
 .main1{
   width: 350px;
-  position:absolute; top:50px; left:50px;
+  height: 380px;
+  position:absolute; top:30px; left:20px;
   color:#FFF;
   background-color:rgba(0,0,0,0.3);
   border-radius:30px;
@@ -78,7 +83,8 @@
 
 .main1{
   width: 350px;
-  position:absolute; top:50px; left:50px;
+  height: 280px;
+  position:absolute; top:20px; left:20px;
   color:#FFF;
   background-color:rgba(0,0,0,0.3);
   border-radius:30px;
@@ -108,12 +114,13 @@
 }
 
 .logo_image{
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 .main1{
-  width: 200px;
+  width: 220px;
+  height: 170px;
   position:absolute; top:5%; left:5%;
   color:#FFF;
   background-color:rgba(0,0,0,0.3);

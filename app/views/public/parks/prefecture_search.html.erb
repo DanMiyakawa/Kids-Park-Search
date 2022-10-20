@@ -1,7 +1,7 @@
 <div class='container mb-5'>
   <div class="row">
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
-    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong><%= @name %>の遊び場</strong></h2>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong><%= @name %>の遊び場<br>(全<%= @prefectures.count %>件)</strong></h2>
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
   <div class="row mt-4">
@@ -16,17 +16,20 @@
    <!--検索結果の有無によって表示を変更-->
   <% if @prefectures.exists? %>
   <%= render "public/parks/map2", obj: @prefecture_park, parks: @prefectures %>
-  <div class="row mx-auto mb-5">
-      <%= render "public/parks/map", parks: @prefecture_parks %>
-      <%#= render "public/parks/api" %>
-    <% else %>
-      <div class="col-12">
-        <h2 class="mt-5 mb-5 text-center">該当の遊び場はありません</h2>
-      </div>
-    <% end %>
+  <div class="row mx-auto mb-2">
+    <div class="col-12 mb-2 mt-4">
+      <%= page_entries_info(@prefecture_parks) %>
+    </div>
+    <%= render "public/parks/map", parks: @prefecture_parks %>
+    <%#= render "public/parks/api" %>
+  <% else %>
+    <div class="col-12">
+      <h2 class="mt-5 mb-5 text-center">該当の遊び場はありません</h2>
+    </div>
+  <% end %>
   </div>
   <div class="row">
-    <div class="col-12 mt-3"><%= paginate @prefecture_parks, theme: 'bootstrap-5' %></div>
+    <div class="col-12"><%= paginate @prefecture_parks, theme: 'bootstrap-5' %></div>
   </div>
 </div>
 
