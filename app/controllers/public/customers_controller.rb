@@ -5,6 +5,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @customer_count = @customer.parks.order(created_at: :desc)
     @parks = @customer.parks.order(created_at: :desc).page(params[:page]).per(10)
   end
 
@@ -34,8 +35,8 @@ class Public::CustomersController < ApplicationController
   def favorites
     @customer = Customer.find(params[:id])
     favorites = Favorite.where(customer_id: @customer.id).pluck(:park_id)
-    @favorite_parks = Park.find(favorites)
-    @favorite_parks = Kaminari.paginate_array(@favorite_parks).page(params[:page]).per(8)
+    @parks = Park.find(favorites)
+    @favorite_parks = Kaminari.paginate_array(@parks).page(params[:page]).per(12)
   end
 
   private

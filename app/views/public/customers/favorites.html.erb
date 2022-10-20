@@ -1,12 +1,15 @@
-<div class='container'>
+<div class='container mb-5'>
   <div class="row">
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
-    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>お気に入りの<br>遊び場一覧</strong></h2>
+    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong>お気に入りの<br>遊び場一覧(全<%= @parks.count %>件)</strong></h2>
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
-  <div class="row mx-auto">
+  <div class="row mx-auto mb-2">
     <!--お気に入りの有無によって表示を変更-->
     <% if @favorite_parks.count != 0 %>
+      <div class="col-12 mb-2">
+        <%= page_entries_info(@favorite_parks) %>
+      </div>
       <%= render "public/parks/map", parks: @favorite_parks %>
       <%= render "public/parks/api" %>
     <% else %>
@@ -19,6 +22,6 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-12 mt-3"><%= paginate @favorite_parks, theme: 'bootstrap-5' %></div>
+    <div class="col-12"><%= paginate @favorite_parks, theme: 'bootstrap-5' %></div>
   </div>
 </div>
