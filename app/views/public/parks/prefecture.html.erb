@@ -12,7 +12,7 @@
 		<% JpPrefecture::Prefecture.all.each do |ar| %>
 		  <% if ar.area == "北海道" or ar.area == "東北" %>
 	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
 	 		<% end %>
 		  <% end %>
 		<% end %>
@@ -23,7 +23,7 @@
 	  	<!--関東のみ抽出-->
 		  <% if ar.area == "関東" %>
 	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
 	 		<% end %>
 		  <% end %>
 		<% end %>
@@ -34,7 +34,7 @@
 	  	<!--中部のみ抽出-->
 		  <% if ar.area == "中部" %>
 	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
 	 		<% end %>
 		  <% end %>
 		<% end %>
@@ -45,7 +45,7 @@
 	  	<!--関西のみ抽出-->
 		  <% if ar.area == "関西" %>
 	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
 	 		<% end %>
 		  <% end %>
 		<% end %>
@@ -56,7 +56,7 @@
 	  	<!--中国・四国のみ抽出-->
 		  <% if ar.area == "中国" or ar.area == "四国" %>
 	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
 	 		<% end %>
 		  <% end %>
 		<% end %>
@@ -67,7 +67,7 @@
 	  	<!--九州・沖縄のみ抽出-->
 		  <% if ar.area == "九州" or ar.area == "沖縄" %>
 	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <i class="fas fa-map"></i> <%= ar.name %>
+	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
 	 		<% end %>
 		  <% end %>
 		<% end %>

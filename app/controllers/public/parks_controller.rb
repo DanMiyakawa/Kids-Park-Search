@@ -64,6 +64,7 @@ class Public::ParksController < ApplicationController
   end
 
   def prefecture
+    
   end
 
   def prefecture_search

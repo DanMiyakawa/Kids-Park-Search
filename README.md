@@ -19,7 +19,6 @@
 
 ### ターゲットユーザ
  * 子育て中のご夫婦
- * 遊び場を共有してママ友、パパ友を作りたい人
 
 ### 主な利用シーン
  * 遊び場を共有したい時
@@ -27,11 +26,11 @@
 
 ## 設計書
 
-[ER図(仮)](https://app.diagrams.net/#G15gIi581iMAllGybAb8qbwm_mBV_Sh6I8)
+[ER図](https://app.diagrams.net/#G15gIi581iMAllGybAb8qbwm_mBV_Sh6I8)
 
-[アプリケーション詳細設計書(仮)](https://docs.google.com/spreadsheets/d/1H_9ljrj8AheMexKkDozxxWHkoTXMl2If-lthdds6YLU/edit#gid=549108681)
+[アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1H_9ljrj8AheMexKkDozxxWHkoTXMl2If-lthdds6YLU/edit#gid=549108681)
 
-[テーブル定義書(仮)](https://docs.google.com/spreadsheets/d/1VN8J3OWy0Z6RvbROLpgLzgZ-u4-4LmkSQBxYVKkFHAw/edit#gid=1373217982)
+[テーブル定義書](https://docs.google.com/spreadsheets/d/1VN8J3OWy0Z6RvbROLpgLzgZ-u4-4LmkSQBxYVKkFHAw/edit#gid=1373217982)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -43,8 +42,15 @@
 ## gem一覧
  * gem 'devise'
  * gem 'enam-help'
- * gem 'kaminari'
+ * gem 'kaminari', '~> 1.2', '>= 1.2.1'
+ * gem 'bootstrap5-kaminari-views', '~> 0.0.1'
  * gem 'ransack'
  * gem "image_processing", "~> 1.2"
+ * gem 'geocoder', '~> 1.4'
+ * gem 'dotenv-rails'
+ * gem 'ransack'
+ * gem 'jp_prefecture'
+ * gem "rails-i18n"
+ * gem 'pry-rails'
 
 ## 使用素材
