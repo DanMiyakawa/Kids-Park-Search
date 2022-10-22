@@ -58,7 +58,7 @@
           <% if @park.phone == "" %>
             <td>情報がありません</td>
           <% else %>
-            <td><%= @park.phone %></td>
+            <td><a href="tel:<%= @park.phone %>"><%= @park.phone %></a></td>
           <% end %>
         </tr>
         <tr>
@@ -91,21 +91,19 @@
         </tr>
         <% if @park.customer == current_customer %>
         <tr>
-          <% if customer_signed_in? %>
+          <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
+            <th></th>
+            <td><%= link_to '編集する', edit_park_path(@park.id), class: "btn btn-sm btn-success mr-5" %></td>
+          <% elsif customer_signed_in? %>
           <!--ブックマークの非同期通信-->
-          <th id="park_<%= @park.id %>"><%= render 'public/favorites/favorite', park: @park %></th>
+            <th id="park_<%= @park.id %>"><%= render 'public/favorites/favorite', park: @park %></th>
+            <td>
+              <%= link_to '編集する', edit_park_path(@park.id), class: "btn btn-sm btn-success mr-5" %>
+              <%= link_to '削除する', park_path(@park), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+            </td>
           <% end %>
-            <td><%= link_to '編集する', edit_park_path(@park.id), class: "btn btn-sm btn-success mr-5" %>
-            <%= link_to '削除する', park_path(@park), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
         </tr>
-        <% else %>
-        <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
-          <th></th>
-          <td></td>
-        <% elsif customer_signed_in? %>
-          <th id="park_<%= @park.id %>"><%= render 'public/favorites/favorite', park: @park %></th>
         <% end %>
-      <% end %>
       </table>
     </div>
   </div>
