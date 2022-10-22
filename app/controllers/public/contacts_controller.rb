@@ -1,5 +1,6 @@
 class Public::ContactsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :ensure_guest_user
 
   def index
     #ログイン者の問合せ内容のみ
@@ -27,5 +28,11 @@ class Public::ContactsController < ApplicationController
 
   def contact_params
     params.require(:contact).permit(:title, :body)
+  end
+
+  def ensure_guest_user
+    if current_customer.nickname == "ゲストユーザー"
+      redirect_to root_path
+    end
   end
 end

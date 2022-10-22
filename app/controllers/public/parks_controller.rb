@@ -2,6 +2,7 @@ class Public::ParksController < ApplicationController
   before_action :set_q, only: [:index, :search]
   before_action :authenticate_customer!, except: [:index, :show, :search, :prefecture, :prefecture_search]
   before_action :correct_customer, only: [:edit, :update, :destroy]
+  before_action :ensure_guest_user, only: [:destroy]
 
   def index
     #経度・緯度が取得できていないものは表示しない
@@ -60,11 +61,11 @@ class Public::ParksController < ApplicationController
     #緯度が空のデータは表示しない仕様
     @results = @result_parks.order(created_at: :desc).page(params[:page]).per(12)
     #@resultsから最新の投稿を取得
-    @result = @results.first
+    @result = @result_parks.first
   end
 
   def prefecture
-    
+
   end
 
   def prefecture_search
@@ -92,5 +93,11 @@ class Public::ParksController < ApplicationController
     @park = Park.find(params[:id])
     @customer = @park.customer
     redirect_to(parks_path) unless @customer == current_customer
+  end
+
+  def ensure_guest_user
+    if current_customer.nickname == "ゲストユーザー"
+      redirect_to root_path
+    end
   end
 end

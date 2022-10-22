@@ -108,6 +108,12 @@
 }
 }
 
+@media(min-width: 768px){
+  a[href^="tel:"]{
+    pointer-events: none;
+  }
+}
+
 @media screen and (max-width: 760px) {
 .form{
    width: 200px;
