@@ -63,7 +63,7 @@
   <% elsif customer_signed_in? %>
     <div class="col-sm-12 col-md-6 mt-5">
       <%= form_with model: [park, comment], local: false, class: "text-center" do |f| %>
-        <%= f.text_area :comment, class: "mb-3", placeholder: "コメントを入力" %><br>
+        <%= f.text_area :comment, class: "mb-3", placeholder: "コメントを入力(50文字まで)" %><br>
         <%= f.file_field :comment_image, class: "mb-3", accept: 'image/*' %><br>
         年齢<%= f.number_field :child_age, in: 0..15, step: 1, size: "50x5" %>歳
         月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月
