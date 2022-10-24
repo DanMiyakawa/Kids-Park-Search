@@ -33,10 +33,22 @@ class Public::CustomersController < ApplicationController
   end
 
   def favorites
+    @genres = Genre.all
     @customer = Customer.find(params[:id])
     favorites = Favorite.where(customer_id: @customer.id).pluck(:park_id)
-    @parks = Park.find(favorites)
-    @favorite_parks = Kaminari.paginate_array(@parks).page(params[:page]).per(12)
+    @parks = Park.where(id: favorites)
+    # ブックマーク内での検索
+    # キーワードでのあいまい検索
+    if params[:word]
+      @word = (params[:word])
+      @all_parks = @parks.where(['name LIKE ? OR address LIKE ?', "%#{@word}%", "%#{@word}%"])
+    # ジャンルでの検索
+    elsif params[:genre_id]
+      @all_parks = @parks.where(genre_id: params[:genre_id])
+    else
+      @all_parks = @parks
+    end
+    @favorite_parks = Kaminari.paginate_array(@all_parks).page(params[:page]).per(12)
   end
 
   private

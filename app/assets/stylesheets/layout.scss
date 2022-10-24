@@ -70,6 +70,10 @@
   margin: auto;
 }
 
+.tel-text{
+  display:none;
+}
+
 @media screen and (max-width: 991px) {
 
 .form{
@@ -109,10 +113,15 @@
 }
 
 @media(min-width: 768px){
-  a[href^="tel:"]{
+a[href^="tel:"]{
     pointer-events: none;
   }
+
+.tel-text{
+  display:inline-block;
 }
+}
+
 
 @media screen and (max-width: 760px) {
 .form{
