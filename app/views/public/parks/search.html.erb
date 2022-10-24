@@ -1,7 +1,7 @@
 <div class='container mb-5'>
-  <div class="row">
+  <div class="row mt-3">
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
-    <h2 class="col-sm-12 col-md-4 text-center mt-4">
+    <h2 class="col-sm-12 col-md-4 text-center">
       <!--検索内容をトップに表示させる表記-->
       <% if @q.address_cont == nil && @q.name_or_address_cont == nil && @q.genre_id_eq == nil %>
         <strong>全国の遊び場一覧</strong>

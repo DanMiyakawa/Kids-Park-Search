@@ -1,5 +1,4 @@
 class Public::ParksController < ApplicationController
-  before_action :set_q, only: [:index, :search]
   before_action :authenticate_customer!, except: [:index, :show, :search, :prefecture, :prefecture_search]
   before_action :correct_customer, only: [:edit, :update, :destroy]
   before_action :ensure_guest_user, only: [:destroy]
@@ -81,9 +80,6 @@ class Public::ParksController < ApplicationController
 
   private
 
-  def set_q
-    @q = Park.ransack(params[:q])
-  end
 
   def park_params
     params.require(:park).permit(:genre_id, :name, :introduction, :address, :latitude, :longitude, :phone, :start_time, :end_time, :child_age, :child_moon_age, images: [] )
