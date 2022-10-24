@@ -1,17 +1,12 @@
-<div class = "container">
-  <div class = "text-center">
-     <h2 class ="pt-5">本当に退会しますか？</h2>
-
+<div class = "text-center">
+  <h2 class ="pt-5">本当に退会しますか？</h2>
   <div class="mt-4">
-    退会すると、<strong>会員情報登録</strong>や<br>
-    これまでの<strong>購入履歴</strong>が閲覧できなくなります。
+    退会すると、<strong>同じメールアドレスでの登録</strong>や<br>
+    <strong>投稿した情報の編集・削除</strong>ができなくなります。
   </div>
   <div class="mt-2">
     退会する場合は、「退会する」をクリックしてください。
   </div>
-
-<%= link_to "退会しない", root_path, class: 'mt-4 mr-5 btn btn-success' %>
-<%= link_to "退会する", withdrawal_customers_path, method: :PATCH, data: {confirm: "本当に退会してもよろしいですか？"}, class:"mt-4 ml-5 btn btn-danger" %>
-
-</div>
+  <%= link_to "退会しない", root_path, class: 'mt-4 mr-5 btn btn-success mb-5' %>
+  <%= link_to "退会する", withdrawal_customers_path, method: :PATCH, data: {confirm: "本当に退会してもよろしいですか？"}, class:"mt-4 ml-5 btn btn-danger mb-5" %>
 </div>

@@ -1,7 +1,7 @@
 <div class="container mb-5">
-  <div class="row">
+  <div class="row mt-3">
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
-    <h2 class="col-sm-12 col-md-4 text-center mt-4"><strong><%= @park.name %></strong></h2>
+    <h2 class="col-sm-12 col-md-4 text-center"><strong><%= @park.name %></strong></h2>
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
   <div class="row">
@@ -58,7 +58,9 @@
           <% if @park.phone == "" %>
             <td>情報がありません</td>
           <% else %>
-            <td><a href="tel:<%= @park.phone %>"><%= @park.phone %></a></td>
+            <td><a href="tel:<%= @park.phone %>"><%= @park.phone %></a><br>
+            <span class="tel-text">(携帯の場合のみ、クリックで電話が可能です。)</span>
+            </td>
           <% end %>
         </tr>
         <tr>
@@ -101,6 +103,10 @@
               <%= link_to '編集する', edit_park_path(@park.id), class: "btn btn-sm btn-success mr-5" %>
               <%= link_to '削除する', park_path(@park), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
             </td>
+          <% end %>
+        <% else %>
+          <% if customer_signed_in? && current_customer.nickname != "ゲストユーザー" %>
+            <th id="park_<%= @park.id %>"><%= render 'public/favorites/favorite', park: @park %></th>
           <% end %>
         </tr>
         <% end %>
