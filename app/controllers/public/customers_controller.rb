@@ -48,7 +48,7 @@ class Public::CustomersController < ApplicationController
     else
       @all_parks = @parks
     end
-    @favorite_parks = Kaminari.paginate_array(@all_parks).page(params[:page]).per(12)
+    @favorite_parks = Kaminari.paginate_array(@all_parks.order(created_at: :desc)).page(params[:page]).per(12)
   end
 
   private
