@@ -36,7 +36,7 @@ class Public::CustomersController < ApplicationController
     @genres = Genre.all
     @customer = Customer.find(params[:id])
     favorites = Favorite.where(customer_id: @customer.id).pluck(:park_id)
-    @parks = Park.where(id: favorites)
+    @parks = Park.where(id: favorites).where.not(latitude: nil)
     # ブックマーク内での検索
     # キーワードでのあいまい検索
     if params[:word]
