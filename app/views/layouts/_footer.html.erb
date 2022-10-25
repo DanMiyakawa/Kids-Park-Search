@@ -2,9 +2,14 @@
 <footer style="width: 100%; background-color: #737373;">
   <div class="row-fluid">
     <div class="mx-auto">
-      <p class="text-center", style="color: white;"><%= image_tag "logo3.png", class: "mt-2", style: "width: 100px; height: 100px;" %><br>
+      <p class="text-center", style="color: white; margin: 0px;"><%= image_tag "logo3.png", style: "width: 100px; height: 100px;" %><br>
         Kid's Park Searchは公園や児童館など<br>
         子どもと遊ぶための場所を検索するサイトです。
+      </p>
+      <p class="text-center mt-1 mb-1", style=" margin: 0px;">
+        <%= link_to new_contact_path, style: "color: white; border-bottom: solid;" do %>
+        <i class="fas fa-envelope"></i>お問合せはこちら
+        <% end %>
       </p>
     </div>
   </div>

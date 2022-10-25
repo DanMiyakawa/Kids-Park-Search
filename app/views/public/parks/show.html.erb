@@ -58,7 +58,7 @@
           <% if @park.phone == "" %>
             <td>情報がありません</td>
           <% else %>
-            <td><a href="tel:<%= @park.phone %>"><%= @park.phone %></a><br>
+            <td><a href="tel:<%= @park.phone %>"><span class="phone"><%= @park.phone %></span></a><br>
             <span class="tel-text">(携帯の場合のみ、クリックで電話が可能です。)</span>
             </td>
           <% end %>
