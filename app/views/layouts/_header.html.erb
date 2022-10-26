@@ -11,6 +11,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+          <!--管理者のヘッダー-->
           <% if admin_signed_in? %>
             <li class="text-center">
               <%= link_to admin_path, class: 'nav-link text-light' do %>
@@ -37,6 +38,7 @@
                 <i class="fas fa-sign-out-alt", style="font-size: 30px;"></i><br>ログアウト
               <% end %>
 	          </li>
+	     <!--ゲストユーザーのヘッダー-->
           <% elsif customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
             <li class="text-center">
               <%= link_to parks_path, class: 'nav-link text-light' do %>
@@ -58,6 +60,7 @@
                 <i class="fas fa-sign-out-alt", style="font-size: 30px;"></i><br>ログアウト
               <% end %>
             </li>
+        <!--ログインユーザーのヘッダー-->
           <% elsif customer_signed_in? %>
             <li class="text-center">
               <%= link_to favorites_customer_path(current_customer), class: 'nav-link text-light' do %>
@@ -89,6 +92,7 @@
                 <i class="fas fa-sign-out-alt", style="font-size: 30px;"></i><br>ログアウト
               <% end %>
             </li>
+        <!--未ログインのヘッダー-->
           <% else %>
 	          <li class="text-center">
               <%= link_to parks_path, class: 'nav-link text-light' do %>

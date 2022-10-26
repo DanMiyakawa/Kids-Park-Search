@@ -8,12 +8,14 @@
   <% if @favorite_parks.count != 0 %>
     <div class="row mx-auto mb-2">
       <div class="col-12 text-center">
+        <!-- ジャンル検索機能 -->
         <% @genres.each do |genre| %>
           <% if @parks.where(genre_id: genre).count != 0 %>
             <%= link_to genre.name, favorites_customer_path(genre_id: genre.id), class: "btn btn-outline-secondary mr-2 mb-3" %>
           <% end %>
         <% end %>
         <%= link_to "全件表示", favorites_customer_path, class: "btn btn-outline-secondary mb-3" %>
+        <!--キーワード検索機能-->
         <%= form_with url: favorites_customer_path, local: true, method: :get, class: "col-12 text-center" do |f| %>
           <%= f.text_field :word, placeholder: "住所またはキーワードを入力", class: "form" %>
           <%= f.button :type => "submit", class: "btn btn-light btn-sm" do %>

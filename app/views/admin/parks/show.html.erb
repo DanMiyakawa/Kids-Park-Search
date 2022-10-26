@@ -1,7 +1,6 @@
 <div class="container">
   <h2 class="text-center mt-4"><strong>〜遊び場の詳しい情報〜</strong></h2>
   <div class="row">
-
     <div class="col-sm-12 col-md-12 col-lg-6 mt-5 mx-auto">
       <div class="row mx-auto">
         <% if @park.images.attached? %>
@@ -10,8 +9,7 @@
               <%= image_tag image, style: "display: block; margin: auto;  width: 120px; height: 120px;" %>
             <% end %>
           <% end %>
-        <% else %>
-        <br>
+        <% else %><br>
           <h3 class="col-12 text-center", style="vertical-align: middle;" >写真はありません</h3>
         <% end %>
       </div>
@@ -33,6 +31,7 @@
         </tr>
         <tr>
           <th>電話番号</th>
+          <!--電話番号の有無によって表示を変更-->
           <% if @park.phone == "" %>
             <td>情報がありません</td>
           <% else %>
@@ -41,6 +40,7 @@
         </tr>
         <tr>
           <th>営業時間</th>
+          <!--営業時間の情報の有無に表示を変更-->
           <% if @park.start_time == nil && @park.end_time == nil %>
             <td>情報がありません</td>
           <% elsif @park.start_time == nil %>
@@ -55,6 +55,7 @@
         </tr>
         <tr>
           <th>対象年齢</th>
+          <!--情報の有無によって表示を変更-->
           <% if @park.child_age == nil && @park.child_moon_age == nil %>
             <td>情報がありません</td>
           <% elsif @park.child_age == nil %>
@@ -65,7 +66,6 @@
             <td><%= @park.child_age %>歳 <%= @park.child_moon_age %>ヶ月</td>
           <% end %>
         </tr>
-
       </table>
       <div class="text-right mr-5 mt-3">
         <%= link_to '編集する', edit_admin_park_path(@park.id), class: "btn btn-success mr-5" %>
@@ -84,6 +84,7 @@
           <%= image_tag 'boy_03.png', size: "80" %><br>
           <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
         </th>
+        <!--コメントの写真の有無によって表示変更-->
         <% if comment.comment_image.attached? %>
           <td>
             <%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>

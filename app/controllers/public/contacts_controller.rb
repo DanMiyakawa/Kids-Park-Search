@@ -4,7 +4,7 @@ class Public::ContactsController < ApplicationController
 
   def index
     #ログイン者の問合せ内容のみ
-    @contacts = Contact.where(customer_id: current_customer.id).order(created_at: :desc).page(params[:page]).per(10)
+    @contacts = Contact.where(customer_id: current_customer.id).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def new

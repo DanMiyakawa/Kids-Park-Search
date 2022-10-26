@@ -19,7 +19,8 @@
        <strong><%= @q.address_cont %>×<%= @q.name_or_address_cont %><br>の遊び場(全<%= @result_parks.count %>件)</strong>
       <% else %>
         <strong><%= @q.address_cont %>×<%= @q.name_or_address_cont %>×<%= Genre.find(@q.genre_id_eq).name %><br>の遊び場(全<%= @result_parks.count %>件)</strong>
-      <% end %></h2>
+      <% end %>
+    </h2>
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
   <div class="row mt-4">
@@ -39,13 +40,11 @@
       <h2 class="mt-5 mb-5 text-center">該当の遊び場はありません</h2>
     </div>
   <% end %>
-  </div>
+    </div>
   <div class="row">
     <div class="col-12 mt-3"><%= paginate @results, theme: 'bootstrap-5' %></div>
   </div>
 </div>
-
-
 <!-- 検索マップを追加したため、collbackの記述を変更 -->
 <script>
   function mapShow() {
@@ -53,5 +52,4 @@
     initMap2();
   }
 </script>
-
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=mapShow"></script>
