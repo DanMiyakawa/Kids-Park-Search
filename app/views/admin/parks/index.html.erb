@@ -38,4 +38,28 @@
   <div class="row">
     <div class="col-12 mt-3"><%= paginate @parks, theme: 'bootstrap-5' %></div>
   </div>
+   <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+      <table class="table text-center", style="border: 1px solid black;">
+        <thead>
+          <tr>
+            <th class="table-active" style="border: 1px solid black;">住所が判別できない遊び場</th>
+            <th class="table-active" style="width: 35%; border: 1px solid black;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @butparks.each do |park| %>
+            <tr>
+              <td>
+                <%= park.name %>
+              </td>
+              <td>
+                <%= link_to "詳細", admin_park_path(park.id), class: "btn btn-outline-secondary text-center" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
