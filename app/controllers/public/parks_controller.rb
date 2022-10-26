@@ -6,7 +6,7 @@ class Public::ParksController < ApplicationController
   def index
     #経度・緯度が取得できていないものは表示しない
     @all_parks = Park.where.not(latitude: nil)
-    @parks = Park.where.not(latitude: nil).order(created_at: :desc).page(params[:page]).per(12)
+    @parks = @all_parks.order(created_at: :desc).page(params[:page]).per(12)
   end
 
   def show
@@ -64,7 +64,6 @@ class Public::ParksController < ApplicationController
   end
 
   def prefecture
-
   end
 
   def prefecture_search
