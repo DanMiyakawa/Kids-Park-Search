@@ -27,7 +27,10 @@
         </tr>
         <tr>
           <th>住所</th>
-          <td><%= @park.address %></td>
+          <td><%= @park.address %>
+          <% if @park.latitude == nil %>
+          <p style="color: red;">(住所が判別できない場合、一覧には表示されません)</p>
+          <% end %></td>
         </tr>
         <tr>
           <th>電話番号</th>
