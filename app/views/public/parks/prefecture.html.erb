@@ -7,71 +7,71 @@
   <div class="row">
   	<div class="col-12 text-center">
   	  <div class="mb-4">
-		<h3><i class="fas fa-map"></i> 北海道/東北</h3>
-		<!--北海道と東北のみ抽出-->
-		<% JpPrefecture::Prefecture.all.each do |ar| %>
-		  <% if ar.area == "北海道" or ar.area == "東北" %>
-	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
-	 		<% end %>
-		  <% end %>
-		<% end %>
-	  </div>
-	  <div class="mb-4">
-	  	<h3><i class="fas fa-map"></i> 関東</h3>
-	  	<% JpPrefecture::Prefecture.all.each do |ar| %>
-	  	<!--関東のみ抽出-->
-		  <% if ar.area == "関東" %>
-	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
-	 		<% end %>
-		  <% end %>
-		<% end %>
-	  </div>
-	  <div class="mb-4">
-	  	<h3><i class="fas fa-map"></i> 中部</h3>
-	  	<% JpPrefecture::Prefecture.all.each do |ar| %>
-	  	<!--中部のみ抽出-->
-		  <% if ar.area == "中部" %>
-	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
-	 		<% end %>
-		  <% end %>
-		<% end %>
-	  </div>
-	  <div class="mb-4">
-	  	<h3><i class="fas fa-map"></i> 関西</h3>
-	  	<% JpPrefecture::Prefecture.all.each do |ar| %>
-	  	<!--関西のみ抽出-->
-		  <% if ar.area == "関西" %>
-	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
-	 		<% end %>
-		  <% end %>
-		<% end %>
-	  </div>
-	  <div class="mb-4">
-	  	<h3><i class="fas fa-map"></i> 中国/四国</h3>
-	  	<% JpPrefecture::Prefecture.all.each do |ar| %>
-	  	<!--中国・四国のみ抽出-->
-		  <% if ar.area == "中国" or ar.area == "四国" %>
-	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
-	 		<% end %>
-		  <% end %>
-		<% end %>
-	  </div>
-	  <div class="mb-4">
-	  	<h3><i class="fas fa-map"></i> 九州/沖縄</h3>
-	  	<% JpPrefecture::Prefecture.all.each do |ar| %>
-	  	<!--九州・沖縄のみ抽出-->
-		  <% if ar.area == "九州" or ar.area == "沖縄" %>
-	 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
-	 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
-	 		<% end %>
-		  <% end %>
-		<% end %>
-	  </div>
-	</div>
+				<h3><i class="fas fa-map"></i> 北海道/東北</h3>
+				<!--北海道と東北のみ抽出-->
+				<% JpPrefecture::Prefecture.all.each do |ar| %>
+		  		<% if ar.area == "北海道" or ar.area == "東北" %>
+	 					<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+	 		 				<%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
+	 					<% end %>
+		 			<% end %>
+				<% end %>
+	  	</div>
+	  	<div class="mb-4">
+	  		<h3><i class="fas fa-map"></i> 関東</h3>
+	  		<% JpPrefecture::Prefecture.all.each do |ar| %>
+	  		<!--関東のみ抽出-->
+		  		<% if ar.area == "関東" %>
+	 					<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+	 		  			<%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
+	 					<% end %>
+		  		<% end %>
+				<% end %>
+	 	 	</div>
+		  <div class="mb-4">
+		  	<h3><i class="fas fa-map"></i> 中部</h3>
+		  	<% JpPrefecture::Prefecture.all.each do |ar| %>
+		 		 	<!--中部のみ抽出-->
+				  <% if ar.area == "中部" %>
+		 				<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+		 				  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
+		 				<% end %>
+			  	<% end %>
+				<% end %>
+		  </div>
+		  <div class="mb-4">
+		  	<h3><i class="fas fa-map"></i> 関西</h3>
+		  	<% JpPrefecture::Prefecture.all.each do |ar| %>
+		  	<!--関西のみ抽出-->
+			  	<% if ar.area == "関西" %>
+		 				<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+		 				  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
+		 				<% end %>
+			  	<% end %>
+				<% end %>
+		  </div>
+		  <div class="mb-4">
+		  	<h3><i class="fas fa-map"></i> 中国/四国</h3>
+		  	<% JpPrefecture::Prefecture.all.each do |ar| %>
+			  	<!--中国・四国のみ抽出-->
+				  <% if ar.area == "中国" or ar.area == "四国" %>
+				 		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+				 		  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
+				 		<% end %>
+			  	<% end %>
+				<% end %>
+		  </div>
+		  <div class="mb-4">
+		  	<h3><i class="fas fa-map"></i> 九州/沖縄</h3>
+		  	<% JpPrefecture::Prefecture.all.each do |ar| %>
+		  		<!--九州・沖縄のみ抽出-->
+				  <% if ar.area == "九州" or ar.area == "沖縄" %>
+		 				<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+		 				  <%= ar.name %>(<%= Park.where(['address LIKE ?', "%#{ar.name}%"]).count %>)
+		 				<% end %>
+			 		<% end %>
+				<% end %>
+		  </div>
+		</div>
   </div>
 </div>
