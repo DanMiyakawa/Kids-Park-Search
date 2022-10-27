@@ -2,8 +2,13 @@
 <div class="container"></div>
   <div class="row">
     <div class="col-sm-12 col-md-6 mx-auto">
-       <h2 class="text-center mt-4"><strong>〜お問い合わせ一覧〜</strong></h2>
-      <table class="table mt-4" style="border: 1px solid black;">
+      <h2 class="text-center mt-4"><strong>〜お問い合わせ一覧〜</strong></h2>
+      <div class="text-right">
+        <% Contact.statuses.keys.each do |status| %>
+          <%= link_to status, admin_path(status: status), class: "btn btn-outline-secondary" %>
+        <% end %>
+      </div>
+      <table class="table mt-1" style="border: 1px solid black;">
         <thead class="table-active">
           <tr>
             <th style="border: 1px solid black;">お問い合わせ日時</th>
