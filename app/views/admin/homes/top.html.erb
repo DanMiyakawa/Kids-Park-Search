@@ -1,7 +1,7 @@
 <p id="notice", class="text-center", style="width: 100%; background-color: green; color: white;"><%= notice %></p>
 <div class="container"></div>
-  <div class="row">
-    <div class="col-sm-12 col-md-6 mx-auto">
+  <div class="row" style="margin: 0px;">
+    <div class="col-sm-10 col-md-6 mx-auto">
       <h2 class="text-center mt-4"><strong>〜お問い合わせ一覧〜</strong></h2>
       <div class="text-right">
         <% Contact.statuses.keys.each do |status| %>
@@ -30,7 +30,7 @@
       </table>
       <div class="mt-3 mx-auto"><%= paginate @contacts, theme: 'bootstrap-5' %></div>
     </div>
-    <div class="col-sm-12 col-md-5 offset-md-1 mx-auto">
+    <div class="col-sm-10 col-md-5 mx-auto">
       <h2 class="text-center mt-4"><strong>〜住所が判別できない遊び場一覧〜</strong></h2>
       <table class="table text-center mt-4", style="border: 1px solid black;">
           <thead>
