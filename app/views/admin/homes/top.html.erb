@@ -1,31 +1,53 @@
 <p id="notice", class="text-center", style="width: 100%; background-color: green; color: white;"><%= notice %></p>
-<h2 class="text-center mt-4"><strong>〜お問い合わせ一覧〜</strong></h2>
-<div class="row-fluid">
-  <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
-    <table class="table mt-4" style="border: 1px solid black;">
-      <thead class="table-active">
-        <tr>
-          <th style="border: 1px solid black;">お問い合わせ日時</th>
-          <th style="border: 1px solid black;">タイトル</th>
-          <th style="border: 1px solid black;">問い合わせした人</th>
-          <th style="border: 1px solid black;">対応状況</th>
-          <th style="border: 1px solid black;"></th>
-        </tr>
-      </thead>
-    <% @contacts.reverse.each do |contact| %>
-      <tbody>
-        <tr>
-          <td><%= contact.created_at.strftime('%Y年%m月%d日%H時%M分') %></td>
-          <td><%= contact.title %></td>
-          <td><%= contact.customer.nickname %></td>
-          <td><%= contact.status %></td>
-          <td><%= link_to "詳細", admin_contact_path(contact), class: "btn btn-sm btn-primary" %></td>
-        </tr>
-      </tbody>
-    <% end %>
-    </table>
+<div class="container"></div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6 mx-auto">
+       <h2 class="text-center mt-4"><strong>〜お問い合わせ一覧〜</strong></h2>
+      <table class="table mt-4" style="border: 1px solid black;">
+        <thead class="table-active">
+          <tr>
+            <th style="border: 1px solid black;">お問い合わせ日時</th>
+            <th style="border: 1px solid black;">タイトル</th>
+            <th style="border: 1px solid black;">対応状況</th>
+            <th style="border: 1px solid black;"></th>
+          </tr>
+        </thead>
+      <% @contacts.reverse.each do |contact| %>
+        <tbody>
+          <tr>
+            <td><%= contact.created_at.strftime('%Y年%m月%d日%H時%M分') %></td>
+            <td><%= contact.title %></td>
+            <td><%= contact.status %></td>
+            <td><%= link_to "詳細", admin_contact_path(contact), class: "btn btn-sm btn-primary" %></td>
+          </tr>
+        </tbody>
+      <% end %>
+      </table>
+      <div class="mt-3 mx-auto"><%= paginate @contacts, theme: 'bootstrap-5' %></div>
+    </div>
+    <div class="col-sm-12 col-md-5 offset-md-1 mx-auto">
+      <h2 class="text-center mt-4"><strong>〜住所が判別できない遊び場一覧〜</strong></h2>
+      <table class="table text-center mt-4", style="border: 1px solid black;">
+          <thead>
+          <tr>
+            <th class="table-active" style="border: 1px solid black;">遊び場名</th>
+            <th class="table-active" style="width: 35%; border: 1px solid black;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @badparks.each do |park| %>
+            <tr>
+              <td>
+                <%= park.name %>
+              </td>
+              <td>
+                <%= link_to "詳細", admin_park_path(park.id), class: "btn btn-sm btn-primary text-center" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="mt-3 mx-auto"><%= paginate @badparks, theme: 'bootstrap-5' %></div>
+    </div>
   </div>
-</div>
-<div class="row-fluid">
-  <div class="col-12 mt-3"><%= paginate @contacts, theme: 'bootstrap-5' %></div>
 </div>

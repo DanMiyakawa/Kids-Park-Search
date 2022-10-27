@@ -2,6 +2,7 @@
 <h2 class="text-center mt-4"><strong>〜お問い合わせ詳細〜</strong></h2>
 <div class="row-fluid mb-5">
   <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+    <%= form_with model: @contact, url: admin_contact_path, method: :patch, local: true do |f| %>
     <table class="table", style="border: 1px solid black;" >
       <tr>
         <th class="table-active", width="20%", style="border: 1px solid black;">タイトル</th>
@@ -21,25 +22,17 @@
       </tr>
       <tr>
         <th class="table-active", style="border: 1px solid black;">対応状況</th>
-        <td><%= form_with model: @contact, url: admin_contact_path, method: :patch, local: true do |f| %>
+        <td>
           <%= f.select :status, Contact.statuses.keys %>
-          <%= f.submit "更新", class: "btn btn-success" %>
-          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th class="table-active", style="border: 1px solid black;">対応メモ</th>
+        <td><%= f.text_area :memo, placeholder: "対応メモ", style: "width:100%;" %>
+          <%= f.submit "更新", class: "btn btn-success", style: 'display: block; margin:0 0 0 auto;' %>
         </td>
       </tr>
     </table>
-    <% if @contact.memo == nil %>
-      <div class="col-3 mx-auto">
-        <%= form_with model: @contact, url: admin_contact_path, method: :patch, local: true do |f| %>
-          <%= f.text_area :memo, placeholder: "対応メモ" %>
-          <%= f.submit "更新", class: "btn btn-success", style: 'display: block; margin:0 0 0 auto;' %>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="text-center">
-        <th>対応メモ</th>:
-        <td><%= @contact.memo %></td>
-      </div>
     <% end %>
   </div>
 </div>
