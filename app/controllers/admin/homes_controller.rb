@@ -3,6 +3,7 @@ class Admin::HomesController < ApplicationController
 
   def top
     contacts = Contact.all
+    # 対応状況での検索表示
     if params[:status]
       if params[:status] == "確認中"
         @contacts = Contact.where(status: "確認中").page(params[:page]).per(10)
@@ -14,6 +15,7 @@ class Admin::HomesController < ApplicationController
     else
       @contacts = contacts.page(params[:page]).per(10)
     end
+    # 住所が判断できない公園を取得
     @badparks = Park.where(latitude: nil).order(created_at: :desc).page(params[:page]).per(8)
   end
 end
