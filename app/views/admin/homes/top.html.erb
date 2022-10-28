@@ -7,6 +7,7 @@
         <% Contact.statuses.keys.each do |status| %>
           <%= link_to status, admin_path(status: status), class: "btn btn-outline-secondary" %>
         <% end %>
+        <%= link_to "全件表示", admin_path, class: "btn btn-outline-secondary" %>
       </div>
       <table class="table mt-1" style="border: 1px solid black;">
         <thead class="table-active">
