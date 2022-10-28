@@ -3,7 +3,6 @@ class Admin::ParksController < ApplicationController
 
   def index
     @parks = Park.where.not(latitude: nil).order(created_at: :desc).page(params[:page]).per(8)
-    @badparks = Park.where(latitude: nil).order(created_at: :desc)
   end
 
   def show
