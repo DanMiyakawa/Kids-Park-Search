@@ -70,9 +70,9 @@
             <td>情報がありません</td>
           <% elsif @park.start_time == nil %>
             <td>開園時間の情報がありません<br>
-                閉園時間:<%= @park.end_time.strftime('%H:%M') %></td>
+                閉園時間　<%= @park.end_time.strftime('%H:%M') %></td>
           <% elsif @park.end_time == nil %>
-            <td>開園時間:<%= @park.start_time.strftime('%H:%M') %><br>
+            <td>開園時間　<%= @park.start_time.strftime('%H:%M') %><br>
                 閉園時間の情報がありません</td>
           <% else %>
             <td><%= @park.start_time.strftime('%H:%M') %> ~ <%= @park.end_time.strftime('%H:%M') %></td>
