@@ -54,10 +54,6 @@
 ### ログイン機能
  * gem 'devise'
 
-### デバック
- * gem 'pry-rails'
- * gem 'byebug'
-
 ### レイアウト
  * gem 'kaminari', '~> 1.2', '>= 1.2.1'
  * gem 'bootstrap5-kaminari-views', '~> 0.0.1'
@@ -77,6 +73,14 @@
 
 ### デプロイ
  * gem 'mysql2'
+
+### テスト関係
+ * gem 'pry-rails'
+ * gem 'byebug'
+ * gem 'capybara'
+ * gem 'rspec-rails'
+ * gem "factory_bot_rails"
+ * gem 'faker'
 
 ### その他
  * gem 'enam-help'
