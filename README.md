@@ -6,6 +6,7 @@
 レスポンシブ対応しているのでスマホからでもご確認いただけます。
 #### PC版
 <img width="1061" alt="PC-top" src="https://user-images.githubusercontent.com/110312863/198753770-6541ae77-91fb-4e6e-bf62-3b761413768c.png">
+
 #### スマホ版
 <img width="369" alt="phone_top" src="https://user-images.githubusercontent.com/110312863/198754134-cb00efbf-15a9-4fa6-aa81-9aeedc0d484d.png">
 
