@@ -1,0 +1,6 @@
+  <div class="col-12 mb-2">
+        <%= page_entries_info(favorite_parks) %>
+      </div>
+      <%= render "public/parks/map", parks: favorite_parks %>
+      <%= render "public/parks/api" %>
+      <div class="col-12"><%= paginate favorite_parks, theme: 'bootstrap-5' %></div>
