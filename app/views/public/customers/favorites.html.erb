@@ -11,12 +11,12 @@
         <!-- ジャンル検索機能 -->
         <% @genres.each do |genre| %>
           <% if @parks.where(genre_id: genre).count != 0 %>
-            <%= link_to genre.name, favorites_customer_path(genre_id: genre.id), class: "btn btn-outline-secondary mr-2 mb-3" %>
+            <%= link_to genre.name, favorites_customer_path(genre_id: genre.id), remote: true, class: "btn btn-outline-secondary mr-2 mb-3" %>
           <% end %>
         <% end %>
-        <%= link_to "全件表示", favorites_customer_path, class: "btn btn-outline-secondary mb-3" %>
+        <%= link_to "全件表示", favorites_customer_path, remote: true, class: "btn btn-outline-secondary mb-3" %>
         <!--キーワード検索機能-->
-        <%= form_with url: favorites_customer_path, local: true, method: :get, class: "col-12 text-center" do |f| %>
+        <%= form_with url: favorites_customer_path, method: :get, local: false, class: "col-12 text-center" do |f| %>
           <%= f.text_field :word, placeholder: "住所またはキーワードを入力", required: true, class: "form" %>
           <%= f.button :type => "submit", class: "btn btn-light btn-sm" do %>
             <i class="fa fa-search" aria-hidden="true"></i>検索
@@ -24,12 +24,8 @@
         <% end %>
       </div>
     </div>
-    <div class="row mx-auto mb-2">
-      <div class="col-12 mb-2">
-        <%= page_entries_info(@favorite_parks) %>
-      </div>
-      <%= render "public/parks/map", parks: @favorite_parks %>
-      <%= render "public/parks/api" %>
+    <div class="row mx-auto mb-2" id="search_result">
+      <%= render "public/customers/search", favorite_parks: @favorite_parks %>
     </div>
   <% else %>
     <div class="col-12 text-center">
@@ -37,7 +33,4 @@
       <%= link_to "遊び場一覧に移動する", parks_path, class: "mt-5 mb-5", style: "font-size: 30px;" %>
     </div>
   <% end %>
-  <div class="row-fluid">
-    <div class="col-12"><%= paginate @favorite_parks, theme: 'bootstrap-5' %></div>
-  </div>
 </div>
