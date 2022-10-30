@@ -74,6 +74,39 @@
   display:none;
 }
 
+.pagetop {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 15px;
+}
+.pagetop a {
+    display: block;
+    background-color: #ccc;
+    text-align: center;
+    color: #222;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+	filter:alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+.pagetop a:hover {
+    display: block;
+    background-color: #b2d1fb;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    padding:5px 10px;
+	filter:alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+}
+
+
 @media screen and (max-width: 991px) {
 
 .form{
@@ -123,6 +156,16 @@ a[href^="tel:"]{
 
 .phone{
   color: black;
+}
+
+.pagetop {
+    display: none;
+}
+.pagetop a {
+    display: none;
+}
+.pagetop a:hover {
+    display: none;
 }
 
 }
