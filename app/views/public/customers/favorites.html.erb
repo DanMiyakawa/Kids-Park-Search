@@ -17,7 +17,7 @@
         <%= link_to "全件表示", favorites_customer_path, class: "btn btn-outline-secondary mb-3" %>
         <!--キーワード検索機能-->
         <%= form_with url: favorites_customer_path, local: true, method: :get, class: "col-12 text-center" do |f| %>
-          <%= f.text_field :word, placeholder: "住所またはキーワードを入力", class: "form" %>
+          <%= f.text_field :word, placeholder: "住所またはキーワードを入力", required: true, class: "form" %>
           <%= f.button :type => "submit", class: "btn btn-light btn-sm" do %>
             <i class="fa fa-search" aria-hidden="true"></i>検索
           <% end %>
