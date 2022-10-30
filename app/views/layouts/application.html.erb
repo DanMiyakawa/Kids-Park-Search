@@ -16,21 +16,21 @@
     <%= yield %>
     <p class="pagetop"><a href="#wrap">▲</a></p>
     <script>
-$(document).ready(function() {
-  var pagetop = $('.pagetop');
-    $(window).scroll(function () {
-       if ($(this).scrollTop() > 100) {
+      $(document).ready(function() {
+        var pagetop = $('.pagetop');
+          $(window).scroll(function () {
+          if ($(this).scrollTop() > 100) {
             pagetop.fadeIn();
-       } else {
+          } else {
             pagetop.fadeOut();
             }
-       });
-       pagetop.click(function () {
-           $('body, html').animate({ scrollTop: 0 }, 500);
-              return false;
-   });
-});
-</script>
+          });
+        pagetop.click(function () {
+          $('body, html').animate({ scrollTop: 0 }, 500);
+          return false;
+        });
+      });
+    </script>
     <%= render "layouts/footer" %>
   </body>
 </html>
