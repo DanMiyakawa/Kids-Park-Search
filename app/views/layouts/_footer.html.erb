@@ -6,9 +6,11 @@
           Kid's Park Searchは公園や児童館など<br>
           子どもと遊ぶための場所を検索するサイトです。
         </p>
+        <% if customer_signed_in?  && current_customer.nickname != "ゲストユーザー" %>
         <p class="text-center mt-1 mb-1", style=" margin: 0px;">
           <%= link_to new_contact_path, style: "color: white; border-bottom: solid;" do %>
             <i class="fas fa-envelope"></i>お問合せはこちら
+          <% end %>
           <% end %>
         </p>
       </div>
