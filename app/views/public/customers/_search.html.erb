@@ -3,4 +3,4 @@
       </div>
       <%= render "public/parks/map", parks: favorite_parks %>
       <%= render "public/parks/api" %>
-      <div class="col-12"><%= paginate favorite_parks, theme: 'bootstrap-5' %></div>
+      <div class="col-12"><%= paginate favorite_parks, theme: 'bootstrap-5', remote: true %></div>

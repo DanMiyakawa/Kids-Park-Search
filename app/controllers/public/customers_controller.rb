@@ -49,6 +49,11 @@ class Public::CustomersController < ApplicationController
       @all_parks = @parks
     end
     @favorite_parks = Kaminari.paginate_array(@all_parks.order(created_at: :desc)).page(params[:page]).per(12)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private
