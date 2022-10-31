@@ -17,6 +17,11 @@ class Admin::HomesController < ApplicationController
     end
     # 住所が判断できない公園を取得
     @badparks = Park.where(latitude: nil).order(created_at: :desc).page(params[:park]).per(8)
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
 
   end
 end
