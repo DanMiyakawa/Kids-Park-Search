@@ -8,5 +8,6 @@
   <% else %>
     <div class="col-12 text-center">
       <h2 class="mt-5 mb-5">該当の遊び場はありません</h2>
+      <%= link_to "お気に入り一覧に戻る", favorites_customer_path, class: "mt-5 mb-5", style: "font-size: 30px;" %>
     </div>
   <% end %>
