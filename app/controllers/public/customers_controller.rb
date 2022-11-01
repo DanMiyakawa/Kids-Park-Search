@@ -6,7 +6,7 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @customer_count = @customer.parks.order(created_at: :desc)
-    @parks = @customer.parks.order(created_at: :desc).page(params[:page]).per(10)
+    @parks = @customer_count.page(params[:page]).per(10)
   end
 
   def edit
