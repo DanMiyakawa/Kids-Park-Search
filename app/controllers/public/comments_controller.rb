@@ -6,6 +6,7 @@ class Public::CommentsController < ApplicationController
     park = Park.find(params[:park_id])
     comment = current_customer.comments.new(comment_params)
     comment.park_id = park.id
+    comment.score = Language.get_data(comment_params[:comment]) 
     comment.save
   end
 
