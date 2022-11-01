@@ -5,7 +5,7 @@
     <span class="col-sm-12 col-md-4 text-center"><%= image_tag "tree.png" %></span>
   </div>
   <!--お気に入りの有無によって表示を変更-->
-  <% if @favorite_parks.count != 0 %>
+  <% if @favorite_parks.size != 0 %>
   <!--非同期通信化-->
     <div id="search_result">
         <%= render "public/customers/search", favorite_parks: @favorite_parks, genres: @genres, parks: @parks %>

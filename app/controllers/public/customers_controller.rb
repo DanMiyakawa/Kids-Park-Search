@@ -33,7 +33,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def favorites
-    @genres = Genre.all
+    @genres = Genre.includes(:parks)
     @customer = Customer.find(params[:id])
     favorites = Favorite.where(customer_id: @customer.id).pluck(:park_id)
     @parks = Park.where(id: favorites).where.not(latitude: nil)
