@@ -6,26 +6,9 @@
   </div>
   <!--お気に入りの有無によって表示を変更-->
   <% if @favorite_parks.count != 0 %>
-    <div class="row mx-auto mb-2">
-      <div class="col-12 text-center">
-        <!-- ジャンル検索機能 -->
-        <% @genres.each do |genre| %>
-          <% if @parks.where(genre_id: genre).count != 0 %>
-            <%= link_to genre.name, favorites_customer_path(genre_id: genre.id), remote: true, class: "btn btn-outline-secondary mr-2 mb-3" %>
-          <% end %>
-        <% end %>
-        <%= link_to "全件表示", favorites_customer_path, remote: true, class: "btn btn-outline-secondary mb-3" %>
-        <!--キーワード検索機能-->
-        <%= form_with url: favorites_customer_path, method: :get, local: false, class: "col-12 text-center" do |f| %>
-          <%= f.text_field :word, placeholder: "住所またはキーワードを入力", required: true, class: "form" %>
-          <%= f.button :type => "submit", class: "btn btn-light btn-sm" do %>
-            <i class="fa fa-search" aria-hidden="true"></i>検索
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-    <div class="row mx-auto mb-2" id="search_result">
-      <%= render "public/customers/search", favorite_parks: @favorite_parks %>
+  <!--非同期通信化-->
+    <div id="search_result">
+        <%= render "public/customers/search", favorite_parks: @favorite_parks, genres: @genres, parks: @parks %>
     </div>
   <% else %>
     <div class="col-12 text-center">
