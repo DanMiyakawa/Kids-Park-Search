@@ -30,7 +30,7 @@
               <% end %>
               <!--コメント作成者にのみ表示-->
               <% if comment.customer == current_customer %>
-                <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+                <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
               <% end %>
             </td>
             <!--コメントの画像の有無によって表示変更-->
@@ -67,7 +67,7 @@
               <% end %>
               <!--コメント作成者にのみ表示-->
               <% if comment.customer == current_customer %>
-                <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+                <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
               <% end %>
             </td>
             <!--コメントの画像の有無によって表示変更-->
@@ -104,7 +104,7 @@
               <% end %>
               <!--コメント作成者にのみ表示-->
               <% if comment.customer == current_customer %>
-                <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
+                <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
               <% end %>
             </td>
             <!--コメントの画像の有無によって表示変更-->
