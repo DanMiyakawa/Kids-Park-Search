@@ -2,9 +2,7 @@
   <div class="col-12 text-center">
     <!-- ジャンル検索機能 -->
     <% genres.each do |genre| %>
-      <% if parks.where(genre_id: genre).size != 0 %>
-        <%= link_to genre.name, favorites_customer_path(genre_id: genre.id), remote: true, class: "btn btn-outline-secondary mr-2 mb-3" %>
-      <% end %>
+      <%= link_to genre.name, favorites_customer_path(genre_id: genre.id), remote: true, class: "btn btn-outline-secondary mr-2 mb-3" %>
     <% end %>
     <%= link_to "全件表示", favorites_customer_path, remote: true, class: "btn btn-outline-secondary mb-3" %>
     <!--キーワード検索機能-->
