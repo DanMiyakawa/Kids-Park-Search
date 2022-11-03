@@ -64,6 +64,7 @@ class Public::ParksController < ApplicationController
   end
 
   def prefecture
+    @park_addresses = Park.pluck(:address)
   end
 
   def prefecture_search
