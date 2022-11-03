@@ -1,0 +1,7 @@
+<% JpPrefecture::Prefecture.all.each do |ar| %>
+	<% if ar.area == area %>
+		<%= link_to prefecture_search_parks_path(ar.name), class: "btn btn-outline-secondary" do %>
+			<%= ar.name %>(<%= park_addresses.count {|park_address| park_address.include?(ar.name) } %>)
+		<% end %>
+	<% end %>
+<% end %>
