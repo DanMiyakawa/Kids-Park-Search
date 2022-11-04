@@ -1,1 +1,3 @@
-$("#comments_area").html("<%= j(render 'public/comments/comment', park: @park, comment: @comment) %>")
+$("#comments_area").html("<%= j(render 'public/comments/comment', park: @park, comment: @comment, park_comments: @park_comments) %>")
+$('.modal-backdrop').removeClass('modal-backdrop');
+$('.modal-open').removeClass('modal-open');
