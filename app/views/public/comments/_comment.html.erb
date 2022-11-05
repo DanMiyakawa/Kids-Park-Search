@@ -6,39 +6,40 @@
     </div>
   <% elsif customer_signed_in? %>
     <div class="col-12 text-center">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#commentModal" data-whatever="@comment">コメント作成</button>
-        <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-          <div class="modal-dialog  modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="commentModalLabel">コメントを作成する</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <%= form_with model: [park, comment], local: false, class: "text-center" do |f| %>
-              <div class="modal-body">
-                <%= f.file_field :comment_image, class: "image-form text-center mb-3", accept: 'image/*', style: "border: 0.5px solid;" %><br>
-                <%= f.text_area :comment, class: "mb-3", placeholder: "コメントを入力(50文字まで)", style: "width: 80%;" %><br>
-                年齢<%= f.number_field :child_age, in: 0..15, step: 1, size: "50x5" %>歳
-                月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月
-                <p class="text-center"><span style="color: red;">※</span>コメントが未入力の場合、コメントできません。</p>
-                <div class="modal_submit">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                  <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i>投稿</button>
-                </div>
-              </div>
-              <% end %>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#commentModal" data-whatever="@comment">コメントを書く</button>
+      <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="commentModalLabel">コメントを作成する</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
             </div>
+            <%= form_with model: [park, comment], local: false, class: "text-center" do |f| %>
+            <div class="modal-body">
+              <%= f.file_field :comment_image, class: "image-form text-center mb-3", accept: 'image/*', style: "border: 0.5px solid;" %><br>
+              <%= f.text_area :comment, class: "mb-3", placeholder: "コメントを入力(50文字まで)", style: "width: 80%;" %><br>
+              年齢<%= f.number_field :child_age, in: 0..15, step: 1, size: "50x5" %>歳
+              月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月
+              <p class="text-center"><span style="color: red;">※</span>コメントが未入力の場合、コメントできません。</p>
+              <div class="modal_submit">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i>投稿</button>
+              </div>
+            </div>
+            <% end %>
           </div>
         </div>
-      <% else %>
-        <div class="col-12 mt-5 text-center">
-          <p>コメントは新規登録後、可能になります。</p>
-        </div>
-      <% end %>
-  </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="col-12 mt-2 text-center">
+      <p>コメントは新規登録後、可能になります。</p>
+    </div>
+  <% end %>
 </div>
+
 
 <div class="row justify-content-around">
     <% if @park_comments.size == 0 %>
@@ -46,7 +47,10 @@
       <p class="text-center mt-5" style="font-size: 30px;">コメントはありません</p>
     </div>
     <% else %>
+    <div id='comment-pagenate'>
       <%= render "public/comments/comment_list", park: park, comment: comment, park_comments: park_comments %>
+    </div>
+    <%= link_to_next_page park_comments, 'もっと見る', remote: true, class: 'col-4 more-link btn btn-outline-secondary mt-3', id: 'more-link' %>
     <% end %>
   </div>
 </div>

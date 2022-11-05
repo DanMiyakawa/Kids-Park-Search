@@ -12,7 +12,7 @@ class Public::ParksController < ApplicationController
   def show
     @park = Park.find(params[:id])
     @comment = Comment.new
-    @park_comments = Comment.includes(:park).where(park_id: @park).order(created_at: :desc)
+    @park_comments = Comment.includes(:park).where(park_id: @park).order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def edit

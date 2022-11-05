@@ -3,7 +3,7 @@ class Public::CommentsController < ApplicationController
   def create
     @park = Park.find(params[:park_id])
     @comment = Comment.new
-    @park_comments = Comment.includes(:park).where(park_id: @park).order(created_at: :desc)
+    @park_comments = Comment.includes(:park).where(park_id: @park).order(created_at: :desc).page(params[:page]).per(4)
     park = Park.find(params[:park_id])
     comment = current_customer.comments.new(comment_params)
     comment.park_id = park.id
@@ -14,7 +14,7 @@ class Public::CommentsController < ApplicationController
   def destroy
     @park = Park.find(params[:park_id])
     @comment = Comment.new
-    @park_comments = Comment.includes(:park).where(park_id: @park).order(created_at: :desc)
+    @park_comments = Comment.includes(:park).where(park_id: @park).order(created_at: :desc).page(params[:page]).per(4)
     Comment.find(params[:id]).destroy
   end
 

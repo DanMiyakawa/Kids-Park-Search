@@ -1,116 +1,118 @@
-      <% park_comments.each do |comment| %>
-      <div class="col-sm-12 col-md-6">
-      <% if comment.score > 0 %>
-        <table class="mt-3" style="width: 100%; background-color: #f7cf9e;">
-          <tr>
-            <th class="text-center" width="30%">
-                <%= image_tag 'boy_1.png', size: "80" %><br>
-              <!--コメント入力者の子どもの年齢入力に合わせて表示を変更-->
-              <% if comment.child_age == nil && comment.child_moon_age == nil %>
-                ?歳?ヶ月
-              <% elsif comment.child_age == nil %>
-                ?歳<%= comment.child_moon_age %>ヶ月
-              <% elsif comment.child_moon_age == nil %>
-                <%= comment.child_age %>歳
-              <% else %>
-                <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
-              <% end %>
-            </th>
-            <td>
-              <%= comment.comment %><br>
-              <%= comment.created_at.strftime('%Y年%m月%d日') %>
-              <!--ログインしていたらコメントにいいねができる仕様-->
-              <% if customer_signed_in? %>
-              <!--コメントへのいいね機能の非同期化-->
-                <span id="comment_<%= comment.id %>"><%= render "public/goods/good", park: park, comment: comment %></span>
-              <% end %>
-              <!--コメント作成者にのみ表示-->
-              <% if comment.customer == current_customer %>
-                <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
-              <% end %>
-            </td>
-            <!--コメントの画像の有無によって表示変更-->
-              <% if comment.comment_image.attached? %>
-                <td><%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>
-                  <%= image_tag comment.comment_image, :size => '80' %>
-                <% end %></td>
-              <% end %>
-          </tr>
-        </table>
-      <% elsif comment.score < 0 %>
-        <table class="mt-3" style="width: 100%; background-color: #c9f5f3;">
-          <tr>
-            <th class="text-center" width="30%">
-                <%= image_tag 'boy_2.png', size: "80" %><br>
-              <!--コメント入力者の子どもの年齢入力に合わせて表示を変更-->
-              <% if comment.child_age == nil && comment.child_moon_age == nil %>
-                ?歳?ヶ月
-              <% elsif comment.child_age == nil %>
-                ?歳<%= comment.child_moon_age %>ヶ月
-              <% elsif comment.child_moon_age == nil %>
-                <%= comment.child_age %>歳
-              <% else %>
-                <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
-              <% end %>
-            </th>
-            <td>
-              <%= comment.comment %><br>
-              <%= comment.created_at.strftime('%Y年%m月%d日') %>
-              <!--ログインしていたらコメントにいいねができる仕様-->
-              <% if customer_signed_in? %>
-              <!--コメントへのいいね機能の非同期化-->
-                <span id="comment_<%= comment.id %>"><%= render "public/goods/good", park: park, comment: comment %></span>
-              <% end %>
-              <!--コメント作成者にのみ表示-->
-              <% if comment.customer == current_customer %>
-                <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
-              <% end %>
-            </td>
-            <!--コメントの画像の有無によって表示変更-->
-              <% if comment.comment_image.attached? %>
-                <td><%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>
-                  <%= image_tag comment.comment_image, :size => '80' %>
-                <% end %></td>
-              <% end %>
-          </tr>
-        </table>
-      <% else %>
-        <table class="mt-3" style="width: 100%; background-color: white;">
-          <tr>
-            <th class="text-center" width="30%">
-                <%= image_tag 'boy_03.png', size: "80" %><br>
-              <!--コメント入力者の子どもの年齢入力に合わせて表示を変更-->
-              <% if comment.child_age == nil && comment.child_moon_age == nil %>
-                ?歳?ヶ月
-              <% elsif comment.child_age == nil %>
-                ?歳<%= comment.child_moon_age %>ヶ月
-              <% elsif comment.child_moon_age == nil %>
-                <%= comment.child_age %>歳
-              <% else %>
-                <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
-              <% end %>
-            </th>
-            <td>
-              <%= comment.comment %><br>
-              <%= comment.created_at.strftime('%Y年%m月%d日') %>
-              <!--ログインしていたらコメントにいいねができる仕様-->
-              <% if customer_signed_in? %>
-              <!--コメントへのいいね機能の非同期化-->
-                <span id="comment_<%= comment.id %>"><%= render "public/goods/good", park: park, comment: comment %></span>
-              <% end %>
-              <!--コメント作成者にのみ表示-->
-              <% if comment.customer == current_customer %>
-                <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
-              <% end %>
-            </td>
-            <!--コメントの画像の有無によって表示変更-->
-              <% if comment.comment_image.attached? %>
-                <td><%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>
-                  <%= image_tag comment.comment_image, :size => '80' %>
-                <% end %></td>
-              <% end %>
-          </tr>
-        </table>
-      <% end %>
-      </div>
-      <% end %>
+<div class="row">
+<% park_comments.each do |comment| %>
+  <div class="col-sm-12 col-md-6 list">
+    <% if comment.score > 0 %>
+      <table class="mt-3" style="width: 100%; background-color: #f7cf9e;">
+        <tr>
+          <th class="text-center" width="30%">
+              <%= image_tag 'boy_1.png', size: "80" %><br>
+            <!--コメント入力者の子どもの年齢入力に合わせて表示を変更-->
+            <% if comment.child_age == nil && comment.child_moon_age == nil %>
+              ?歳?ヶ月
+            <% elsif comment.child_age == nil %>
+              ?歳<%= comment.child_moon_age %>ヶ月
+            <% elsif comment.child_moon_age == nil %>
+              <%= comment.child_age %>歳
+            <% else %>
+              <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
+            <% end %>
+          </th>
+          <td>
+            <%= comment.comment %><br>
+            <%= comment.created_at.strftime('%Y年%m月%d日') %>
+            <!--ログインしていたらコメントにいいねができる仕様-->
+            <% if customer_signed_in? %>
+            <!--コメントへのいいね機能の非同期化-->
+              <span id="comment_<%= comment.id %>"><%= render "public/goods/good", park: park, comment: comment %></span>
+            <% end %>
+            <!--コメント作成者にのみ表示-->
+            <% if comment.customer == current_customer %>
+              <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </td>
+          <!--コメントの画像の有無によって表示変更-->
+            <% if comment.comment_image.attached? %>
+              <td><%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>
+                <%= image_tag comment.comment_image, :size => '80' %>
+              <% end %></td>
+            <% end %>
+        </tr>
+      </table>
+    <% elsif comment.score < 0 %>
+      <table class="mt-3" style="width: 100%; background-color: #c9f5f3;">
+        <tr>
+          <th class="text-center" width="30%">
+              <%= image_tag 'boy_2.png', size: "80" %><br>
+            <!--コメント入力者の子どもの年齢入力に合わせて表示を変更-->
+            <% if comment.child_age == nil && comment.child_moon_age == nil %>
+              ?歳?ヶ月
+            <% elsif comment.child_age == nil %>
+              ?歳<%= comment.child_moon_age %>ヶ月
+            <% elsif comment.child_moon_age == nil %>
+              <%= comment.child_age %>歳
+            <% else %>
+              <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
+            <% end %>
+          </th>
+          <td>
+            <%= comment.comment %><br>
+            <%= comment.created_at.strftime('%Y年%m月%d日') %>
+            <!--ログインしていたらコメントにいいねができる仕様-->
+            <% if customer_signed_in? %>
+            <!--コメントへのいいね機能の非同期化-->
+              <span id="comment_<%= comment.id %>"><%= render "public/goods/good", park: park, comment: comment %></span>
+            <% end %>
+            <!--コメント作成者にのみ表示-->
+            <% if comment.customer == current_customer %>
+              <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </td>
+          <!--コメントの画像の有無によって表示変更-->
+            <% if comment.comment_image.attached? %>
+              <td><%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>
+                <%= image_tag comment.comment_image, :size => '80' %>
+              <% end %></td>
+            <% end %>
+        </tr>
+      </table>
+    <% else %>
+      <table class="mt-3" style="width: 100%; background-color: white;">
+        <tr>
+          <th class="text-center" width="30%">
+              <%= image_tag 'boy_03.png', size: "80" %><br>
+            <!--コメント入力者の子どもの年齢入力に合わせて表示を変更-->
+            <% if comment.child_age == nil && comment.child_moon_age == nil %>
+              ?歳?ヶ月
+            <% elsif comment.child_age == nil %>
+              ?歳<%= comment.child_moon_age %>ヶ月
+            <% elsif comment.child_moon_age == nil %>
+              <%= comment.child_age %>歳
+            <% else %>
+              <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
+            <% end %>
+          </th>
+          <td>
+            <%= comment.comment %><br>
+            <%= comment.created_at.strftime('%Y年%m月%d日') %>
+            <!--ログインしていたらコメントにいいねができる仕様-->
+            <% if customer_signed_in? %>
+            <!--コメントへのいいね機能の非同期化-->
+              <span id="comment_<%= comment.id %>"><%= render "public/goods/good", park: park, comment: comment %></span>
+            <% end %>
+            <!--コメント作成者にのみ表示-->
+            <% if comment.customer == current_customer %>
+              <%= link_to "削除", park_comment_path(comment.park, comment), method: :delete, data: { confirm: '本当に消しますか？' }, remote: true, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </td>
+          <!--コメントの画像の有無によって表示変更-->
+            <% if comment.comment_image.attached? %>
+              <td><%= link_to comment.comment_image, "data-lightbox": comment.comment_image do %>
+                <%= image_tag comment.comment_image, :size => '80' %>
+              <% end %></td>
+            <% end %>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+<% end %>
+</div>
