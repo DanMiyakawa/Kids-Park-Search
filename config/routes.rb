@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '' => 'homes#top'
-    resources :genres, only: [:index, :create, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :customers, only: [:index, :show, :update]
     resources :contacts, only: [:show, :update]
     resources :parks, only: [:index, :show, :edit, :update, :destroy] do
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
         get '/prefecture' => "parks#prefecture"
         get '/prefecture/:name' => "parks#prefecture_search", as: 'prefecture_search'
       end
-      resources :comments, only: [:create, :destroy] do
+      resources :comments, only: [:create, :destroy, :index, :show] do
         resource :goods, only: [:create, :destroy]
       end
       resource :favorites, only: [:create, :destroy]
