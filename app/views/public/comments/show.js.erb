@@ -1,4 +1,4 @@
 $('#comment-pagenate').append("<%= escape_javascript( render "public/comments/comment_list", park: @park, comment: @comment, park_comments: @park_comments) %>")
 $("#more-link").replaceWith("<%= escape_javascript(
-  link_to_next_page(@park_comments, 'もっと見る', remote: true, class: 'col-4 ore-link btn btn-outline-secondary mt-3', id: 'more-link')
+  link_to_next_page(@park_comments, 'もっと見る', remote: true, class: 'more-link btn btn-outline-secondary mt-3', id: 'more-link')
 ) %>");
