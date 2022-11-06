@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 2022_11_01_043141) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer "customer_id"
-    t.string "title"
-    t.text "body"
+    t.integer "title", default: 0, null: false
+    t.text "body", null: false
     t.text "memo"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
