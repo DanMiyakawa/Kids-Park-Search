@@ -15,9 +15,10 @@
         </div>
         <!-- 問い合わせフォーム -->
         <%= form_with model:@contact, local:true do |f| %>
+        <div class="text-center">
           <div class="field">
-            <%= f.label "タイトル" %>
-            <%= f.text_field :title, class: 'form-control title', placeholder: "タイトルを入力" %>
+            <%= f.label "タイトル" %><br>
+            <%= f.select :title, Contact.titles.keys %>
           </div>
           <div class="field">
             <%= f.label "内容" %>
@@ -26,6 +27,7 @@
           <div class="actions mb-5">
             <%= f.submit "送信", class: "btn btn-primary", style: 'display: block; margin:0 0 0 auto;' %>
           </div>
+        </div>
         <% end %>
       </div>
     </div>

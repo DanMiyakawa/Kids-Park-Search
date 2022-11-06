@@ -81,9 +81,9 @@
 <div class="row justify-content-around">
   <% @park.comments.each do |comment| %>
   <div class="col-sm-12 col-md-6">
-    <table class="mx-auto">
+    <table class="mt-3 mx-auto" style="width: 100%;">
      <tr>
-       <th>
+       <th class="text-center" width="30%">
          <%= image_tag 'boy_03.png', size: "80" %><br>
          <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
        </th>
