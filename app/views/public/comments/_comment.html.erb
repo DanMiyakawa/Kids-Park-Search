@@ -39,18 +39,15 @@
     </div>
   <% end %>
 </div>
-
-
-<div class="row justify-content-around">
-    <% if park_comments.size == 0 %>
+  <% if park_comments.size == 0 %>
     <div class="col-12">
       <p class="text-center mt-5" style="font-size: 30px;">コメントはありません</p>
     </div>
-    <% else %>
+  <% else %>
     <div id='comment-pagenate'>
       <%= render "public/comments/comment_list", park: park, comment: comment, park_comments: park_comments %>
     </div>
-    <%= link_to_next_page park_comments, 'もっと見る', remote: true, class: 'col-4 more-link btn btn-outline-secondary mt-3', id: 'more-link' %>
-    <% end %>
-  </div>
-</div>
+    <div class="col-12 text-center">
+      <%= link_to_next_page park_comments, 'もっと見る', remote: true, class: 'more-link btn btn-outline-secondary mt-3', id: 'more-link' %>
+    </div>
+  <% end %>
