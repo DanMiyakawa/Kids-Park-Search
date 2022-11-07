@@ -18,7 +18,7 @@
             <% end %>
           </th>
           <td>
-            <%= comment.comment %><br>
+            <%= safe_join(comment.comment.split("\n"),tag(:br)) %><br>
             <%= comment.created_at.strftime('%Y年%m月%d日') %>
             <!--ログインしていたらコメントにいいねができる仕様-->
             <% if customer_signed_in? %>
@@ -55,7 +55,7 @@
             <% end %>
           </th>
           <td>
-            <%= comment.comment %><br>
+            <%= safe_join(comment.comment.split("\n"),tag(:br)) %><br>
             <%= comment.created_at.strftime('%Y年%m月%d日') %>
             <!--ログインしていたらコメントにいいねができる仕様-->
             <% if customer_signed_in? %>
@@ -92,7 +92,7 @@
             <% end %>
           </th>
           <td>
-            <%= comment.comment %><br>
+            <%= safe_join(comment.comment.split("\n"),tag(:br)) %><br>
             <%= comment.created_at.strftime('%Y年%m月%d日') %>
             <!--ログインしていたらコメントにいいねができる仕様-->
             <% if customer_signed_in? %>
