@@ -1,11 +1,11 @@
 class CreateParks < ActiveRecord::Migration[6.1]
   def change
     create_table :parks do |t|
-      t.integer :genre_id
-      t.integer :customer_id
-      t.string :name
-      t.text :introduction
-      t.string :address
+      t.integer :genre_id, null: false
+      t.integer :customer_id, null: false
+      t.string :name, null: false
+      t.text :introduction, null: false
+      t.string :address, null: false
       t.string :phone
       t.time :start_time
       t.time :end_time
