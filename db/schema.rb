@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2022_10_09_001817) do
     t.integer "park_id", null: false
     t.integer "child_age"
     t.integer "child_moon_age"
+    t.decimal "score", precision: 5, scale: 3
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
