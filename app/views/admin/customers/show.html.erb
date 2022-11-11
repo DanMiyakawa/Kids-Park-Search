@@ -1,19 +1,42 @@
 <h2 class="text-center mt-4"><strong>〜会員詳細〜</strong></h2>
-<div class="row-fluid mb-5">
-  <div class="col-sm-12 col-md-8 col-lg-5 mx-auto">
-    <h3 class="text-center"><%= @customer.nickname %></h3>
-    <div style="text-align: center">
-      <%= image_tag @customer.get_profile_image, size:'200x200', style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover;" %>
+<div class="container">
+  <div class="row mb-5">
+    <div class="col-md-12 col-lg-5 mx-auto">
+      <h3 class="text-center"><%= @customer.nickname %></h3>
+      <div style="text-align: center">
+        <%= image_tag @customer.get_profile_image, size:'200x200', style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover;" %>
+      </div>
+      <p class="text-center"><%= @customer.email %></p>
+      <%= form_with model: @customer, url: admin_customer_path, method: :patch, local: true do |f| %>
+        <div class="text-center">
+          <td><%= f.radio_button :is_deleted, false, checked: true %>有効</td>
+          <td><%= f.radio_button :is_deleted, true %>退会</td>
+        </div>
+        <div class="actions mt-3 text-center">
+          <%= f.submit "変更を保存", class: "btn btn-success mt-2" %>
+        </div>
+      <% end %>
     </div>
-    <p class="text-center"><%= @customer.email %></p>
-    <%= form_with model: @customer, url: admin_customer_path, method: :patch, local: true do |f| %>
-      <div class="text-center">
-        <td><%= f.radio_button :is_deleted, false, checked: true %>有効</td>
-        <td><%= f.radio_button :is_deleted, true %>退会</td>
-      </div>
-      <div class="actions mt-3 text-center">
-        <%= f.submit "変更を保存", class: "btn btn-success mt-2" %>
-      </div>
-    <% end %>
+    <div class="col-md-10 col-lg-6 offset-1">
+      <h3 class="text-center mt-3">過去に投稿した遊び場(全<%= @customer_count.count %>件)</h3>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th width="50%">遊び場名</th>
+            <th>住所</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @parks.each do |park| %>
+          <tr>
+            <td><%= link_to park.name, park_path(park.id), 'data-turbolinks': false %></td>
+            <td><%= park.address %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <div class="col-6 offset-1 mt-3"><%= paginate @parks, theme: 'bootstrap-5' %></div>
+    </div>
   </div>
 </div>
