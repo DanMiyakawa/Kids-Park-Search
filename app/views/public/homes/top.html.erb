@@ -1,8 +1,6 @@
 <div class="conteiner-fluid">
   <!--ゲストユーザーにのみ表示-->
-  <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
-    <h3 class="text-center">ゲストユーザーは、遊び場の投稿ができるようになります。</h3>
-  <% end %>
+  <%= render "public/homes/message" %>
   <div class="row-fluid">
     <div class="top col-12">
       <%= image_tag "top.png", class: "top_image" %>
