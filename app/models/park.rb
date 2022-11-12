@@ -11,7 +11,7 @@ class Park < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
   validates :name, presence: true
-  validates :introduction, presence: true, length: { maximum: 200 }
+  validates :introduction, presence: true, length: { maximum: 300 }
   validates :address, presence: true
 
   def favorited_by?(customer)
