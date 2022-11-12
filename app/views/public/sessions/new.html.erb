@@ -1,5 +1,8 @@
 <div class="container">
- <h2 class="text-center mt-4"><strong>ログイン</strong></h2>
+  <h2 class="text-center mt-4"><strong>ログイン</strong></h2>
+  <% if flash[:alert] %>
+    <div class="flash alert alert-danger text-center"><%= flash[:alert] %></div>
+  <% end %>
   <div class="row">
     <div class="col-5 px-0 mx-auto">
 
