@@ -13,7 +13,9 @@
   <% else %>
     <div class="col-12 text-center">
       <h2 class="mt-5 mb-5">お気に入りの遊び場はありません</h2>
-      <%= link_to "遊び場一覧に移動する", parks_path, class: "mt-5 mb-5", style: "font-size: 30px;" %>
+      <%= link_to  parks_path do %>
+        <h3 class="mt-5 mb-5">遊び場一覧に移動する</h3>
+      <% end %>
     </div>
   <% end %>
 </div>
