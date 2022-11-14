@@ -182,13 +182,15 @@ a[href^="tel:"]{
 }
 
 .main1{
-  width: 220px;
+  width: 300px;
   height: 170px;
-  position:absolute; top:5%; left:5%;
+  position:absolute; top:50%; left:50%;
   color:#FFF;
   background-color:rgba(0,0,0,0.3);
   border-radius:30px;
   font-size: 13px;
+  margin-top: -85px;
+  margin-left: -150px;
 }
 
 .main2{

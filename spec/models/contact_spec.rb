@@ -14,14 +14,6 @@ RSpec.describe "Contactモデルのテスト", type: :model do
         contact.title = ""
         is_expected.to eq false
       end
-      it "20文字以内であること:20文字は○" do
-        contact.title = Faker::Lorem.characters(number: 20)
-        is_expected.to eq true
-      end
-      it "20文字以内であること:21文字は×" do
-        contact.title = Faker::Lorem.characters(number: 21)
-        is_expected.to eq false
-      end
     end
 
     context "bodyカラム" do
@@ -29,12 +21,12 @@ RSpec.describe "Contactモデルのテスト", type: :model do
         contact.body = ""
         is_expected.to eq false
       end
-      it "100文字以内であること:100文字は○" do
-        contact.body = Faker::Lorem.characters(number: 100)
+      it "200文字以内であること:200文字は○" do
+        contact.body = Faker::Lorem.characters(number: 200)
         is_expected.to eq true
       end
       it "200文字以内であること:201文字は×" do
-        contact.body = Faker::Lorem.characters(number: 101)
+        contact.body = Faker::Lorem.characters(number: 201)
         is_expected.to eq false
       end
     end

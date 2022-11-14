@@ -15,12 +15,12 @@ RSpec.describe "Commentモデルのテスト", type: :model do
         comment.comment = ""
         is_expected.to eq false
       end
-      it "50文字以内であること:50文字は○" do
-        comment.comment = Faker::Lorem.characters(number: 50)
+      it "50文字以内であること:100文字は○" do
+        comment.comment = Faker::Lorem.characters(number: 100)
         is_expected.to eq true
       end
-      it "50文字以内であること:51文字は×" do
-        comment.comment = Faker::Lorem.characters(number: 51)
+      it "50文字以内であること:101文字は×" do
+        comment.comment = Faker::Lorem.characters(number: 101)
         is_expected.to eq false
       end
     end
