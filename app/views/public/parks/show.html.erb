@@ -28,7 +28,7 @@
         <% if @park.images.attached? %>
           <% @park.images.each do |image| %>
             <%= link_to image, "data-lightbox" => image, "data-lightbox" => "group", class: "col-4 mt-3" do %>
-              <%= image_tag image, style: "display: block; margin: auto;  width: 100px; height: 80px;" %>
+              <%= image_tag image, style: "display: block; margin: auto;  width: 100px; height: 100px;" %>
             <% end %>
           <% end %>
         <% else %>
