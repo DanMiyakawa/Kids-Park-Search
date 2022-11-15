@@ -1,14 +1,18 @@
 # Kid's Park Search
 
-## サイト概要
-子どもの遊び場を共有できるコミュニティサイト
-
-レスポンシブ対応しているのでスマホからでもご確認いただけます。
+## サイトイメージ
 #### PC版
 <img width="1061" alt="PC-top" src="https://user-images.githubusercontent.com/110312863/198753770-6541ae77-91fb-4e6e-bf62-3b761413768c.png">
 
 #### スマホ版
 <img width="369" alt="phone_top" src="https://user-images.githubusercontent.com/110312863/198754134-cb00efbf-15a9-4fa6-aa81-9aeedc0d484d.png">
+
+URL: https://kids-park-search.com/
+
+## サイト概要
+子どもの遊び場を共有できるコミュニティサイト
+
+レスポンシブ対応しているのでスマホからでもご確認いただけます。
 
 ### サイトテーマ
 子どもの遊び場が減っている現代に年齢や月齢に合わせて地域の遊び場を検索、共有することができるコミュニティサイト。
