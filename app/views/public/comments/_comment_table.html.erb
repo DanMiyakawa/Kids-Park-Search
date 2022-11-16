@@ -21,7 +21,9 @@
       <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
     <% end %>
   </td>
-  <td></td>
+  <% if comment.comment_image.attached? %>
+    <td></td>
+  <% end %>
   <td class="text-right">
       <%= comment.created_at.strftime('%Y年%m月%d日') %>
     <!--ログインしていたらコメントにいいねができる仕様-->
