@@ -4,7 +4,7 @@
     <h2 class="col-sm-12 col-md-4 text-center">
       <!--検索内容をトップに表示させる表記-->
       <% if @q.address_cont == nil && @q.name_or_address_cont == nil && @q.genre_id_eq == nil %>
-        <strong>全国の遊び場一覧</strong>
+        <strong>全て<br>の遊び場(全<%= @result_parks.count %>件)</strong>
       <% elsif @q.address_cont == nil && @q.name_or_address_cont == nil %>
         <strong><%= Genre.find(@q.genre_id_eq).name %><br>の遊び場(全<%= @result_parks.count %>件)</strong>
       <% elsif @q.address_cont == nil && @q.genre_id_eq == nil %>
