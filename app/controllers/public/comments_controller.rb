@@ -9,8 +9,7 @@ class Public::CommentsController < ApplicationController
     comment = current_customer.comments.new(comment_params)
     comment.park_id = park.id
     comment.score = Language.get_data(comment_params[:comment])
-    if comment.save
-    else
+    unless comment.save
       flash.now[:alert] = "投稿に失敗しました。"
     end
   end
