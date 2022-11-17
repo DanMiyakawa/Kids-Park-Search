@@ -1,8 +1,8 @@
 <% parks.each_with_index do |park,i| %>
-<div class="text-center mb-5 mx-auto">
-  <%= link_to park_path(park.id), 'data-turbolinks': false, class: "map-link" do %>
+<div class="map-link text-center mb-5 mx-auto">
+  <%= link_to park_path(park.id), 'data-turbolinks': false, style: "text-decoration: none;" do %>
     <div id="map<%= i %>" date-lat="<%= park.latitude %>" date-lng="<%= park.longitude %>" class="map"></div>
-    <div class="map-text bg-white text-truncate"><%= park.name %></div>
+    <div class="map-text text-truncate"><%= park.name %></div>
   <% end %>
 </div>
 <% end %>
