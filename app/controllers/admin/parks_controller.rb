@@ -2,7 +2,7 @@ class Admin::ParksController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @parks = Park.where.not(latitude: nil).order(created_at: :desc).page(params[:page]).per(8)
+    @parks = Park.where.not("latitude = ? or longitude = ?", "nil", "nil").order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show
