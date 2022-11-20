@@ -5,7 +5,7 @@ class Public::ParksController < ApplicationController
 
   def index
     #経度・緯度が取得できていないものは表示しない
-    @all_parks = Park.where.not(latitude: nil)
+    @all_parks = Park.where.not("latitude = ? or longitude = ?", "nil", "nil")
     @parks = @all_parks.order(created_at: :desc).page(params[:page]).per(12)
   end
 
@@ -57,7 +57,7 @@ class Public::ParksController < ApplicationController
   end
 
   def search
-    @result_parks = @q.result.where.not(latitude: nil)
+    @result_parks = @q.result.where.not("latitude = ? or longitude = ?", "nil", "nil")
     #緯度が空のデータは表示しない仕様
     @results = @result_parks.order(created_at: :desc).page(params[:page]).per(12)
     #@resultsから最新の投稿を取得
