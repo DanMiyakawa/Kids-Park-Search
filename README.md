@@ -40,7 +40,7 @@ URL: https://kids-park-search.com/
 
 ## 設計書
 
-[ER図](https://app.diagrams.net/#G15gIi581iMAllGybAb8qbwm_mBV_Sh6I8)
+[ER図](https://user-images.githubusercontent.com/110312863/202975102-0aa6c7f9-c342-4a00-8e9c-872e25450825.jpg)
 
 [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1H_9ljrj8AheMexKkDozxxWHkoTXMl2If-lthdds6YLU/edit#gid=549108681)
 
