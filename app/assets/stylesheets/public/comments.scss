@@ -1,3 +1,35 @@
 // Place all the styles related to the public/comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.image-form{
+  border: 0.5px solid;
+}
+
+.text-form{
+  width: 80%;
+}
+
+.check{
+  color: red;
+}
+
+.no-comment-text{
+  font-size: 30px;
+}
+
+.plus-comment{
+  width: 100%;
+  background-color: #f7cf9e;
+}
+
+.minus-comment{
+  width: 100%;
+  background-color: #c9f5f3;
+}
+
+.nomal-comment{
+  width: 100%;
+  background-color: white;
+}
+

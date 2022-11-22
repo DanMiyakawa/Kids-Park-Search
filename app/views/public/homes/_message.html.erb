@@ -1,5 +1,5 @@
 <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
-  <div class="alert alert-danger text-center" role="alert" style="margin: 0;">
+  <div class="gust-message alert alert-danger text-center" role="alert">
     ゲストユーザーは、遊び場の投稿と編集のみ可能です。
   </div>
 <% end %>

@@ -6,7 +6,7 @@
   </div>
   <div class="row mb-3">
     <div class="col-md-12 col-lg-4 mt-5">
-      <%= image_tag @customer.get_profile_image, size:'200x200', class: "mx-auto", style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover; display: block; margin: auto;" %>
+      <%= image_tag @customer.get_profile_image, size:'200x200', class: "profile-image mx-auto"%>
       <table class="table table-borderless">
         <tr>
           <th>ニックネーム</th><td><%= @customer.nickname %></td>

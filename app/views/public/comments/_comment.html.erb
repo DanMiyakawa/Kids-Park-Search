@@ -21,11 +21,11 @@
             </div>
             <%= form_with model: [park, comment], local: false, class: "text-center" do |f| %>
             <div class="modal-body">
-              <%= f.file_field :comment_image, class: "image-form text-center mb-3", accept: 'image/*', style: "border: 0.5px solid;" %><br>
-              <%= f.text_area :comment, class: "mb-3", placeholder: "コメントを入力(100文字まで)", style: "width: 80%;" %><br>
+              <%= f.file_field :comment_image, class: "image-form text-center mb-3", accept: 'image/*' %><br>
+              <%= f.text_area :comment, class: "text-form mb-3", placeholder: "コメントを入力(100文字まで)" %><br>
               年齢<%= f.number_field :child_age, in: 0..15, step: 1, size: "50x5" %>歳
               月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月
-              <p class="text-center"><span style="color: red;">※</span>コメントが未入力の場合、コメントできません。</p>
+              <p class="text-center"><span class="check">※</span>コメントが未入力の場合、コメントできません。</p>
               <div class="modal_submit">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
                 <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i>投稿</button>
@@ -44,7 +44,7 @@
 </div>
   <% if park_comments.size == 0 %>
     <div class="col-12">
-      <p class="text-center mt-5" style="font-size: 30px;">コメントはありません</p>
+      <p class="no-comment-text text-center mt-5">コメントはありません</p>
     </div>
   <% else %>
     <div id='comment-pagenate'>
