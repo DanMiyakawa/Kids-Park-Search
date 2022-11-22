@@ -1,6 +1,31 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.top-icon{
+  color: #69b9cf;
+}
+
+.image1{
+  display: block;
+  margin: auto;
+  width: auto;
+  height: 250px;
+}
+
+.image2{
+   display: block;
+   margin: auto;
+   width: auto;
+   height: 220px;
+}
+
+.image3{
+  display: block;
+  margin: auto;
+  width: auto;
+  height: 200px;
+}
+
 .three_elements{
     display: flex;
     justify-content: space-between;

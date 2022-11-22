@@ -24,13 +24,13 @@
 </div>
 <% unless customer_signed_in? %>
 <div class="conteiner mt-4 mb-5">
-  <h3 class="text-center"><i class="fa fa-map-marker" style="color: #69b9cf;" aria-hidden="true"></i> 当サイトをご利用頂くにあたって</h3>
+  <h3 class="text-center"><i class="top-icon fa fa-map-marker" aria-hidden="true"></i> 当サイトをご利用頂くにあたって</h3>
   <p class="text-center">Kid's Park Searchは、ログイン状況によって使用できるサービスが変わります。<br>
   自分に合った使い方で遊び場を探してみて下さい。</p>
   <div class="three_elements">
     <div class="element text-center bg-white mt-2">
       <h4 class="mt-3">未ログイン時</h4>
-      <%= image_tag "look.png", style: "display: block; margin: auto; width: auto; height: 250px;" %><br>
+      <%= image_tag "look.png", class: "image1" %><br>
       <p>遊び場の閲覧</p>
       <p>遊び場の検索</p>
       <%= link_to parks_path, class: "text-center" do %>
@@ -39,7 +39,7 @@
     </div>
     <div class="element text-center bg-white mt-2">
       <h4 class="mt-3">ゲスト時</h4>
-      <%= image_tag "create.png", style: "display: block; margin: auto; width: auto; height: 220px;" %><br>
+      <%= image_tag "create.png", class: "image2" %><br>
       <p>未ログイン時の機能
       <br>+
       <br>遊び場の投稿・編集
@@ -50,7 +50,7 @@
     </div>
     <div class="element text-center bg-white mt-2">
       <h4 class="mt-3">ログイン時</h4>
-      <%= image_tag "comment.png", style: "display: block; margin: auto; width: auto; height: 200px;" %><br>
+      <%= image_tag "comment.png", class: "image3" %><br>
       <p>ゲストユーザーの機能
       <br>＋
       <br>投稿の削除

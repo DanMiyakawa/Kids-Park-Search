@@ -14,7 +14,7 @@
           <%= link_to "お問い合わせ一覧へ", contacts_path %>
         </div>
         <!-- 問い合わせフォーム -->
-        <%= form_with model:@contact, local:true do |f| %>
+        <%= form_with model: @contact, local:true do |f| %>
         <div class="text-center">
           <div class="field">
             <%= f.label "タイトル" %><br>
@@ -25,7 +25,7 @@
             <%= f.text_area :body, class: 'form-control body', placeholder: "お問い合わせ内容を入力(200文字まで)" %>
           </div><br>
           <div class="actions mb-5">
-            <%= f.submit "送信", class: "btn btn-primary", style: 'display: block; margin:0 0 0 auto;' %>
+            <%= f.submit "送信", class: "contact-btn btn btn-primary" %>
           </div>
         </div>
         <% end %>
