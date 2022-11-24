@@ -37,7 +37,7 @@ class Admin::ParksController < ApplicationController
   end
 
   def search
-    @results = @q.result.order(created_at: :desc).page(params[:page]).per(8)
+    @results = @q.result.where.not("latitude = ? or longitude = ?", "nil", "nil").order(created_at: :desc).page(params[:page]).per(8)
   end
 
   private

@@ -1,6 +1,6 @@
 <% if obj.errors.any? %>
   <div id="error_explanation"  class="flash alert alert-danger text-center">
-    <h4 style="color: red;"><%= obj.errors.count %>件のエラーがあります。</h4>
+    <h4 class="check"><%= obj.errors.count %>件のエラーがあります。</h4>
     <% obj.errors.full_messages.each do |message| %>
       <h6><%= message %></h6>
     <% end %>

@@ -3,8 +3,8 @@
   <div class="row mb-5">
     <div class="col-md-12 col-lg-5 mx-auto">
       <h3 class="text-center"><%= @customer.nickname %></h3>
-      <div style="text-align: center">
-        <%= image_tag @customer.get_profile_image, size:'200x200', style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover;" %>
+      <div>
+        <%= image_tag @customer.get_profile_image, class: "profile-image" %>
       </div>
       <p class="text-center"><%= @customer.email %></p>
       <%= form_with model: @customer, url: admin_customer_path, method: :patch, local: true do |f| %>
