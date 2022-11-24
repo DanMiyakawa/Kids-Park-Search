@@ -2,9 +2,9 @@
   <h2 class="text-center mt-4"><strong>〜遊び場一覧〜</strong></h2>
   <div class="row mt-4 mb-5">
     <%= search_form_for @q, url: search_admin_parks_path, class: "mx-auto" do |f| %>
-      <%= f.collection_select :address_cont, JpPrefecture::Prefecture.all, :name, :name, { prompt: '都道府県を選択' } %> ×
+      <%= f.collection_select :address_cont, JpPrefecture::Prefecture.all, :name, :name, { prompt: "都道府県を選択", include_blank: "選択を解除" } %> ×
       <%= f.search_field :name_or_address_cont, placeholder: "住所またはキーワードを入力", size: "50×5" %> ×
-      <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, { prompt: 'ジャンルを検索' } %>
+      <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, { prompt: "ジャンルを検索", include_blank: "選択を解除" } %>
       <%= f.submit '検索' %>
     <% end %>
   </div>
