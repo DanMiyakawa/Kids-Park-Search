@@ -8,13 +8,13 @@
       <%= form_with model: @park, url: admin_park_path, method: :patch do |f| %>
         <table class="table table-borderless pl-5">
           <tr>
-            <th style="width: 30%;">遊び場の画像</th>
+            <th width="30%">遊び場の画像</th>
             <td>
               <% if @park.images.attached? %>
               <p>投稿済みの画像（削除する画像にチェックをつけてください）</p>
-              <div style="display: flex; flex-wrap: wrap;">
+              <div class="park-image-form">
                 <% @park.images.each do |image| %>
-                <div style="display: flex; margin:5px 5px 5px 0;">
+                <div class="park-image-form2">
                   <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
                   <label for="park_image_ids_<%= image.id %>" >
                     <%= image_tag image, size: '100' %>

@@ -24,6 +24,39 @@
   font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN',sans-serif;
 }
 
+header{
+  width: 100%;
+  background-color: #a8c8f0;
+}
+
+.header-icon{
+  font-size: 25px;
+}
+
+body{
+  background-color: #EEEEEE;
+}
+
+footer{
+   width: 100%;
+   background-color: #737373;
+}
+
+.footer-text{
+  color: white;
+  margin: 0px;
+}
+
+.footer-link{
+  color: white;
+  border-bottom: solid;
+}
+
+.login-btn{
+  display: block;
+  margin:0 0 0 auto;
+}
+
 .gust-message{
   margin: 0;
 }
