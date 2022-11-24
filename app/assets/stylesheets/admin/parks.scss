@@ -1,3 +1,20 @@
 // Place all the styles related to the admin/parks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.park-image-form{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.park-image-form2{
+  display: flex;
+  margin:5px 5px 5px 0;
+}
+
+.admin-park-image{
+  display: block;
+  margin: auto;
+  width: 120px;
+  height: 120px;
+}

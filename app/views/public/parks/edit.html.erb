@@ -17,15 +17,15 @@
               <!--投稿画像の削除の-->
               <% if @park.images.attached? %>
               <p>投稿済みの画像（削除する画像にチェックをつけてください）</p>
-              <div style="display: flex; flex-wrap: wrap;">
+              <div class="park-image-form">
                 <% @park.images.each do |image| %>
-                <div style="display: flex; margin:5px 5px 5px 0;">
+                <div class="park-image-form2">
                   <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
-                  <label for="park_image_ids_<%= image.id %>">
-                  <%= image_tag image, size: '100' %>
+                  <label for="park_image_ids_<%= image.id %>" >
+                    <%= image_tag image, size: '100' %>
                   </label>
                 </div>
-              <% end %>
+                <% end %>
               </div>
               <% end %><br>
             <%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %>

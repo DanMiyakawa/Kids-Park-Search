@@ -1,6 +1,6 @@
 <div class='container'>
   <h2 class="text-center mt-4"><strong>〜遊び場一覧〜</strong></h2>
-  <div class="row mt-4">
+  <div class="row mt-4 mb-5">
     <%= search_form_for @q, url: search_admin_parks_path, class: "mx-auto" do |f| %>
       <%= f.collection_select :address_cont, JpPrefecture::Prefecture.all, :name, :name, { prompt: '都道府県を選択' } %> ×
       <%= f.search_field :name_or_address_cont, placeholder: "住所またはキーワードを入力", size: "50×5" %> ×
@@ -10,10 +10,12 @@
   </div>
   <div class="row mx-auto">
     <% @parks.each_with_index do |park,i| %>
-      <%= link_to admin_park_path(park.id), 'data-turbolinks': false, class: "col-sm-12 col-md-6 col-lg-4 col-xl-3  text-center text-dark text-nowrap mt-5" do %>
-        <div id="map<%= i %>" date-lat="<%= park.latitude %>" date-lng="<%= park.longitude %>" style='border-top-left-radius: 10%; border-top-right-radius: 10%; width: 250px; height: 250px; display: block; margin: auto;'></div>
-        <div class="bg-white text-truncate", style="width: 250px; height: 50px; border-bottom-left-radius: 50%; border-bottom-right-radius: 50%; display: block; margin: auto;"><%= park.name %></div>
+    <div class="map-link text-center mb-5 mx-auto">
+      <%= link_to admin_park_path(park.id), 'data-turbolinks': false, class: "map-link2" do %>
+        <div id="map<%= i %>" date-lat="<%= park.latitude %>" date-lng="<%= park.longitude %>" class="map"></div>
+        <div class="map-text text-truncate"><%= park.name %></div>
       <% end %>
+    </div>
     <% end %>
   </div>
   <div class="row">

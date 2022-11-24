@@ -3,33 +3,33 @@
 <div class="row-fluid mb-5">
   <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
     <%= form_with model: @contact, url: admin_contact_path, method: :patch, local: true do |f| %>
-    <table class="table", style="border: 1px solid black;" >
+    <table class="table admin-table">
       <tr>
-        <th class="table-active", width="20%", style="border: 1px solid black;">タイトル</th>
-        <td style="border-top: 1px solid black;"><%= @contact.title %></td>
+        <th class="table-active", width="20%">タイトル</th>
+        <td><%= @contact.title %></td>
       </tr>
       <tr>
-        <th class="table-active", style="border: 1px solid black;">内容</th>
-        <td style="word-break : break-all;"><%= @contact.body %></td>
+        <th class="table-active">内容</th>
+        <td class="contact-body"><%= @contact.body %></td>
       </tr>
       <tr>
-        <th class="table-active", style="border: 1px solid black;">質問者</th>
+        <th class="table-active">質問者</th>
         <td><%= link_to admin_customer_path(@contact.customer) do %><%= @contact.customer.nickname %><% end %></td>
       </tr>
       <tr>
-        <th class="table-active", style="border: 1px solid black;">連絡先</th>
+        <th class="table-active">連絡先</th>
         <td><%= @contact.customer.email %></td>
       </tr>
       <tr>
-        <th class="table-active", style="border: 1px solid black;">対応状況</th>
+        <th class="table-active">対応状況</th>
         <td>
           <%= f.select :status, Contact.statuses.keys %>
         </td>
       </tr>
       <tr>
-        <th class="table-active", style="border: 1px solid black;">対応メモ</th>
-        <td><%= f.text_area :memo, placeholder: "対応メモ", style: "width:100%;" %>
-          <%= f.submit "更新", class: "btn btn-success", style: 'display: block; margin:0 0 0 auto;' %>
+        <th class="table-active">対応メモ</th>
+        <td><%= f.text_area :memo, placeholder: "対応メモ", class: "memo-form" %>
+          <%= f.submit "更新", class: "btn btn-success contact-btn" %>
         </td>
       </tr>
     </table>
