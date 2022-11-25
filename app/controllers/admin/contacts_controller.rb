@@ -1,11 +1,11 @@
 class Admin::ContactsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_contact, only: [:show, :update]
+
   def show
-    @contact = Contact.find(params[:id])
   end
 
   def update
-    @contact = Contact.find(params[:id])
     @contact.update(contact_params)
     flash[:notice] = "更新に成功しました。"
     redirect_to request.referer
@@ -16,4 +16,9 @@ class Admin::ContactsController < ApplicationController
   def contact_params
     params.require(:contact).permit(:status, :memo)
   end
+
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
+
 end
