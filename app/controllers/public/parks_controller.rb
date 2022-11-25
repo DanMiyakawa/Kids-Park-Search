@@ -1,5 +1,6 @@
 class Public::ParksController < ApplicationController
   before_action :authenticate_customer!, except: [:index, :show, :search, :prefecture, :prefecture_search]
+  before_action :set_park, only: [:show, :edit, :updatey, :destroy]
   before_action :correct_customer, only: [:edit, :update, :destroy]
   before_action :ensure_guest_user, only: [:destroy]
 
@@ -10,17 +11,14 @@ class Public::ParksController < ApplicationController
   end
 
   def show
-    @park = Park.find(params[:id])
     @comment = Comment.new
     @park_comments = Comment.includes(:park).where(park_id: @park).order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def edit
-    @park = Park.find(params[:id])
   end
 
   def update
-    @park = Park.find(params[:id])
     #添付画像を個別に削除
     if params[:park][:image_ids]
       params[:park][:image_ids].each do |image_id|
@@ -51,7 +49,6 @@ class Public::ParksController < ApplicationController
   end
 
   def destroy
-    @park = Park.find(params[:id])
     @park.destroy
     redirect_to parks_path
   end
@@ -81,9 +78,12 @@ class Public::ParksController < ApplicationController
 
   private
 
-
   def park_params
     params.require(:park).permit(:genre_id, :name, :introduction, :address, :latitude, :longitude, :phone, :start_time, :end_time, :child_age, :child_moon_age, images: [] )
+  end
+
+  def set_park
+    @park = Park.find(params[:id])
   end
 
   def correct_customer

@@ -1,20 +1,18 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :set_customer, only: [:show, :edit, :updatey, :favorites]
   before_action :ensure_guest_user
   before_action :ensure_correct_customer, only: [:show, :edit,:updatey, :unsubscribe, :withdrawal, :favorites]
 
   def show
-    @customer = Customer.find(params[:id])
     @customer_count = @customer.parks.order(created_at: :desc)
     @parks = @customer_count.page(params[:page]).per(10)
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
        redirect_to customer_path(current_customer)
     else
@@ -33,7 +31,6 @@ class Public::CustomersController < ApplicationController
   end
 
   def favorites
-    @customer = Customer.find(params[:id])
     favorites = Favorite.where(customer_id: @customer.id).pluck(:park_id)
     @parks = Park.where(id: favorites).where.not("latitude = ? or longitude = ?", "nil", "nil")
     @genres = Genre.find(@parks.pluck(:genre_id))
@@ -57,6 +54,10 @@ class Public::CustomersController < ApplicationController
   end
 
   private
+
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
 
   def customer_params
     params.require(:customer).permit(:email, :nickname, :introduction, :profile_image)

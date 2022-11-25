@@ -1,20 +1,18 @@
 class Admin::ParksController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_park, only: [:show, :edit, :update, :destroy]
 
   def index
     @parks = Park.where.not("latitude = ? or longitude = ?", "nil", "nil").order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def show
-    @park = Park.find(params[:id])
   end
 
   def edit
-    @park = Park.find(params[:id])
   end
 
   def update
-     @park = Park.find(params[:id])
     #添付画像を個別に削除
     if params[:park][:image_ids]
       params[:park][:image_ids].each do |image_id|
@@ -31,7 +29,6 @@ class Admin::ParksController < ApplicationController
   end
 
   def destroy
-    @park = Park.find(params[:id])
     @park.destroy
     redirect_to admin_parks_path
   end
@@ -44,6 +41,10 @@ class Admin::ParksController < ApplicationController
 
   def set_q
     @q = Park.ransack(params[:q])
+  end
+
+  def set_park
+    @park = Park.find(params[:id])
   end
 
   def park_params
