@@ -1,8 +1,8 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :set_customer, only: [:show, :edit, :updatey, :favorites]
+  before_action :set_customer, only: [:show, :edit, :update, :favorites]
   before_action :ensure_guest_user
-  before_action :ensure_correct_customer, only: [:show, :edit,:updatey, :unsubscribe, :withdrawal, :favorites]
+  before_action :ensure_correct_customer, only: [:show, :edit,:update, :unsubscribe, :withdrawal, :favorites]
 
   def show
     @customer_count = @customer.parks.order(created_at: :desc)
