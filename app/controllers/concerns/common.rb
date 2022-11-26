@@ -6,5 +6,9 @@ module Common
   def set_park
     @park = Park.find(params[:id])
   end
+  
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
 
 end

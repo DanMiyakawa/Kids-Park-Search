@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
+  include Common
   before_action :set_customer, only: [:show, :update]
 
   def index
@@ -20,10 +21,6 @@ class Admin::CustomersController < ApplicationController
   end
 
   private
-
-  def set_customer
-    @customer = Customer.find(params[:id])
-  end
 
   def customer_params
     params.require(:customer).permit(:is_deleted)
