@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
+  include Common
   before_action :set_customer, only: [:show, :edit, :update, :favorites]
   before_action :ensure_guest_user
   before_action :ensure_correct_customer, only: [:show, :edit,:update, :unsubscribe, :withdrawal, :favorites]
@@ -54,10 +55,6 @@ class Public::CustomersController < ApplicationController
   end
 
   private
-
-  def set_customer
-    @customer = Customer.find(params[:id])
-  end
 
   def customer_params
     params.require(:customer).permit(:email, :nickname, :introduction, :profile_image)
