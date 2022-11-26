@@ -1,5 +1,6 @@
 class Admin::ParksController < ApplicationController
   before_action :authenticate_admin!
+  include Common
   before_action :set_park, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -41,10 +42,6 @@ class Admin::ParksController < ApplicationController
 
   def set_q
     @q = Park.ransack(params[:q])
-  end
-
-  def set_park
-    @park = Park.find(params[:id])
   end
 
   def park_params

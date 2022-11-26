@@ -1,6 +1,7 @@
 class Public::ParksController < ApplicationController
   before_action :authenticate_customer!, except: [:index, :show, :search, :prefecture, :prefecture_search]
-  before_action :set_park, only: [:show, :edit, :updatey, :destroy]
+  include Common
+  before_action :set_park, only: [:show, :edit, :update, :destroy]
   before_action :correct_customer, only: [:edit, :update, :destroy]
   before_action :ensure_guest_user, only: [:destroy]
 
@@ -80,10 +81,6 @@ class Public::ParksController < ApplicationController
 
   def park_params
     params.require(:park).permit(:genre_id, :name, :introduction, :address, :latitude, :longitude, :phone, :start_time, :end_time, :child_age, :child_moon_age, images: [] )
-  end
-
-  def set_park
-    @park = Park.find(params[:id])
   end
 
   def correct_customer
