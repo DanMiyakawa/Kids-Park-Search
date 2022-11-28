@@ -12,38 +12,38 @@
       <%= form_with model:@park do |f| %>
         <table class="table table-borderless pl-5">
           <tr>
-            <th>遊び場の画像</th>
+            <th class="text-center" width="30%">遊び場の画像</th>
             <th><%= f.file_field :images, multiple: true, class: "form-control-file images", accept: 'image/*' %></th>
           </tr>
           <tr>
-            <th>遊び場の名前<br><span class="check">※必須</span></th>
+            <th class="text-center">遊び場の名前<br><span class="check">※必須</span></th>
             <th><%= f.text_field :name, class: "form-control name" %></th>
           </tr>
           <tr>
-            <th>遊び場の紹介<br><span class="check">※必須</span></th>
+            <th class="text-center">遊び場の紹介<br><span class="check">※必須</span></th>
             <th><%= f.text_area :introduction, class: "form-control introduction" %></th>
           </tr>
           <tr>
-            <th>住所<br><span class="check">※必須</span></th>
+            <th class="text-center">住所<br><span class="check">※必須</span></th>
             <th><%= f.text_field :address, placeholder:"都道府県から入力", :size => "50", class: "form-control address" %><br>
             (住所が判別できない場合、一覧には表示されません)</th>
           </tr>
           <tr>
-            <th>電話番号</th>
+            <th class="text-center">電話番号</th>
             <th><%= f.telephone_field :phone, class: "form-control phone" %></th>
           </tr>
           <tr>
-            <th>営業時間</th>
+            <th class="text-center">営業時間</th>
             <th><%= f.time_field :start_time %> ~ <%= f.time_field :end_time %></th>
           </tr>
           <tr>
-            <th>お子様の年齢</th>
+            <th class="text-center">お子様の年齢</th>
             <td>年齢<%= f.number_field :child_age, in: 0..15, step: 1 %>歳
               月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月
             </td>
           </tr>
           <tr>
-            <th>ジャンル<br><span class="check">※必須</span></th>
+            <th class="text-center">ジャンル<br><span class="check">※必須</span></th>
             <th><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></th>
           </tr>
         </table>

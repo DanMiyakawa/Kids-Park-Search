@@ -12,7 +12,7 @@
       <%= form_with model: @park, url: park_path, method: :patch do |f| %>
         <table class="table table-borderless pl-5">
           <tr>
-            <th style="width: 30%;">遊び場の画像</th>
+            <th width="30%" class="text-center">遊び場の画像</th>
             <td>
               <!--投稿画像の削除の-->
               <% if @park.images.attached? %>
@@ -32,33 +32,33 @@
             </td>
           </tr>
           <tr>
-            <th>遊び場の名前<br><span class="check">※必須</span></th>
+            <th class="text-center">遊び場の名前<br><span class="check">※必須</span></th>
             <td><%= f.text_field :name, class: "form-control name" %></td>
           </tr>
           <tr>
-            <th>遊び場の紹介<br><span class="check">※必須</span></th>
+            <th class="text-center">遊び場の紹介<br><span class="check">※必須</span></th>
             <td><%= f.text_area :introduction, class: "form-control introduction" %></td>
           </tr>
           <tr>
-            <th>住所<br><span class="check">※必須</span></th>
+            <th class="text-center">住所<br><span class="check">※必須</span></th>
             <td><%= f.text_field :address, placeholder: "都道府県から入力", :size => "50", class: "form-control address" %><br>
             (住所が判別できない場合、一覧には表示されません)</td>
           </tr>
           <tr>
-            <th>電話番号</th>
+            <th class="text-center">電話番号</th>
             <td><%= f.telephone_field :phone, class: "form-control phone" %></td>
           </tr>
           <tr>
-            <th>営業時間</th>
+            <th class="text-center">営業時間</th>
             <td><%= f.time_field :start_time %> ~ <%= f.time_field :end_time %></td>
           </tr>
           <tr>
-            <th>お子様の年齢</th>
-            <td style="width: 50px;">年齢<%= f.number_field :child_age, in: 0..15, step: 1 %>歳
+            <th class="text-center">お子様の年齢</th>
+            <td>年齢<%= f.number_field :child_age, in: 0..15, step: 1 %>歳
             月齢<%= f.number_field :child_moon_age, in: 0..11, step: 1 %>ヶ月</td>
           </tr>
           <tr>
-            <th>ジャンル<br><span class="check">※必須</span></th>
+            <th class="text-center">ジャンル<br><span class="check">※必須</span></th>
             <td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></td>
           </tr>
         </table>
