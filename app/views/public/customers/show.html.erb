@@ -7,7 +7,7 @@
   <div class="row mb-3">
     <div class="col-md-12 col-lg-4 mt-5">
       <%= image_tag @customer.get_profile_image, size:'200x200', class: "profile-image mx-auto"%>
-      <table class="table table-borderless">
+      <table class="table table-borderless mt-3 mb-3 text-center">
         <tr>
           <th>ニックネーム</th><td><%= @customer.nickname %></td>
         </tr>
@@ -17,20 +17,20 @@
       </table>
       <!--ゲストユーザーでは表示させない-->
       <% if @customer == current_customer && @customer.nickname != "ゲストユーザー" %>
-        <%= link_to edit_customer_path(@customer), class: "btn btn-outline-secondary btn-block" do %>
+        <%= link_to edit_customer_path(@customer), class: "btn btn-outline-secondary btn-block customer-btn" do %>
           編集する
         <% end %>
-        <%= link_to unsubscribe_customers_path, class: "btn btn-outline-danger btn-block" do %>
+        <%= link_to unsubscribe_customers_path, class: "btn btn-outline-danger btn-block customer-btn" do %>
           退会する
         <% end %>
-        <%= link_to contacts_path, class: "btn btn-outline-secondary btn-block" do %>
+        <%= link_to contacts_path, class: "btn btn-outline-secondary btn-block customer-btn" do %>
         お問い合わせ一覧
         <% end %>
       <% end %>
     </div>
     <div class="col-md-12 col-lg-7 offset-lg-1">
       <h3 class="text-center mt-3">過去に投稿した遊び場(全<%= @customer_count.count %>件)</h3>
-      <table class='table table-hover table-inverse'>
+      <table class='table table-hover table-inverse text-center'>
         <thead>
           <tr>
             <th width="50%">遊び場名</th>
@@ -47,7 +47,7 @@
         <% end %>
         </tbody>
       </table>
-      <div class="col-6 offset-1 mt-3"><%= paginate @parks, theme: 'bootstrap-5' %></div>
+      <div class="col-12 mt-3"><%= paginate @parks, theme: 'bootstrap-5' %></div>
     </div>
   </div>
 </div>
