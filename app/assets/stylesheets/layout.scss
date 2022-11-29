@@ -20,6 +20,10 @@
   justify-content: center;
 }
 
+.page-item.active .page-link {
+  background-color: #69b9cf;
+}
+
 *{
   font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN',sans-serif;
 }
