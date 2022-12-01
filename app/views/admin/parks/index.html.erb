@@ -1,5 +1,5 @@
 <div class='container'>
-  <h2 class="text-center mt-4"><strong>〜遊び場一覧〜</strong></h2>
+  <h2 class="text-center mt-4"><strong>〜遊び場一覧(全<%= @all_park.size %>件)〜</strong></h2>
   <div class="row mt-4 mb-5">
     <%= search_form_for @q, url: search_admin_parks_path, class: "mx-auto" do |f| %>
       <%= f.collection_select :address_cont, JpPrefecture::Prefecture.all, :name, :name, { prompt: "都道府県を選択", include_blank: "選択を解除" } %> ×
