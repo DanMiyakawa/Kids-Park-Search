@@ -1,10 +1,11 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_genre, only: [:edit, :update, :destroy]
-  
+
   def index
     @genre = Genre.new
-    @genres = Genre.all.order(created_at: :desc).page(params[:page]).per(10)
+    @all_genre = Genre.all
+    @genres = @all_genre.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def create
@@ -38,7 +39,7 @@ class Admin::GenresController < ApplicationController
   def genre_params
     params.require(:genre).permit(:name)
   end
-  
+
   def set_genre
     @genre = Genre.find(params[:id])
   end

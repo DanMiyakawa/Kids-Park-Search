@@ -6,17 +6,22 @@ class Admin::HomesController < ApplicationController
     # 対応状況での検索表示
     if params[:status]
       if params[:status] == "確認中"
-        @contacts = Contact.where(status: "確認中").order(created_at: :desc).page(params[:contact]).per(8)
+        @all_contact = Contact.where(status: "確認中")
+        @contacts = @all_contact.order(created_at: :desc).page(params[:contact]).per(8)
       elsif params[:status] == "対応中"
-        @contacts = Contact.where(status: "対応中").order(created_at: :desc).page(params[:contact]).per(8)
+        @all_contact = Contact.where(status: "対応中")
+        @contacts = @all_contact.order(created_at: :desc).page(params[:contact]).per(8)
       else
-        @contacts = Contact.where(status: "対応済").order(created_at: :desc).page(params[:contact]).per(8)
+        @all_contact = Contact.where(status: "対応済")
+        @contacts = @all_contact.order(created_at: :desc).page(params[:contact]).per(8)
       end
     else
-      @contacts = contacts.order(created_at: :desc).page(params[:contact]).per(8)
+      @all_contact = contacts
+      @contacts = @all_contact.order(created_at: :desc).page(params[:contact]).per(8)
     end
     # 住所が判断できない公園を取得
-    @badparks = Park.where(latitude: nil).order(created_at: :desc).page(params[:park]).per(8)
+    @all_badpark = Park.where(latitude: nil).or(Park.where(longitude: nil))
+    @badparks = @all_badpark.order(created_at: :desc).page(params[:park]).per(8)
 
     respond_to do |format|
       format.html

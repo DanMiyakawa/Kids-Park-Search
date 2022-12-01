@@ -1,4 +1,11 @@
-<table class="table mt-1 admin-table mb-2">
+<h2 class="text-center mt-4"><strong>〜お問い合わせ一覧(全<%= @all_contact.size %>件)〜</strong></h2>
+<div class="text-right">
+  <% Contact.statuses.keys.each do |status| %>
+    <%= link_to status, admin_path(status: status), remote: true, class: "btn btn-outline-secondary" %>
+  <% end %>
+  <%= link_to "全件表示", admin_path, remote: true, class: "btn btn-outline-secondary" %>
+</div>
+<table class="table mt-2 admin-table mb-2">
   <thead class="table-active">
     <tr>
       <th>お問い合わせ日時</th>

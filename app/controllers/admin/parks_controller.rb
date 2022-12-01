@@ -4,7 +4,8 @@ class Admin::ParksController < ApplicationController
   before_action :set_park, only: [:show, :edit, :update, :destroy]
 
   def index
-    @parks = Park.where.not("latitude = ? or longitude = ?", "nil", "nil").order(created_at: :desc).page(params[:page]).per(8)
+    @all_park = Park.where.not("latitude = ? or longitude = ?", "nil", "nil")
+    @parks = @all_park.order(created_at: :desc).page(params[:page]).per(12)
   end
 
   def show
@@ -35,7 +36,8 @@ class Admin::ParksController < ApplicationController
   end
 
   def search
-    @results = @q.result.where.not("latitude = ? or longitude = ?", "nil", "nil").order(created_at: :desc).page(params[:page]).per(8)
+    @all_result = @q.result.where.not("latitude = ? or longitude = ?", "nil", "nil")
+    @results = @all_result.order(created_at: :desc).page(params[:page]).per(12)
   end
 
   private
