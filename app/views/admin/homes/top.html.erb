@@ -1,6 +1,6 @@
 <div id="pagenate">
 <%= render "layouts/flash" %>
-  <div class="container"></div>
+  <div class="container">
     <div class="row">
       <div class="col-sm-10 col-md-6 mx-auto">
         <div id="search_result">
@@ -8,8 +8,8 @@
         </div>
       </div>
       <div class="col-sm-10 col-md-5 mx-auto">
-        <h2 class="text-center mt-4"><strong>〜住所不定の遊び場(全<%= @all_badpark.size %>件)〜</strong></h2>
-        <table class="table text-center mt-5 admin-table">
+        <h2 class="text-center mt-4"><strong>住所不定の遊び場<br>(全<%= @all_badpark.size %>件)</strong></h2>
+        <table class="table text-center admin-table">
             <thead>
             <tr>
               <th class="table-active" >遊び場名</th>
