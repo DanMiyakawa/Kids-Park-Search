@@ -2,12 +2,11 @@
 
 ## サイトイメージ
 #### PC版
-![tZK5SfeUjzxGh5kt41zs1671150444-1671150496](https://user-images.githubusercontent.com/110312863/207996835-f72df9f9-d606-4d35-b1c7-6b0ca965cce3.gif)
+![jvmfsC1gE6iCfMg6fpWq1671153156-1671153179](https://user-images.githubusercontent.com/110312863/207999505-1789b771-1aea-4f7e-968f-ae72173efffd.gif)
 
 
 #### スマホ版
-![UahGkMkOJIcNOsuGpMys1671151215-1671151243](https://user-images.githubusercontent.com/110312863/207996724-26118e57-2370-4f81-9459-2e55d3566c9d.gif)
-
+![WkAevi6PUnoJRI5BZtGh1671153281-1671153300](https://user-images.githubusercontent.com/110312863/207999630-0b9ad2f3-0354-4d64-8717-04f6ee9a47ea.gif)
 
 URL: https://kids-park-search.com/
 
