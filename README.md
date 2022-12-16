@@ -2,10 +2,12 @@
 
 ## サイトイメージ
 #### PC版
-<img width="1061" alt="PC-top" src="https://user-images.githubusercontent.com/110312863/198753770-6541ae77-91fb-4e6e-bf62-3b761413768c.png">
+![tZK5SfeUjzxGh5kt41zs1671150444-1671150496](https://user-images.githubusercontent.com/110312863/207996835-f72df9f9-d606-4d35-b1c7-6b0ca965cce3.gif)
+
 
 #### スマホ版
-<img width="369" alt="phone_top" src="https://user-images.githubusercontent.com/110312863/198754134-cb00efbf-15a9-4fa6-aa81-9aeedc0d484d.png">
+![UahGkMkOJIcNOsuGpMys1671151215-1671151243](https://user-images.githubusercontent.com/110312863/207996724-26118e57-2370-4f81-9459-2e55d3566c9d.gif)
+
 
 URL: https://kids-park-search.com/
 
