@@ -8,6 +8,9 @@
 #### スマホ版
 ![WkAevi6PUnoJRI5BZtGh1671153281-1671153300](https://user-images.githubusercontent.com/110312863/207999630-0b9ad2f3-0354-4d64-8717-04f6ee9a47ea.gif)
 
+#### 管理者側
+![XcuhZqsVSPWolTxMWCZf1671237701-1671237733](https://user-images.githubusercontent.com/110312863/208213895-4b3376df-3b2f-4602-a7f9-833fccbe1e84.gif)
+
 URL: https://kids-park-search.com/
 
 ## サイト概要
