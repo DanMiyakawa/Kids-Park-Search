@@ -89,7 +89,7 @@
              <%= image_tag comment.customer.get_profile_image, size: "80" %>
            <% end %>
            <br>
-           <%= comment.child_age %>歳<%= comment.child_moon_age %>ヶ月
+           <%= comment.customer.nickname %>
          </th>
          <!--コメントの写真の有無によって表示変更-->
          <% if comment.comment_image.attached? %>
