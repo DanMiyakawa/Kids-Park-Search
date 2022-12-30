@@ -5,7 +5,7 @@
   <%= render "public/shared/error_messages", resource: resource %>
   <div class="row">
     <div class="col-md-12 d-flex justify-content-center">
-      <table class="table　table-borderless table-sm">
+      <table class="table　table-borderless table-sm mt-3 mb-3">
         <div class="field">
           <tr>
             <th><%= f.label :ニックネーム %></th>
@@ -47,8 +47,8 @@
   <% end %>
   <div class="row">
     <div class="col-12">
-      <h6 class="text-center">既に登録済みの方<%= link_to "こちら", customer_session_path %> からログインしてください。</h6>
-      <h6 class="text-center mb-3">ゲストユーザーとして使用する方は<%= link_to "こちら", public_guest_sign_in_path, method: :post %>をクリックしてください。</h6>
+      <h6 class="text-center">既に登録済みの方<%= link_to "こちら", customer_session_path %>からログインしてください。</h6>
+      <h6 class="text-center mb-5">ゲストユーザーとして使用する方は<%= link_to "こちら", public_guest_sign_in_path, method: :post %>をクリックしてください。</h6>
     </div>
   </div>
 </div>
