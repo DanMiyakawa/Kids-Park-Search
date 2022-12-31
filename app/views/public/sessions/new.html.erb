@@ -8,7 +8,7 @@
         <div class="text-center">
          <%= render "public/shared/error_messages", resource: resource %>
         </div>
-         <div class="field">
+         <div class="field mb-2">
           <%= f.label "メールアドレス" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: "sample@example.com" %>
          </div>
@@ -24,7 +24,7 @@
          </div>
        <% end %>
 
-      <div class="row mt-5 mb-2">
+      <div class="row mt-3 mb-2">
        <h6 class="text-center" style="background-color:#EEEEEE">会員登録がお済みでない方<%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</h6>
       </div>
     </div>
