@@ -1,7 +1,7 @@
 <div class="row">
   <!--ゲストユーザーはコメント機能を除去-->
   <% if customer_signed_in? && current_customer.nickname == "ゲストユーザー" %>
-    <div class="col-4 mx-auto alert alert-danger text-center">
+    <div class="col-10 mx-auto alert alert-danger text-center">
       <p><span class="check">※</span>ゲストユーザーはコメントできません。</p>
     </div>
   <% elsif customer_signed_in? %>
@@ -37,7 +37,7 @@
       </div>
     </div>
   <% else %>
-    <div class="col-4 mx-auto alert alert-danger text-center">
+    <div class="col-10 mx-auto alert alert-danger text-center">
       <p><span class="check">※</span>コメントは新規登録後、可能になります。</p>
     </div>
   <% end %>
